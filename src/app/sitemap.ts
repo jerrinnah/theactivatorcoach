@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/lib/insights";
+import { siteUrl } from "@/lib/siteUrl";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://laurettaogbum.com";
 
 const staticRoutes: { path: string; priority: number; changeFrequency: "monthly" | "yearly" }[] = [
   { path: "", priority: 1, changeFrequency: "monthly" },
@@ -30,13 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticRoutes.map((route) => ({
-      url: `${BASE_URL}${route.path}`,
+      url: `${siteUrl}${route.path}`,
       lastModified: now,
       changeFrequency: route.changeFrequency,
       priority: route.priority,
     })),
     ...articles.map((article) => ({
-      url: `${BASE_URL}/insights/${article.slug}`,
+      url: `${siteUrl}/insights/${article.slug}`,
       lastModified: new Date(`${article.date}T00:00:00Z`),
       changeFrequency: "yearly" as const,
       priority: 0.6,

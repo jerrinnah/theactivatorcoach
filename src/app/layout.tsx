@@ -4,6 +4,7 @@ import "./globals.css";
 import GlobalHeader from "@/components/GlobalHeader";
 import Footer from "@/components/Footer";
 import { practitioner } from "@/lib/siteData";
+import { siteUrl } from "@/lib/siteUrl";
 
 const display = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -19,7 +20,7 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://laurettaogbum.com"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${practitioner.shortName} | Psychotherapist & Relational Risk Specialist`,
     template: `%s | ${practitioner.shortName}`,
