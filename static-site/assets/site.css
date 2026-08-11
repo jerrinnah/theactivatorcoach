@@ -1,0 +1,67 @@
+/* Additions for the static build.
+   styles.css is the compiled Tailwind output from the original app; it expects
+   the font variables that next/font used to inject, so they are supplied here. */
+
+:root {
+  --font-cormorant: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-inter: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-sage-soft);
+  color: var(--color-sage-dark);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-sage-deep);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.font-display {
+  font-family: var(--font-cormorant);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-sage-deep);
+}
+
+/* The assessment panel is focused programmatically between steps. */
+#assessment:focus {
+  outline: none;
+}
+
+@media print {
+  header,
+  footer,
+  [data-quick-exit],
+  .fixed {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
