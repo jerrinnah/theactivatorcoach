@@ -1,0 +1,58 @@
+name: Deploy to cPanel
+
+# Builds the static site and uploads it to public_html over FTP.
+# Runs on every push to main, or on demand from the Actions tab.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  # Never let two deploys write to public_html at the same time.
+  group: deploy-cpanel
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # build:static runs --experimental-strip-types, which needs Node 22+
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build the static site
+        run: npm run build:static
+        env:
+          SITE_ORIGIN: https://theactivatorcoach.com
+
+      - name: Check the build looks sane before uploading
+        run: |
+          test -f static-site/dist/index.html
+          test -f static-site/dist/.htaccess
+          test "$(ls static-site/dist/media/*.woff2 | wc -l)" -eq 12
+          echo "$(find static-site/dist -type f | wc -l) files ready"
+
+      - name: Upload to public_html
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./static-site/dist/
+          server-dir: /public_html/
+          # Anything matched here is left untouched on the server. cgi-bin is
+          # cPanel's, and .well-known is how AutoSSL proves domain ownership —
+          # deleting it would break certificate renewal.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.DS_Store
+            cgi-bin/**
+            .well-known/**
