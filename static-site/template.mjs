@@ -13,6 +13,13 @@ const { practitioner, siteNav, footerSections, contactDetails, whatsappLink, tru
 
 export { practitioner, siteNav, footerSections, contactDetails, whatsappLink, trustItems };
 
+/**
+ * Canonical origin for this site, no trailing slash. Used for canonical tags,
+ * og:url, sitemap.xml and robots.txt. Override for a different domain with
+ * `SITE_ORIGIN=https://example.com npm run build:static`.
+ */
+export const ORIGIN = (process.env.SITE_ORIGIN || "https://theactivatorcoach.com").replace(/\/$/, "");
+
 /** Escape text destined for HTML text nodes or attribute values. */
 export function esc(value) {
   return String(value)
@@ -269,8 +276,9 @@ function footer() {
 </footer>`;
 }
 
-export function layout({ path, title, description, body, extraHead = "", bodyScripts = "" }) {
+export function layout({ path, title, description, body, extraHead = "", bodyScripts = "", canonical = true }) {
   const fullTitle = path === "/" ? title : `${title} | ${practitioner.shortName}`;
+  const canonicalUrl = path === "/" ? `${ORIGIN}/` : `${ORIGIN}${path}`;
   return `<!doctype html>
 <html lang="en" class="h-full">
 <head>
@@ -278,15 +286,12 @@ export function layout({ path, title, description, body, extraHead = "", bodyScr
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>${esc(fullTitle)}</title>
 <meta name="description" content="${esc(description)}"/>
-<link rel="canonical" href="${esc(path)}"/>
-<meta property="og:type" content="website"/>
+${canonical ? `<link rel="canonical" href="${esc(canonicalUrl)}"/>\n` : ""}<meta property="og:type" content="website"/>
 <meta property="og:title" content="${esc(fullTitle)}"/>
 <meta property="og:description" content="${esc(description)}"/>
 <meta property="og:site_name" content="${esc(practitioner.shortName)}"/>
+<meta property="og:url" content="${esc(canonicalUrl)}"/>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap"/>
 <link rel="stylesheet" href="/assets/styles.css"/>
 <link rel="stylesheet" href="/assets/site.css"/>
 ${extraHead}

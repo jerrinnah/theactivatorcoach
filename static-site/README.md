@@ -75,8 +75,12 @@ is ever stuck.
 ## Notes
 
 - The assessments run entirely in the browser. Nothing is submitted or stored.
-- Fonts load from Google Fonts. To self-host them instead, download the two
-  families into `assets/fonts/` and swap the `<link>` in `template.mjs`.
-- `sitemap.xml` and `robots.txt` are generated with `https://laurettaogbum.com`
-  as the origin. Building with a different domain:
+- Fonts are self-hosted. The `.woff2` files live in `static-site/media/` and the
+  `@font-face` rules in `assets/styles.css` reference them as `../media/…`, so
+  the build copies them to `dist/media/` — a sibling of `dist/assets/`, not
+  inside it. If you ever replace `styles.css` with a fresh Tailwind build, check
+  the font filenames still match what's in `media/`.
+- Canonical tags, `og:url`, `sitemap.xml` and `robots.txt` all use `ORIGIN`,
+  defined once at the top of `template.mjs` as `https://theactivatorcoach.com`.
+  Build for a different domain with
   `SITE_ORIGIN=https://example.com npm run build:static`.

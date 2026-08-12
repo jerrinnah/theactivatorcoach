@@ -16,7 +16,7 @@ import path from "node:path";
 import {
   layout, esc, blob, leafBranch, psiMark, portrait, button, sectionHeading,
   serviceIcon, whatsappIcon, checkIcon, quietExit, currencyToggle, price,
-  trustBar, letterSignup, contactDetails, whatsappLink, practitioner,
+  trustBar, letterSignup, contactDetails, whatsappLink, practitioner, ORIGIN,
 } from "./template.mjs";
 import { servicePages } from "./services.mjs";
 
@@ -464,6 +464,7 @@ await writeFile(
     path: "/404",
     title: "Page not found",
     description: "That page isn't here.",
+    canonical: false,
     body: `<section class="relative overflow-hidden bg-cream-deep">
       ${leafBranch("pointer-events-none absolute -left-12 bottom-0 h-80 w-40 text-sage/20")}
       <div class="relative mx-auto max-w-2xl px-6 py-28 text-center lg:px-8">
@@ -482,6 +483,10 @@ await writeFile(
 
 // Assets
 await copyDir(path.join(HERE, "assets"), path.join(DIST, "assets"));
+
+// Self-hosted fonts. assets/styles.css references these as ../media/*.woff2,
+// so they have to land in dist/media — a sibling of dist/assets, not inside it.
+await copyDir(path.join(HERE, "media"), path.join(DIST, "media"));
 await writeFile(
   path.join(DIST, "assets", "data.js"),
   `window.PRICE_BOOK=${JSON.stringify(priceBook)};\n` +
@@ -502,8 +507,7 @@ if (existsSync(path.join(ROOT, "public", "abc-of-marriage.jpg"))) {
 // Favicon
 await copyFile(path.join(ROOT, "src", "app", "icon.svg"), path.join(DIST, "favicon.svg"));
 
-// robots.txt + sitemap.xml
-const ORIGIN = process.env.SITE_ORIGIN || "https://laurettaogbum.com";
+// robots.txt + sitemap.xml — ORIGIN is defined in template.mjs
 await writeFile(path.join(DIST, "robots.txt"), `User-Agent: *\nAllow: /\n\nSitemap: ${ORIGIN}/sitemap.xml\n`, "utf8");
 await writeFile(
   path.join(DIST, "sitemap.xml"),

@@ -11,9 +11,9 @@ export const practitioner = {
  * The WhatsApp number in particular is a dummy value.
  */
 export const contactDetails = {
-  email: "hello@laurettaogbum.com",
-  speakingEmail: "speaking@laurettaogbum.com",
-  academyEmail: "academy@laurettaogbum.com",
+  email: "hello@theactivatorcoach.com",
+  speakingEmail: "speaking@theactivatorcoach.com",
+  academyEmail: "academy@theactivatorcoach.com",
   whatsappDisplay: "+234 800 000 0000",
   /** Digits only, international format — used to build wa.me links. */
   whatsappNumber: "2348000000000",
