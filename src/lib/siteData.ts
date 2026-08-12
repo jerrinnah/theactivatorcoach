@@ -6,17 +6,13 @@ export const practitioner = {
   logoCredential: "PhD · Psychotherapist",
 } as const;
 
-/**
- * ⚠️ PLACEHOLDER CONTACT DETAILS — confirm before launch.
- * The WhatsApp number in particular is a dummy value.
- */
 export const contactDetails = {
   email: "hello@theactivatorcoach.com",
   speakingEmail: "speaking@theactivatorcoach.com",
   academyEmail: "academy@theactivatorcoach.com",
-  whatsappDisplay: "+234 800 000 0000",
+  whatsappDisplay: "+234 703 077 3008",
   /** Digits only, international format — used to build wa.me links. */
-  whatsappNumber: "2348000000000",
+  whatsappNumber: "2347030773008",
   instagram: "@drlaurettaogbum",
   instagramUrl: "https://instagram.com/drlaurettaogbum",
   linkedinUrl: "https://www.linkedin.com/in/laurettaogbum",
