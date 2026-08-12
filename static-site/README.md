@@ -3,7 +3,17 @@
 `dist/` is the whole website as static files. No Node, no Next.js, no build step
 on the server. It runs on cPanel shared hosting, or any web server at all.
 
-## Uploading to cPanel
+## Deploying
+
+Pushing to `main` builds the site and uploads it to `public_html` over FTP —
+see `.github/workflows/deploy.yml`. It needs three repository secrets:
+`FTP_SERVER`, `FTP_USERNAME` and `FTP_PASSWORD`. The workflow only uploads what
+changed, and leaves `cgi-bin/` and `.well-known/` on the server alone — the
+latter is how AutoSSL renews the certificate.
+
+You can also run it by hand from the repo's **Actions** tab.
+
+## Uploading to cPanel by hand
 
 1. Build it: `npm run build:static` (from the repo root).
 2. In cPanel open **File Manager → public_html**.
