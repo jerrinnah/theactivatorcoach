@@ -39,12 +39,20 @@ jobs:
           echo "$(find static-site/dist -type f | wc -l) files ready"
 
       - name: Upload to public_html
+        id: upload
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        # Shared hosting drops idle passive-FTP data sockets, which failed a
+        # deploy mid-upload once. A half-uploaded site is worse than a slow one,
+        # so the step is retried below rather than left partially applied.
+        continue-on-error: true
+        timeout-minutes: 10
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
+          # Per-operation timeout, default 30s — too tight for this server.
+          timeout: 120000
           local-dir: ./static-site/dist/
           server-dir: /public_html/
           # Anything matched here is left untouched on the server. cgi-bin is
@@ -56,3 +64,30 @@ jobs:
             **/.DS_Store
             cgi-bin/**
             .well-known/**
+
+      - name: Retry the upload
+        if: steps.upload.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        timeout-minutes: 10
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          timeout: 120000
+          local-dir: ./static-site/dist/
+          server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.DS_Store
+            cgi-bin/**
+            .well-known/**
+
+      - name: Confirm the site is serving the new build
+        run: |
+          for p in / /about/ /contact/ /insights/; do
+            code=$(curl -sS -m 20 -o /dev/null -w '%{http_code}' "http://theactivatorcoach.com$p")
+            echo "$p -> $code"
+            test "$code" = 200
+          done
