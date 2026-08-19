@@ -1,53 +1,81 @@
 import type { Metadata } from "next";
-import { ClerkProvider, UserButton } from "@clerk/nextjs";
-import Link from "next/link";
+import { auth } from "@/lib/neon-auth";
+import { Nav } from "@/components/Nav";
+import { initials } from "@/lib/style";
+import { signOut } from "./sign-out/actions";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Practice admin",
-  description: "Client records and enquiries.",
+  description: "Client records, scheduling and enquiries.",
   robots: { index: false, follow: false },
 };
 
-const nav = [
-  { href: "/", label: "Overview" },
-  { href: "/clients", label: "Clients" },
-  { href: "/inbox", label: "Inbox" },
-];
+// auth.getSession() reads cookies, so this subtree can never be static.
+export const dynamic = "force-dynamic";
 
-export default function RootLayout({
+/**
+ * Reads the session so the chrome can hide itself on /sign-in. This is a
+ * presentation decision only — it is not what protects anything. Every page
+ * below calls requireAdmin() itself.
+ */
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { data: session } = await auth.getSession();
+  const user = session?.user;
+  const name = user?.name || user?.email || "";
+  // Presentation only — every /content route calls requireSuperAdmin() itself.
+  const role = (user as { role?: string } | undefined)?.role;
+
   return (
     <html lang="en">
-      <body className="min-h-screen bg-stone-50 text-stone-900 antialiased">
-        <ClerkProvider>
-          {/* proxy.ts protects every route, so this only renders when signed in. */}
-          <header className="border-b border-stone-200 bg-white">
-              <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-3">
-                <div className="flex items-center gap-6">
-                  <span className="text-sm font-semibold tracking-tight">
-                    Practice admin
-                  </span>
-                  <nav className="flex gap-1">
-                    {nav.map((n) => (
-                      <Link
-                        key={n.href}
-                        href={n.href}
-                        className="rounded-md px-3 py-1.5 text-sm text-stone-600 transition hover:bg-stone-100 hover:text-stone-900"
-                      >
-                        {n.label}
-                      </Link>
-                    ))}
-                  </nav>
-                </div>
-                <UserButton />
+      <body className="min-h-screen bg-background text-foreground antialiased">
+        {user ? (
+          <div className="mx-auto max-w-[1400px] p-4 sm:p-6">
+            <header className="card mb-6 flex items-center justify-between gap-4 px-5 py-3">
+              <div className="flex items-center gap-3">
+                <span
+                  aria-hidden
+                  className="grid h-9 w-9 place-items-center rounded-xl bg-brand text-sm font-bold text-white"
+                >
+                  TA
+                </span>
+                <span className="hidden text-sm font-semibold tracking-tight sm:block">
+                  Practice admin
+                </span>
+              </div>
+
+              <Nav superAdmin={role === "super_admin"} />
+
+              <div className="flex items-center gap-3">
+                <span className="hidden text-sm text-muted lg:block">
+                  {name}
+                </span>
+                <span
+                  aria-hidden
+                  className="grid h-9 w-9 place-items-center rounded-full bg-slate-100 text-xs font-semibold text-slate-600"
+                >
+                  {initials(name)}
+                </span>
+                <form action={signOut}>
+                  <button
+                    type="submit"
+                    className="rounded-full px-3 py-1.5 text-sm text-muted transition hover:bg-slate-100 hover:text-foreground"
+                  >
+                    Sign out
+                  </button>
+                </form>
               </div>
             </header>
-          <main className="mx-auto max-w-6xl px-6 py-8">{children}</main>
-        </ClerkProvider>
+
+            <main>{children}</main>
+          </div>
+        ) : (
+          <main>{children}</main>
+        )}
       </body>
     </html>
   );

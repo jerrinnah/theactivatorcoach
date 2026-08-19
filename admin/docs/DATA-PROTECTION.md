@@ -10,10 +10,17 @@ client data.
 
 ## What the build already does
 
-- **Access is authenticated.** Clerk sits in front of every route. `proxy.ts`
-  does an optimistic check only; the real authorisation is re-checked inside
-  every page and Server Function, because Server Functions are reachable by
-  direct POST and cannot rely on the proxy having run.
+- **Access is authenticated.** Neon Auth (managed Better Auth) sits in front of
+  every route, with users and sessions in this same Postgres under the
+  `neon_auth` schema. `proxy.ts` does an optimistic check only; the real
+  authorisation is re-checked inside every page and Server Function, because
+  Server Functions are reachable by direct POST and cannot rely on the proxy
+  having run.
+- **Access is granted per person, in the database.** `neon_auth.user.role` must
+  be `admin`. Because it is read on every request, withdrawing someone's access
+  is one `UPDATE` and takes effect immediately — it does not wait for a deploy.
+  Public sign-up is disabled, so accounts exist only because someone created
+  them.
 - **Nothing is hard-deleted.** Clients archive via `archived_at`. Progress notes
   have `onDelete: "restrict"` on their client reference, so a client with notes
   cannot be removed by accident.
@@ -33,8 +40,10 @@ client data.
   no self-service "delete my data" route. Both are legal requirements that
   depend on the practice's retention policy and professional body's rules. That
   policy has to be written down before it can be automated.
-- **A signed data processing agreement.** Neon, Clerk and Vercel each process
-  data on the practice's behalf. Each offers a DPA; someone has to accept them.
+- **A signed data processing agreement.** Neon and Vercel each process data on
+  the practice's behalf. Each offers a DPA; someone has to accept them. (Clerk
+  was removed when authentication moved to Neon Auth, so it is no longer a
+  processor and its DPA is no longer needed.)
 
 ## Rules for anyone adding to this
 

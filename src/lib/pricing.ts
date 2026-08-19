@@ -1,35 +1,18 @@
+import pricing from "../../content/pricing.json" with { type: "json" };
+
+/** Content lives in content/pricing.json so the admin can edit fees. */
+
 export const currencies = ["NGN", "GBP", "USD"] as const;
 export type Currency = (typeof currencies)[number];
 
-export const currencyMeta: Record<Currency, { symbol: string; label: string }> = {
-  NGN: { symbol: "₦", label: "Naira" },
-  GBP: { symbol: "£", label: "Pounds" },
-  USD: { symbol: "$", label: "Dollars" },
-};
+export const currencyMeta: Record<Currency, { symbol: string; label: string }> =
+  pricing.currencyMeta;
 
 export type Money = Record<Currency, number>;
 
-/**
- * ⚠️ PLACEHOLDER FEES — these replace the old `[FEE]` strings so the pages are
- * functional, but they are NOT confirmed rates. Edit this one object to set the
- * real fees; every service page, the pricing table and the currency toggle read
- * from here.
- */
-export const priceBook = {
-  individualSession: { NGN: 150000, GBP: 90, USD: 115 } satisfies Money,
-  individualBlock6: { NGN: 810000, GBP: 486, USD: 621 } satisfies Money,
-  couplesSession: { NGN: 220000, GBP: 130, USD: 165 } satisfies Money,
-  couplesProgramme8: { NGN: 1584000, GBP: 936, USD: 1188 } satisfies Money,
-  beforeYouMarry: { NGN: 900000, GBP: 540, USD: 690 } satisfies Money,
-  annualReview: { NGN: 450000, GBP: 270, USD: 345 } satisfies Money,
-  intensiveOneDay: { NGN: 1500000, GBP: 900, USD: 1150 } satisfies Money,
-  intensiveTwoDay: { NGN: 2700000, GBP: 1620, USD: 2070 } satisfies Money,
-  intensiveDeposit: { NGN: 500000, GBP: 300, USD: 385 } satisfies Money,
-  diasporaIndividual: { NGN: 180000, GBP: 110, USD: 140 } satisfies Money,
-  diasporaCouples: { NGN: 260000, GBP: 155, USD: 195 } satisfies Money,
-} as const;
+export const priceBook: Record<string, Money> = pricing.priceBook;
 
-export type PriceKey = keyof typeof priceBook;
+export type PriceKey = keyof typeof pricing.priceBook;
 
 export function formatMoney(amount: number, currency: Currency): string {
   const { symbol } = currencyMeta[currency];

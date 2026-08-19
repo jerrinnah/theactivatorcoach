@@ -1,0 +1,78 @@
+{
+  "currencies": [
+    "NGN",
+    "GBP",
+    "USD"
+  ],
+  "currencyMeta": {
+    "NGN": {
+      "symbol": "₦",
+      "label": "Naira"
+    },
+    "GBP": {
+      "symbol": "£",
+      "label": "Pounds"
+    },
+    "USD": {
+      "symbol": "$",
+      "label": "Dollars"
+    }
+  },
+  "priceBook": {
+    "individualSession": {
+      "NGN": 150000,
+      "GBP": 90,
+      "USD": 115
+    },
+    "individualBlock6": {
+      "NGN": 810000,
+      "GBP": 486,
+      "USD": 621
+    },
+    "couplesSession": {
+      "NGN": 220000,
+      "GBP": 130,
+      "USD": 165
+    },
+    "couplesProgramme8": {
+      "NGN": 1584000,
+      "GBP": 936,
+      "USD": 1188
+    },
+    "beforeYouMarry": {
+      "NGN": 900000,
+      "GBP": 540,
+      "USD": 690
+    },
+    "annualReview": {
+      "NGN": 450000,
+      "GBP": 270,
+      "USD": 345
+    },
+    "intensiveOneDay": {
+      "NGN": 1500000,
+      "GBP": 900,
+      "USD": 1150
+    },
+    "intensiveTwoDay": {
+      "NGN": 2700000,
+      "GBP": 1620,
+      "USD": 2070
+    },
+    "intensiveDeposit": {
+      "NGN": 500000,
+      "GBP": 300,
+      "USD": 385
+    },
+    "diasporaIndividual": {
+      "NGN": 180000,
+      "GBP": 110,
+      "USD": 140
+    },
+    "diasporaCouples": {
+      "NGN": 260000,
+      "GBP": 155,
+      "USD": 195
+    }
+  }
+}
