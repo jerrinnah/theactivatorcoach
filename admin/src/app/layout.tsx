@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { auth } from "@/lib/neon-auth";
+import { currentRole } from "@/lib/auth";
 import { Nav } from "@/components/Nav";
 import { initials } from "@/lib/style";
 import { signOut } from "./sign-out/actions";
@@ -27,8 +28,10 @@ export default async function RootLayout({
   const { data: session } = await auth.getSession();
   const user = session?.user;
   const name = user?.name || user?.email || "";
-  // Presentation only — every /content route calls requireSuperAdmin() itself.
-  const role = (user as { role?: string } | undefined)?.role;
+  // From the database, not the cached session copy, so the nav can't offer a
+  // link the next click refuses. Presentation only either way — every /content
+  // route calls requireSuperAdmin() itself.
+  const role = user ? await currentRole() : null;
 
   return (
     <html lang="en">

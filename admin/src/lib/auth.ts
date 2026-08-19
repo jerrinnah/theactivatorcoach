@@ -72,6 +72,29 @@ export async function requireAdmin(): Promise<Admin> {
 }
 
 /**
+ * The signed-in user's role straight from the database, or null.
+ *
+ * The session cookie caches user fields for a few minutes, so `session.user.role`
+ * can lag a role change. requireAdmin() never reads that cached copy — and
+ * neither should the navigation, or it offers links the next click refuses.
+ * Returns null instead of throwing so the layout can render for signed-out
+ * visitors.
+ */
+export async function currentRole(): Promise<string | null> {
+  const { data: session } = await auth.getSession();
+  const userId = session?.user?.id;
+  if (!userId) return null;
+
+  const [user] = await getDb()
+    .select({ role: authUsers.role })
+    .from(authUsers)
+    .where(eq(authUsers.id, userId))
+    .limit(1);
+
+  return user?.role ?? null;
+}
+
+/**
  * The boundary for editing the public website.
  *
  * Deliberately stricter than requireAdmin(). Reading a client record is a
