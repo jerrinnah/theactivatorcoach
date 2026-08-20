@@ -19,8 +19,8 @@ const statuses = [
 ] as const;
 
 const field =
-  "w-full rounded-md border border-stone-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-stone-500 focus:ring-2 focus:ring-stone-200";
-const label = "mb-1.5 block text-sm font-medium text-stone-700";
+  "w-full rounded-lg border border-line bg-white px-3 py-2 text-sm outline-none transition focus:border-brand focus:ring-2 focus:ring-blue-100";
+const label = "mb-1.5 block text-sm font-medium text-slate-700";
 
 export function ClientForm({
   client,
@@ -156,7 +156,7 @@ export function ClientForm({
 
       <button
         type="submit"
-        className="rounded-md bg-stone-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-stone-700"
+        className="rounded-full bg-brand px-5 py-2 text-sm font-medium text-white transition hover:bg-brand-strong"
       >
         {submitLabel}
       </button>

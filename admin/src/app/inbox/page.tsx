@@ -23,13 +23,13 @@ async function Inbox() {
 
   if (mailboxes().length === 0) {
     return (
-      <div className="rounded-lg border border-dashed border-stone-300 bg-white p-10 text-center">
-        <p className="text-sm font-medium text-stone-700">
+      <div className="card border border-dashed border-line p-10 text-center">
+        <p className="text-sm font-medium text-slate-700">
           No mailboxes configured
         </p>
-        <p className="mx-auto mt-2 max-w-md text-sm text-stone-500">
-          Set <code className="rounded bg-stone-100 px-1">MAIL_HOST</code> and{" "}
-          <code className="rounded bg-stone-100 px-1">MAIL_ACCOUNTS</code> to
+        <p className="mx-auto mt-2 max-w-md text-sm text-muted">
+          Set <code className="rounded bg-slate-100 px-1">MAIL_HOST</code> and{" "}
+          <code className="rounded bg-slate-100 px-1">MAIL_ACCOUNTS</code> to
           read the practice mailboxes. See the README.
         </p>
       </div>
@@ -39,7 +39,7 @@ async function Inbox() {
   return (
     <>
       {errors.length > 0 && (
-        <div className="mb-5 rounded-lg border border-amber-200 bg-amber-50 p-4">
+        <div className="mb-5 rounded-xl border border-amber-200 bg-amber-50 p-4">
           <p className="text-sm font-medium text-amber-900">
             {errors.length === 1 ? "A mailbox" : "Some mailboxes"} could not be
             read
@@ -55,35 +55,35 @@ async function Inbox() {
       )}
 
       {messages.length === 0 ? (
-        <p className="rounded-lg border border-dashed border-stone-300 bg-white p-10 text-center text-sm text-stone-500">
+        <p className="card p-10 text-center text-sm text-muted">
           Nothing in the inboxes.
         </p>
       ) : (
-        <div className="overflow-hidden rounded-lg border border-stone-200 bg-white">
-          <ul className="divide-y divide-stone-100">
+        <div className="card overflow-hidden">
+          <ul className="divide-y divide-line">
             {messages.map((m) => (
               <li
                 key={m.id}
-                className={`flex flex-wrap items-baseline gap-x-3 gap-y-1 px-4 py-3.5 transition hover:bg-stone-50 ${
+                className={`flex flex-wrap items-baseline gap-x-3 gap-y-1 px-4 py-3.5 transition hover:bg-slate-50/70 ${
                   m.seen ? "" : "bg-sky-50/40"
                 }`}
               >
                 <span
                   className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-                    boxStyle[m.mailbox] ?? "bg-stone-100 text-stone-600"
+                    boxStyle[m.mailbox] ?? "bg-slate-100 text-slate-600"
                   }`}
                 >
                   {m.mailbox}
                 </span>
                 <span
-                  className={`text-sm ${m.seen ? "text-stone-700" : "font-semibold text-stone-900"}`}
+                  className={`text-sm ${m.seen ? "text-slate-700" : "font-semibold text-slate-900"}`}
                 >
                   {m.from}
                 </span>
-                <span className="min-w-0 flex-1 truncate text-sm text-stone-600">
+                <span className="min-w-0 flex-1 truncate text-sm text-muted">
                   {m.subject}
                 </span>
-                <span className="shrink-0 text-xs text-stone-400">
+                <span className="shrink-0 text-xs text-slate-400">
                   {when(m.date)}
                 </span>
               </li>
@@ -101,15 +101,15 @@ export default async function InboxPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-semibold tracking-tight">Inbox</h1>
-        <p className="mt-1 text-sm text-stone-500">
+        <h1 className="text-3xl font-bold tracking-tight text-brand-strong">Inbox</h1>
+        <p className="mt-1 text-sm text-muted">
           hello@, speaking@ and academy@ in one place. Read live over IMAP —
           nothing is copied into this app.
         </p>
       </div>
       <Suspense
         fallback={
-          <p className="rounded-lg border border-stone-200 bg-white p-10 text-center text-sm text-stone-500">
+          <p className="card p-10 text-center text-sm text-muted">
             Connecting to the mailboxes…
           </p>
         }

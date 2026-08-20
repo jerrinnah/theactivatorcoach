@@ -1,71 +1,30 @@
-export const practitioner = {
-  shortName: "Dr. Lauretta Ogbum",
-  fullName: "Dr. Lauretta Ovine Ogbum (PhD)",
-  credential: "Psychotherapist & Relational Risk Specialist",
-  logoName: "Lauretta Ogbum",
-  logoCredential: "PhD · Psychotherapist",
-} as const;
+import site from "../../content/site.json" with { type: "json" };
 
-export const contactDetails = {
-  email: "hello@theactivatorcoach.com",
-  speakingEmail: "speaking@theactivatorcoach.com",
-  academyEmail: "academy@theactivatorcoach.com",
-  whatsappDisplay: "+234 703 077 3008",
-  /** Digits only, international format — used to build wa.me links. */
-  whatsappNumber: "2347030773008",
-  instagram: "@drlaurettaogbum",
-  instagramUrl: "https://instagram.com/drlaurettaogbum",
-  linkedinUrl: "https://www.linkedin.com/in/laurettaogbum",
-  location: "Port Harcourt, Nigeria — in person by appointment",
-  reach: "Online worldwide",
-  responseTime: "Within 2 working days",
-} as const;
+/**
+ * Content lives in content/site.json so the admin can edit it. Both renderers
+ * — the Next app under src/app and the static generator under static-site —
+ * read this module, so an edit reaches both without being written twice.
+ *
+ * The types below are the contract. If the admin ever writes a shape that
+ * doesn't match, that is a bug in the editor's schema, not here.
+ */
+
+export const practitioner = site.practitioner;
+export const contactDetails = site.contactDetails;
 
 export const whatsappLink = `https://wa.me/${contactDetails.whatsappNumber}`;
 
-export const siteNav = [
-  { label: "About", href: "/about" },
-  { label: "Work With Me", href: "/work-with-me" },
-  { label: "Assessments", href: "/self-audit" },
-  { label: "Academy", href: "/academy" },
-  { label: "Books", href: "/books" },
-  { label: "Speaking", href: "/speaking" },
-  { label: "Insights", href: "/insights" },
-] as const;
+export type NavLink = { label: string; href: string };
 
-export const footerSections = {
-  work: [
-    { label: "Individual Therapy", href: "/individual-therapy" },
-    { label: "Couples Therapy", href: "/couples-therapy" },
-    { label: "Before You Marry", href: "/before-you-marry" },
-    { label: "The Annual Review", href: "/annual-review" },
-    { label: "The Intensive", href: "/the-intensive" },
-    { label: "Diaspora Sessions", href: "/diaspora" },
-  ],
-  learn: [
-    { label: "The Self-Audit", href: "/self-audit" },
-    { label: "Relational Risk Assessment", href: "/relational-risk-assessment" },
-    { label: "Insights", href: "/insights" },
-    { label: "The Activator Letter", href: "/letter" },
-  ],
-  more: [
-    { label: "Academy", href: "/academy" },
-    { label: "Books", href: "/books" },
-    { label: "Speaking & Corporate", href: "/speaking" },
-    { label: "Contact", href: "/contact" },
-    { label: "Crisis Resources", href: "/crisis" },
-  ],
-} as const;
+export const siteNav: NavLink[] = site.siteNav;
 
-export const trustItems = [
-  "PhD, Psychology",
-  "Executive Council, Life Coaches Association of Nigeria",
-  "Founder, Activator Coaching Academy",
-  "Bestselling Co-author — The ABC of Marriage",
-  "Featured in Her Network",
-  "Pan-African Impact & Leadership Laureate Nominee",
-  "25 years married",
-] as const;
+export const footerSections: {
+  work: NavLink[];
+  learn: NavLink[];
+  more: NavLink[];
+} = site.footerSections;
+
+export const trustItems: string[] = site.trustItems;
 
 export type ServiceCard = {
   title: string;
@@ -76,101 +35,10 @@ export type ServiceCard = {
   icon: "person" | "couple" | "rings" | "calendar" | "clock" | "globe";
 };
 
-export const serviceCards: ServiceCard[] = [
-  {
-    title: "Individual Therapy",
-    tagline: "The work that has to happen first.",
-    description:
-      "Patterns, history, capacity, self-worth. For people who are competent almost everywhere else and stuck in one place.",
-    href: "/individual-therapy",
-    meta: "50 minutes · Weekly or fortnightly",
-    icon: "person",
-  },
-  {
-    title: "Couples Therapy",
-    tagline: "For two people who still want this to work.",
-    description:
-      "For couples who still want this to work and have run out of ways to say so. Structured, even-handed, and honest.",
-    href: "/couples-therapy",
-    meta: "80 minutes · Fortnightly",
-    icon: "couple",
-  },
-  {
-    title: "Before You Marry",
-    tagline: "Five sessions that will save you five years.",
-    description:
-      "The conversations most couples never have until they are expensive. Money, family, faith, intimacy, and failure.",
-    href: "/before-you-marry",
-    meta: "5 sessions · For both of you",
-    icon: "rings",
-  },
-  {
-    title: "The Annual Review",
-    tagline: "A yearly check-up for a marriage that isn't broken.",
-    description:
-      "Maintenance, not repair. One structured session a year to catch drift while it is still small enough to name.",
-    href: "/annual-review",
-    meta: "Half day · Once a year",
-    icon: "calendar",
-  },
-  {
-    title: "The Intensive",
-    tagline: "One or two full days.",
-    description:
-      "For crisis, for people whose diaries do not permit weekly work, and for couples flying in to do this properly.",
-    href: "/the-intensive",
-    meta: "1–2 full days · Limited availability",
-    icon: "clock",
-  },
-  {
-    title: "Diaspora Sessions",
-    tagline: "The marriage and the culture, both understood.",
-    description:
-      "For Nigerians abroad who want someone who understands the marriage and the culture without needing it explained.",
-    href: "/diaspora",
-    meta: "Online · Timezone-aware scheduling",
-    icon: "globe",
-  },
-];
+export const serviceCards = site.serviceCards as ServiceCard[];
 
-export const beliefs = [
-  {
-    title: "Your relationship will only be as healthy as you are.",
-    body: "This is not a slogan. It is the reason I will always start with you before I start with the marriage.",
-  },
-  {
-    title: "Rupture is normal. Unrepaired rupture is fatal.",
-    body: "Strong couples are not couples who never fight. They are couples who have a fast, practised way back. Repair is a skill, and it can be taught.",
-  },
-  {
-    title: "Counselling is not court.",
-    body: "I am not here to decide who is right. If you leave my room feeling you won, I have failed at my job.",
-  },
-  {
-    title: "You don't find the right person. You become one.",
-    body: "This is the hardest thing I say to singles, and the truest.",
-  },
-];
+export type Belief = { title: string; body: string };
+export const beliefs: Belief[] = site.beliefs;
 
-export const processSteps = [
-  {
-    step: "01",
-    title: "A free conversation",
-    body: "Fifteen minutes, no charge, no obligation, nothing on record. You describe what is happening. I tell you honestly whether I am the right person.",
-  },
-  {
-    step: "02",
-    title: "Assessment",
-    body: "The first paid session is an examination. Your history, your patterns, and what brought you here now rather than last year.",
-  },
-  {
-    step: "03",
-    title: "The work",
-    body: "Noticing what recurs, tracing where it was learned, and building something different — deliberately, and with practice.",
-  },
-  {
-    step: "04",
-    title: "Review",
-    body: "At session six we stop and look at it together. What has moved, what has not, and whether to continue.",
-  },
-];
+export type ProcessStep = { step: string; title: string; body: string };
+export const processSteps: ProcessStep[] = site.processSteps;

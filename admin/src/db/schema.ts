@@ -1,5 +1,7 @@
 import {
   pgTable,
+  pgSchema,
+  boolean,
   uuid,
   text,
   timestamp,
@@ -8,6 +10,28 @@ import {
   index,
   pgEnum,
 } from "drizzle-orm/pg-core";
+
+/**
+ * Owned by Neon Auth (managed Better Auth), not by our migrations — declared
+ * here only so requireAdmin() can read it. Never add it to a drizzle-kit push;
+ * `neon_auth` is not in drizzle.config.ts's schema filter for that reason.
+ *
+ * Columns are camelCase in Postgres because Better Auth quotes its identifiers.
+ */
+const neonAuth = pgSchema("neon_auth");
+
+export const authUsers = neonAuth.table("user", {
+  id: uuid("id").primaryKey(),
+  name: text("name"),
+  email: text("email"),
+  emailVerified: boolean("emailVerified"),
+  createdAt: timestamp("createdAt", { withTimezone: true }),
+  /** Set to 'admin' to grant access. Anything else is refused. */
+  role: text("role"),
+  banned: boolean("banned"),
+  banReason: text("banReason"),
+  banExpires: timestamp("banExpires", { withTimezone: true }),
+});
 
 /**
  * This database holds psychotherapy client records. Every table here is
@@ -31,6 +55,13 @@ export const serviceType = pgEnum("service_type", [
   "intensive",
   "diaspora",
   "other",
+]);
+
+export const appointmentStatus = pgEnum("appointment_status", [
+  "scheduled",
+  "attended",
+  "cancelled",
+  "no_show",
 ]);
 
 export const clients = pgTable(
@@ -78,7 +109,7 @@ export const progressNotes = pgTable(
     nextSteps: text("next_steps"),
     /** Coarse 1–5 progress signal, for the trend on the client page. */
     progressRating: integer("progress_rating"),
-    /** Clerk user id of whoever wrote it. */
+    /** neon_auth.user.id of whoever wrote it. */
     authorId: text("author_id").notNull(),
     createdAt: timestamp("created_at", { withTimezone: true })
       .notNull()
@@ -90,6 +121,46 @@ export const progressNotes = pgTable(
   (t) => [
     index("notes_client_idx").on(t.clientId),
     index("notes_session_date_idx").on(t.sessionDate),
+  ],
+);
+
+/**
+ * Booked sessions. Distinct from progressNotes: an appointment is a plan, a
+ * progress note is the clinical record of what happened. Keeping them apart
+ * means cancelling a session never touches a clinical record, and a note can
+ * exist for a session that was never formally booked.
+ *
+ * Knowing that a named person has a therapy appointment is itself confidential
+ * — treat these rows with the same care as notes.
+ */
+export const appointments = pgTable(
+  "appointments",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    clientId: uuid("client_id")
+      .notNull()
+      .references(() => clients.id, { onDelete: "restrict" }),
+    /** Stored as an instant. Rendered in the practice's timezone — see lib/time.ts. */
+    startsAt: timestamp("starts_at", { withTimezone: true }).notNull(),
+    endsAt: timestamp("ends_at", { withTimezone: true }).notNull(),
+    service: serviceType("service").notNull().default("individual"),
+    status: appointmentStatus("status").notNull().default("scheduled"),
+    /** Room, video link, or "phone". Not clinical content. */
+    location: text("location"),
+    /** Logistics only — anything clinical belongs in a progress note. */
+    notes: text("notes"),
+    /** neon_auth.user.id of whoever booked it. */
+    createdBy: text("created_by").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (t) => [
+    index("appointments_starts_idx").on(t.startsAt),
+    index("appointments_client_idx").on(t.clientId),
   ],
 );
 
@@ -122,3 +193,5 @@ export type Client = typeof clients.$inferSelect;
 export type NewClient = typeof clients.$inferInsert;
 export type ProgressNote = typeof progressNotes.$inferSelect;
 export type NewProgressNote = typeof progressNotes.$inferInsert;
+export type Appointment = typeof appointments.$inferSelect;
+export type NewAppointment = typeof appointments.$inferInsert;
