@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { requireSuperAdmin } from "@/lib/auth";
-import { isConfigured, latestDeployment } from "@/lib/github";
+import { isConfigured, missingConfig, latestDeployment } from "@/lib/github";
 import { CONTENT_FILES } from "@/lib/content-files";
 
 export const dynamic = "force-dynamic";
@@ -8,6 +8,7 @@ export const dynamic = "force-dynamic";
 export default async function ContentPage() {
   await requireSuperAdmin();
   const configured = isConfigured();
+  const missing = missingConfig();
 
   const deployment = configured
     ? await latestDeployment().catch(() => null)
@@ -30,10 +31,16 @@ export default async function ContentPage() {
         <div className="card mb-6 border-l-4 border-amber-400 p-5">
           <p className="text-sm font-medium">Publishing isn&rsquo;t connected</p>
           <p className="mt-1 max-w-2xl text-sm text-muted">
-            Set <code className="rounded bg-slate-100 px-1">GITHUB_TOKEN</code>{" "}
-            and <code className="rounded bg-slate-100 px-1">GITHUB_REPO</code> in
-            the admin&rsquo;s environment. Until then you can open the editors
-            but not save.
+            Set{" "}
+            {missing.map((m, i) => (
+              <span key={m}>
+                {i > 0 && " and "}
+                <code className="rounded bg-slate-100 px-1">{m}</code>
+              </span>
+            ))}{" "}
+            in the admin&rsquo;s environment, then redeploy — Vercel only picks
+            up environment changes on a new deployment. Until then you can open
+            the editors but not save.
           </p>
         </div>
       )}
@@ -73,6 +80,17 @@ export default async function ContentPage() {
       )}
 
       <div className="grid gap-4 sm:grid-cols-2">
+        <Link href="/content/media" className="card p-6 transition hover:shadow-md">
+          <h2 className="text-lg font-semibold tracking-tight">Images</h2>
+          <p className="mt-2 text-sm text-muted">
+            Upload logos, portraits and photographs. Committed to the repository
+            and served from <code className="text-xs">/uploads</code>.
+          </p>
+          <p className="mt-4 font-mono text-xs text-slate-400">
+            content/uploads/
+          </p>
+        </Link>
+
         {CONTENT_FILES.map((f) => (
           <Link
             key={f.slug}

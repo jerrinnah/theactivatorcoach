@@ -5,6 +5,13 @@
  */
 export const CONTENT_FILES = [
   {
+    slug: "theme",
+    path: "content/theme.json",
+    title: "Theme & logo",
+    blurb:
+      "Brand colours, fonts, the logo image and the favicon. Colours re-tint the whole site at once — every element reads these.",
+  },
+  {
     slug: "site",
     path: "content/site.json",
     title: "Site & practitioner",

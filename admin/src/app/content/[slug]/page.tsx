@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireSuperAdmin } from "@/lib/auth";
 import { record } from "@/lib/audit";
-import { isConfigured, readJson } from "@/lib/github";
+import { missingConfig, readJson } from "@/lib/github";
 import { fileForSlug } from "@/lib/content-files";
 import { ContentEditor } from "@/components/ContentEditor";
 import type { Json } from "@/components/JsonFields";
@@ -20,13 +20,20 @@ export default async function ContentFilePage({
   const file = fileForSlug(slug);
   if (!file) notFound();
 
-  if (!isConfigured()) {
+  const missing = missingConfig();
+  if (missing.length > 0) {
     return (
       <div className="card p-10 text-center">
         <p className="text-sm font-medium">Publishing isn&rsquo;t connected</p>
         <p className="mx-auto mt-2 max-w-md text-sm text-muted">
-          Set GITHUB_TOKEN and GITHUB_REPO in the admin&rsquo;s environment to
-          edit {file.title.toLowerCase()}.
+          {missing.length === 1 ? "Set " : "Set "}
+          {missing.map((m, i) => (
+            <span key={m}>
+              {i > 0 && " and "}
+              <code className="rounded bg-slate-100 px-1">{m}</code>
+            </span>
+          ))}{" "}
+          in the admin&rsquo;s environment to edit {file.title.toLowerCase()}.
         </p>
         <Link
           href="/content"
