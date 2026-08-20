@@ -1,0 +1,26 @@
+{
+  "colors": {
+    "cream-deep": "#f4f0e7",
+    "cream": "#faf7f2",
+    "ink-soft": "#474c41",
+    "ink": "#23261f",
+    "line-soft": "#efeae0",
+    "line": "#e4dfd3",
+    "muted": "#767c6e",
+    "sage-dark": "#3f4f38",
+    "sage-deep": "#5c7152",
+    "sage-mist": "#eef2ea",
+    "sage-soft": "#dde6d5",
+    "sage": "#7d9471"
+  },
+  "fonts": {
+    "display": "\"Cormorant Garamond\", Georgia, \"Times New Roman\", serif",
+    "body": "\"Inter\", system-ui, -apple-system, \"Segoe UI\", sans-serif"
+  },
+  "logo": {
+    "image": null,
+    "height": 44,
+    "alt": ""
+  },
+  "favicon": null
+}

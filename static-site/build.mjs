@@ -19,6 +19,7 @@ import {
   trustBar, letterSignup, contactDetails, whatsappLink, practitioner, ORIGIN,
 } from "./template.mjs";
 import { servicePages } from "./services.mjs";
+import theme from "../content/theme.json" with { type: "json" };
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(HERE, "..");
@@ -483,6 +484,27 @@ await writeFile(
 
 // Assets
 await copyDir(path.join(HERE, "assets"), path.join(DIST, "assets"));
+
+/*
+ * Theme. The compiled Tailwind bundle defines the palette as custom properties
+ * and every utility reads them (`.bg-sage{background-color:var(--color-sage)}`),
+ * so redefining those properties in a later stylesheet retints the whole site
+ * without recompiling Tailwind. theme.css is linked last for that reason.
+ */
+const themeCss = [
+  ":root{",
+  ...Object.entries(theme.colors).map(([k, v]) => `--color-${k}:${v};`),
+  `--font-cormorant:${theme.fonts.display};`,
+  `--font-inter:${theme.fonts.body};`,
+  "}",
+].join("");
+await writeFile(path.join(DIST, "assets", "theme.css"), themeCss, "utf8");
+
+// Images uploaded through the admin. Committed to the repo, so they deploy with
+// everything else rather than depending on a second service staying up.
+if (existsSync(path.join(ROOT, "content", "uploads"))) {
+  await copyDir(path.join(ROOT, "content", "uploads"), path.join(DIST, "uploads"));
+}
 
 // Self-hosted fonts. assets/styles.css references these as ../media/*.woff2,
 // so they have to land in dist/media — a sibling of dist/assets, not inside it.

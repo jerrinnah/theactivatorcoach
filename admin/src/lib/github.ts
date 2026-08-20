@@ -26,7 +26,18 @@ function config(): Config {
 
 /** True when the deployment has credentials, so the UI can say so plainly. */
 export function isConfigured(): boolean {
-  return Boolean(process.env.GITHUB_TOKEN && process.env.GITHUB_REPO);
+  return missingConfig().length === 0;
+}
+
+/**
+ * Exactly which variables are absent. Listing the ones already set sends people
+ * to re-check settings that are fine, so the UI names only what is missing.
+ */
+export function missingConfig(): string[] {
+  const missing: string[] = [];
+  if (!process.env.GITHUB_TOKEN) missing.push("GITHUB_TOKEN");
+  if (!process.env.GITHUB_REPO) missing.push("GITHUB_REPO");
+  return missing;
 }
 
 async function gh(path: string, init: RequestInit = {}) {
@@ -114,6 +125,100 @@ export async function writeJson({
   });
 
   return { commit: json.commit?.sha ?? "" };
+}
+
+export type Upload = {
+  name: string;
+  /** Where the built site will serve it from. */
+  url: string;
+  size: number;
+  sha: string;
+};
+
+const UPLOAD_DIR = "content/uploads";
+
+/** Images live in the repo so they deploy with everything else. */
+export async function listUploads(): Promise<Upload[]> {
+  const { repo, branch } = config();
+  try {
+    const json = await gh(
+      `/repos/${repo}/contents/${UPLOAD_DIR}?ref=${encodeURIComponent(branch)}`,
+    );
+    if (!Array.isArray(json)) return [];
+    return json
+      .filter((f: { type: string }) => f.type === "file")
+      .map((f: { name: string; size: number; sha: string }) => ({
+        name: f.name,
+        url: `/uploads/${f.name}`,
+        size: f.size,
+        sha: f.sha,
+      }));
+  } catch (e) {
+    // The folder doesn't exist until the first upload — that isn't an error.
+    if (e instanceof Error && e.message.includes("404")) return [];
+    throw e;
+  }
+}
+
+/**
+ * Commits a binary. `sha` is required only when replacing an existing file;
+ * GitHub rejects a create that collides with something already there, which is
+ * what stops an upload silently replacing a different image of the same name.
+ */
+export async function writeUpload({
+  name,
+  base64,
+  message,
+  authorEmail,
+  authorName,
+  sha,
+}: {
+  name: string;
+  base64: string;
+  message: string;
+  authorEmail: string;
+  authorName: string;
+  sha?: string;
+}): Promise<{ url: string }> {
+  const { repo, branch } = config();
+  await gh(`/repos/${repo}/contents/${UPLOAD_DIR}/${encodeURIComponent(name)}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      message,
+      content: base64,
+      branch,
+      ...(sha ? { sha } : {}),
+      committer: { name: authorName, email: authorEmail },
+      author: { name: authorName, email: authorEmail },
+    }),
+  });
+  return { url: `/uploads/${name}` };
+}
+
+export async function deleteUpload({
+  name,
+  sha,
+  message,
+  authorEmail,
+  authorName,
+}: {
+  name: string;
+  sha: string;
+  message: string;
+  authorEmail: string;
+  authorName: string;
+}): Promise<void> {
+  const { repo, branch } = config();
+  await gh(`/repos/${repo}/contents/${UPLOAD_DIR}/${encodeURIComponent(name)}`, {
+    method: "DELETE",
+    body: JSON.stringify({
+      message,
+      sha,
+      branch,
+      committer: { name: authorName, email: authorEmail },
+      author: { name: authorName, email: authorEmail },
+    }),
+  });
 }
 
 export type Deployment = {

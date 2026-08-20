@@ -1,3 +1,4 @@
+import theme from "../content/theme.json" with { type: "json" };
 /**
  * Shared markup for the static build.
  *
@@ -116,6 +117,20 @@ export function sectionHeading({ eyebrow, title, intro, align = "left", as = "h2
 }
 
 /** Photography slot — mirrors PortraitFrame.tsx, including the placeholder. */
+/**
+ * The logo. An uploaded image replaces both the psi mark and the wordmark —
+ * a custom logo almost always contains the name already, so keeping the text
+ * beside it reads as a duplicate. Falls back to the built-in mark when no
+ * image is set, which is the state the site shipped in.
+ */
+export function logoMark(cls = "h-9 w-9") {
+  const img = theme.logo?.image;
+  if (!img) return psiBadge(cls);
+  const h = theme.logo?.height ?? 44;
+  const alt = theme.logo?.alt || practitioner.logoName;
+  return `<img src="${esc(img)}" alt="${esc(alt)}" style="height:${Number(h)}px" class="w-auto shrink-0"/>`;
+}
+
 export function portrait({ src = null, alt, aspect = "aspect-[4/5]", label = "Portrait", extra = "" }) {
   if (src) {
     return `<div class="relative overflow-hidden rounded-[2.5rem] ${aspect} ${extra}">
@@ -181,11 +196,11 @@ function header(current) {
 <header class="sticky top-0 z-50 border-b border-line/70 bg-cream/85 backdrop-blur-xl">
   <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 lg:px-8">
     <a href="/" class="flex items-center gap-3" aria-label="${esc(practitioner.shortName)} — home">
-      ${psiBadge("h-9 w-9 shrink-0 text-sage-deep")}
-      <span class="flex flex-col leading-tight">
+      ${logoMark("h-9 w-9 shrink-0 text-sage-deep")}
+      ${theme.logo?.image ? "" : `<span class="flex flex-col leading-tight">
         <span class="font-display text-xl text-ink">${esc(practitioner.logoName)}</span>
         <span class="text-[0.6rem] uppercase tracking-[0.24em] text-muted">${esc(practitioner.logoCredential)}</span>
-      </span>
+      </span>`}
     </a>
     <nav class="hidden items-center gap-7 lg:flex" aria-label="Primary">
       ${siteNav
@@ -243,7 +258,7 @@ function footer() {
   <div class="pointer-events-none absolute -right-10 top-1/4 hidden lg:block" aria-hidden="true">${psiBadge("h-64 w-64 text-white/[0.05]")}</div>
   <div class="relative mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.1fr_1.6fr] lg:px-8 lg:py-20">
     <div class="space-y-5">
-      <div class="flex items-center gap-3">${psiBadge("h-10 w-10 text-sage-soft")}<span class="font-display text-2xl text-white">${esc(practitioner.logoName)}</span></div>
+      <div class="flex items-center gap-3">${logoMark("h-10 w-10 text-sage-soft")}${theme.logo?.image ? "" : `<span class="font-display text-2xl text-white">${esc(practitioner.logoName)}</span>`}</div>
       <p class="text-sm leading-7 text-sage-soft/85">${esc(practitioner.fullName)} — psychotherapist, founder of the Activator Coaching Academy, and co-author of <em>The ABC of Marriage</em>.</p>
       <div class="space-y-1.5 text-sm text-sage-soft/75"><p>${esc(contactDetails.location)}</p><p>${esc(contactDetails.reach)}</p></div>
       <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm">
@@ -279,6 +294,7 @@ function footer() {
 export function layout({ path, title, description, body, extraHead = "", bodyScripts = "", canonical = true }) {
   const fullTitle = path === "/" ? title : `${title} | ${practitioner.shortName}`;
   const canonicalUrl = path === "/" ? `${ORIGIN}/` : `${ORIGIN}${path}`;
+  const faviconHref = theme.favicon || "/favicon.svg";
   return `<!doctype html>
 <html lang="en" class="h-full">
 <head>
@@ -291,9 +307,10 @@ ${canonical ? `<link rel="canonical" href="${esc(canonicalUrl)}"/>\n` : ""}<meta
 <meta property="og:description" content="${esc(description)}"/>
 <meta property="og:site_name" content="${esc(practitioner.shortName)}"/>
 <meta property="og:url" content="${esc(canonicalUrl)}"/>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="${esc(faviconHref)}"${faviconHref.endsWith(".svg") ? ' type="image/svg+xml"' : ""}/>
 <link rel="stylesheet" href="/assets/styles.css"/>
 <link rel="stylesheet" href="/assets/site.css"/>
+<link rel="stylesheet" href="/assets/theme.css"/>
 ${extraHead}
 </head>
 <body class="flex min-h-full min-h-screen flex-col bg-cream text-ink">

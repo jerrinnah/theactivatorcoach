@@ -23,6 +23,15 @@ function isProse(v: string) {
   return v.length > 90 || v.includes("\n");
 }
 
+/** `#abc` → `#aabbcc`; <input type="color"> rejects the short form. */
+function expandHex(v: string) {
+  return `#${v
+    .slice(1)
+    .split("")
+    .map((c) => c + c)
+    .join("")}`;
+}
+
 function humanise(key: string) {
   return key
     .replace(/([a-z])([A-Z])/g, "$1 $2")
@@ -68,6 +77,33 @@ export function JsonField({
   depth?: number;
 }) {
   if (typeof value === "string") {
+    // A hex colour gets a swatch as well as the text, so the palette is
+    // editable by eye rather than by imagining what #5c7152 looks like.
+    if (/^#[0-9a-fA-F]{3,8}$/.test(value)) {
+      return (
+        <label className="block">
+          <span className="mb-1 block text-xs font-medium text-muted">
+            {label}
+          </span>
+          <span className="flex items-center gap-2">
+            <input
+              type="color"
+              value={value.length === 4 ? expandHex(value) : value.slice(0, 7)}
+              onChange={(e) => onChange(e.target.value)}
+              aria-label={`${label} colour`}
+              className="h-9 w-12 shrink-0 cursor-pointer rounded border border-line bg-white p-1"
+            />
+            <input
+              value={value}
+              onChange={(e) => onChange(e.target.value)}
+              spellCheck={false}
+              className={`${input} font-mono`}
+            />
+          </span>
+        </label>
+      );
+    }
+
     return (
       <label className="block">
         <span className="mb-1 block text-xs font-medium text-muted">
