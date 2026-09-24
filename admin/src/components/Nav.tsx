@@ -11,13 +11,17 @@ const links = [
 ];
 
 /**
- * `Website` only appears for super admins. Hiding it is presentation, not
+ * `Website` and `Staff` only appear for super admins. Hiding them is presentation, not
  * protection — requireSuperAdmin() refuses the route either way.
  */
 export function Nav({ superAdmin = false }: { superAdmin?: boolean }) {
   const pathname = usePathname();
   const items = superAdmin
-    ? [...links, { href: "/content", label: "Website" }]
+    ? [
+        ...links,
+        { href: "/content", label: "Website" },
+        { href: "/staff", label: "Staff" },
+      ]
     : links;
 
   return (

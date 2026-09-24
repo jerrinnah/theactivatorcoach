@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { auth } from "@/lib/neon-auth";
+import { headers } from "next/headers";
+import { getAuth } from "@/lib/better-auth";
 import { currentRole } from "@/lib/auth";
 import { Nav } from "@/components/Nav";
 import { initials } from "@/lib/style";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// auth.getSession() reads cookies, so this subtree can never be static.
+// Reading the session reads cookies, so this subtree can never be static.
 export const dynamic = "force-dynamic";
 
 /**
@@ -25,7 +26,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { data: session } = await auth.getSession();
+  const session = await getAuth().api.getSession({ headers: await headers() });
   const user = session?.user;
   const name = user?.name || user?.email || "";
   // From the database, not the cached session copy, so the nav can't offer a

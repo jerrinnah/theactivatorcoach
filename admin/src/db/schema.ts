@@ -12,25 +12,78 @@ import {
 } from "drizzle-orm/pg-core";
 
 /**
- * Owned by Neon Auth (managed Better Auth), not by our migrations — declared
- * here only so requireAdmin() can read it. Never add it to a drizzle-kit push;
- * `neon_auth` is not in drizzle.config.ts's schema filter for that reason.
+ * Better Auth's own tables. They live in the `neon_auth` schema because Neon
+ * Auth created them there; the app now runs Better Auth itself (see
+ * lib/better-auth.ts) and these are the tables it reads and writes, so the
+ * declarations below are the full shape rather than the few columns
+ * requireAdmin() once needed.
  *
- * Columns are camelCase in Postgres because Better Auth quotes its identifiers.
+ * Still never part of a drizzle-kit push — `neon_auth` is outside
+ * drizzle.config.ts's schema filter, and Better Auth's own migrations own this
+ * shape. Columns are camelCase in Postgres because Better Auth quotes its
+ * identifiers, and every id is a real `uuid`, which is why lib/better-auth.ts
+ * overrides Better Auth's id generator.
  */
 const neonAuth = pgSchema("neon_auth");
 
 export const authUsers = neonAuth.table("user", {
   id: uuid("id").primaryKey(),
-  name: text("name"),
-  email: text("email"),
-  emailVerified: boolean("emailVerified"),
-  createdAt: timestamp("createdAt", { withTimezone: true }),
-  /** Set to 'admin' to grant access. Anything else is refused. */
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  emailVerified: boolean("emailVerified").notNull(),
+  image: text("image"),
+  createdAt: timestamp("createdAt", { withTimezone: true }).notNull(),
+  updatedAt: timestamp("updatedAt", { withTimezone: true }).notNull(),
+  /** 'admin' or 'super_admin' grants access. Anything else is refused. */
   role: text("role"),
   banned: boolean("banned"),
   banReason: text("banReason"),
   banExpires: timestamp("banExpires", { withTimezone: true }),
+});
+
+export const authSessions = neonAuth.table("session", {
+  id: uuid("id").primaryKey(),
+  expiresAt: timestamp("expiresAt", { withTimezone: true }).notNull(),
+  token: text("token").notNull(),
+  createdAt: timestamp("createdAt", { withTimezone: true }).notNull(),
+  updatedAt: timestamp("updatedAt", { withTimezone: true }).notNull(),
+  ipAddress: text("ipAddress"),
+  userAgent: text("userAgent"),
+  userId: uuid("userId").notNull(),
+  /** Written by the admin plugin's impersonation, which this app does not use. */
+  impersonatedBy: text("impersonatedBy"),
+  /** Left from Neon Auth's organization plugin. Unused; kept so writes don't fail. */
+  activeOrganizationId: text("activeOrganizationId"),
+});
+
+/**
+ * One row per sign-in method. For staff that is a single `credential` row, and
+ * `password` holds a scrypt hash — never a password. Nothing in the app reads
+ * this column; Better Auth verifies against it.
+ */
+export const authAccounts = neonAuth.table("account", {
+  id: uuid("id").primaryKey(),
+  accountId: text("accountId").notNull(),
+  providerId: text("providerId").notNull(),
+  userId: uuid("userId").notNull(),
+  accessToken: text("accessToken"),
+  refreshToken: text("refreshToken"),
+  idToken: text("idToken"),
+  accessTokenExpiresAt: timestamp("accessTokenExpiresAt", { withTimezone: true }),
+  refreshTokenExpiresAt: timestamp("refreshTokenExpiresAt", { withTimezone: true }),
+  scope: text("scope"),
+  password: text("password"),
+  createdAt: timestamp("createdAt", { withTimezone: true }).notNull(),
+  updatedAt: timestamp("updatedAt", { withTimezone: true }).notNull(),
+});
+
+export const authVerifications = neonAuth.table("verification", {
+  id: uuid("id").primaryKey(),
+  identifier: text("identifier").notNull(),
+  value: text("value").notNull(),
+  expiresAt: timestamp("expiresAt", { withTimezone: true }).notNull(),
+  createdAt: timestamp("createdAt", { withTimezone: true }).notNull(),
+  updatedAt: timestamp("updatedAt", { withTimezone: true }).notNull(),
 });
 
 /**

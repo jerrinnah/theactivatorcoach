@@ -3,8 +3,8 @@ import { getDb } from "@/db";
 import { auditLog } from "@/db/schema";
 import type { Admin } from "./auth";
 
-type Action = "viewed" | "created" | "updated" | "archived" | "cancelled";
-type Entity = "client" | "progress_note" | "appointment" | "content";
+type Action = "viewed" | "created" | "updated" | "archived" | "cancelled" | "reset";
+type Entity = "client" | "progress_note" | "appointment" | "content" | "staff_account";
 
 /**
  * Append-only record of who touched which client record. Log reads as well as
