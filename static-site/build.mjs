@@ -530,11 +530,14 @@ if (existsSync(path.join(ROOT, "public", "abc-of-marriage.jpg"))) {
 await copyFile(path.join(ROOT, "src", "app", "icon.svg"), path.join(DIST, "favicon.svg"));
 
 // robots.txt + sitemap.xml — ORIGIN is defined in template.mjs
-await writeFile(path.join(DIST, "robots.txt"), `User-Agent: *\nAllow: /\n\nSitemap: ${ORIGIN}/sitemap.xml\n`, "utf8");
+await writeFile(path.join(DIST, "robots.txt"), `User-Agent: *\nAllow: /\nDisallow: /login\n\nSitemap: ${ORIGIN}/sitemap.xml\n`, "utf8");
 await writeFile(
   path.join(DIST, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-    pages.map((p) => `  <url><loc>${ORIGIN}${p.path === "/" ? "" : p.path}</loc></url>`).join("\n") +
+    pages
+      .filter((p) => !p.noindex)
+      .map((p) => `  <url><loc>${ORIGIN}${p.path === "/" ? "" : p.path}</loc></url>`)
+      .join("\n") +
     `\n</urlset>\n`,
   "utf8",
 );
@@ -549,6 +552,11 @@ ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Muscle memory for staff. The sign-in itself is on the admin subdomain;
+  # /login is the signpost that sends them there.
+  RewriteRule ^(admin|sign-in|signin)/?$ /login [R=301,L]
+
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}/index.html -f

@@ -1,10 +1,10 @@
-/** About, Work With Me, Contact, Academy, Books, Speaking, Letter, Crisis, Privacy. */
+/** About, Work With Me, Contact, Academy, Books, Speaking, Letter, Crisis, Privacy, Login. */
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   esc, blob, leafBranch, psiMark, portrait, button, sectionHeading, serviceIcon,
   whatsappIcon, checkIcon, quietExit, currencyToggle, price, trustBar,
-  letterSignup, contactDetails, whatsappLink, practitioner,
+  letterSignup, contactDetails, whatsappLink, practitioner, ADMIN_ORIGIN,
 } from "./template.mjs";
 
 const SRC = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "src", "lib") + path.sep;
@@ -614,6 +614,45 @@ ${quietExit()}
     <p class="mt-6 text-xs text-muted">Data controller: ${esc(practitioner.fullName)}, ${esc(contactDetails.location)}.</p>
   </div>
 </div></section>`,
+  });
+
+  /* ---------------------------- Login ---------------------------- */
+  /*
+   * A signpost, not a sign-in form. The practice admin runs on its own host
+   * with its own credentials (see admin/README.md); this page exists only so
+   * staff can reach it from the address they already know. No password is ever
+   * typed on the public site, and the page is kept out of search.
+   */
+  pages.push({
+    path: "/login",
+    title: "Staff login",
+    description: "Sign-in for practice staff. The admin runs on a separate host.",
+    canonical: false,
+    noindex: true,
+    body: `
+<section class="relative overflow-hidden bg-cream-deep">
+  ${blob("pointer-events-none absolute -right-40 -top-48 h-[38rem] w-[38rem] text-sage-soft/45")}
+  ${leafBranch("pointer-events-none absolute -left-12 bottom-0 hidden h-80 w-40 text-sage/20 sm:block")}
+  <div class="relative mx-auto max-w-xl px-6 py-24 lg:px-8 lg:py-28">
+    <div class="rounded-4xl border border-line bg-white p-9 sm:p-11">
+      <p class="eyebrow">Practice admin</p>
+      <h1 class="mt-5 font-display text-[2.25rem] leading-[1.1] text-ink sm:text-[2.75rem]">Staff sign-in</h1>
+      <p class="mt-5 text-[1.0625rem] leading-[1.8] text-ink-soft">Client records, the schedule and the practice inboxes live in a separate application on its own host, so nothing confidential is ever served from this website. Sign in there.</p>
+      <div class="mt-8">
+        <a href="${ADMIN_ORIGIN}/sign-in" class="inline-flex items-center justify-center gap-2.5 rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white shadow-sm shadow-sage-deep/20 transition duration-200 hover:bg-sage-dark">Continue to sign in <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <p class="mt-5 text-xs text-muted">Takes you to ${esc(ADMIN_ORIGIN.replace(/^https?:\/\//, ""))}. Accounts are created by the practice — there is no sign-up.</p>
+    </div>
+    <div class="mt-8 rounded-3xl border border-line-soft bg-white/60 p-7">
+      <h2 class="font-display text-xl text-ink">Looking for your own appointment?</h2>
+      <p class="mt-2.5 text-[0.9375rem] leading-7 text-muted">This is a staff area — clients do not have logins. To book, reschedule or ask a question, use the contact page or WhatsApp and you will get a person.</p>
+      <div class="mt-5 flex flex-wrap gap-3 text-sm">
+        <a href="/contact" class="rounded-full bg-sage-deep px-6 py-3 font-medium text-white transition hover:bg-sage-dark">Contact the practice</a>
+        <a href="${whatsappLink}" target="_blank" rel="noopener noreferrer" class="rounded-full border border-line px-6 py-3 text-ink-soft transition hover:bg-sage-mist">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>`,
   });
 
   return pages;

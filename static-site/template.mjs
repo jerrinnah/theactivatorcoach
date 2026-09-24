@@ -21,6 +21,13 @@ export { practitioner, siteNav, footerSections, contactDetails, whatsappLink, tr
  */
 export const ORIGIN = (process.env.SITE_ORIGIN || "https://theactivatorcoach.com").replace(/\/$/, "");
 
+/**
+ * Where staff sign in. The admin is a separate app on its own subdomain and on
+ * different hosting — this site only ever links to it, and never handles a
+ * password itself. Override with `ADMIN_ORIGIN=... npm run build:static`.
+ */
+export const ADMIN_ORIGIN = (process.env.ADMIN_ORIGIN || "https://admin.theactivatorcoach.com").replace(/\/$/, "");
+
 /** Escape text destined for HTML text nodes or attribute values. */
 export function esc(value) {
   return String(value)
@@ -285,13 +292,13 @@ function footer() {
     </div>
     <div class="mx-auto mt-8 flex max-w-7xl flex-col gap-3 text-xs text-sage-soft/50 sm:flex-row sm:items-center sm:justify-between">
       <p>© ${new Date().getFullYear()} ${esc(practitioner.shortName)}. All rights reserved.</p>
-      <div class="flex gap-5"><a href="/privacy" class="transition hover:text-white">Privacy &amp; confidentiality</a><span>Website by OctaveDev</span></div>
+      <div class="flex gap-5"><a href="/privacy" class="transition hover:text-white">Privacy &amp; confidentiality</a><a href="/login" class="transition hover:text-white">Staff login</a><span>Website by OctaveDev</span></div>
     </div>
   </div>
 </footer>`;
 }
 
-export function layout({ path, title, description, body, extraHead = "", bodyScripts = "", canonical = true }) {
+export function layout({ path, title, description, body, extraHead = "", bodyScripts = "", canonical = true, noindex = false }) {
   const fullTitle = path === "/" ? title : `${title} | ${practitioner.shortName}`;
   const canonicalUrl = path === "/" ? `${ORIGIN}/` : `${ORIGIN}${path}`;
   const faviconHref = theme.favicon || "/favicon.svg";
@@ -311,7 +318,7 @@ ${canonical ? `<link rel="canonical" href="${esc(canonicalUrl)}"/>\n` : ""}<meta
 <link rel="stylesheet" href="/assets/styles.css"/>
 <link rel="stylesheet" href="/assets/site.css"/>
 <link rel="stylesheet" href="/assets/theme.css"/>
-${extraHead}
+${noindex ? '<meta name="robots" content="noindex,nofollow"/>\n' : ""}${extraHead}
 </head>
 <body class="flex min-h-full min-h-screen flex-col bg-cream text-ink">
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-sage-deep focus:px-5 focus:py-3 focus:text-sm focus:text-white">Skip to content</a>
