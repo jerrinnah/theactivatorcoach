@@ -1,5 +1,7 @@
+import { headers } from "next/headers";
 import { eq } from "drizzle-orm";
-import { auth } from "./neon-auth";
+import { getAuth } from "./better-auth";
+import { isAdminRole, SUPER_ADMIN } from "./roles";
 import { getDb } from "@/db";
 import { authUsers } from "@/db/schema";
 
@@ -10,9 +12,6 @@ export type Admin = {
   role: string;
 };
 
-/** Roles that may reach the app at all, least privileged first. */
-const ADMIN_ROLES = ["admin", "super_admin"];
-
 /**
  * The authorisation boundary. Call at the top of every page and every Server
  * Function that touches client data — the proxy is only an optimistic check
@@ -20,7 +19,7 @@ const ADMIN_ROLES = ["admin", "super_admin"];
  *
  * Two separate questions, deliberately kept separate:
  *
- *   1. Is there a valid session? Neon Auth answers that.
+ *   1. Is there a valid session? Better Auth answers that.
  *   2. Is this person staff? `neon_auth.user.role` answers that, from our own
  *      database.
  *
@@ -31,7 +30,7 @@ const ADMIN_ROLES = ["admin", "super_admin"];
  * deploy.
  */
 export async function requireAdmin(): Promise<Admin> {
-  const { data: session } = await auth.getSession();
+  const session = await getAuth().api.getSession({ headers: await headers() });
   const userId = session?.user?.id;
   if (!userId) throw new Error("Not signed in");
 
@@ -57,7 +56,7 @@ export async function requireAdmin(): Promise<Admin> {
     throw new Error("Account suspended");
   }
 
-  if (!user.role || !ADMIN_ROLES.includes(user.role)) {
+  if (!isAdminRole(user.role)) {
     throw new Error("Not authorised");
   }
 
@@ -81,7 +80,7 @@ export async function requireAdmin(): Promise<Admin> {
  * visitors.
  */
 export async function currentRole(): Promise<string | null> {
-  const { data: session } = await auth.getSession();
+  const session = await getAuth().api.getSession({ headers: await headers() });
   const userId = session?.user?.id;
   if (!userId) return null;
 
@@ -105,6 +104,6 @@ export async function currentRole(): Promise<string | null> {
  */
 export async function requireSuperAdmin(): Promise<Admin> {
   const admin = await requireAdmin();
-  if (admin.role !== "super_admin") throw new Error("Not authorised");
+  if (admin.role !== SUPER_ADMIN) throw new Error("Not authorised");
   return admin;
 }

@@ -10,17 +10,25 @@ client data.
 
 ## What the build already does
 
-- **Access is authenticated.** Neon Auth (managed Better Auth) sits in front of
-  every route, with users and sessions in this same Postgres under the
-  `neon_auth` schema. `proxy.ts` does an optimistic check only; the real
-  authorisation is re-checked inside every page and Server Function, because
-  Server Functions are reachable by direct POST and cannot rely on the proxy
-  having run.
+- **Access is authenticated.** Better Auth, self-hosted by this app, sits in
+  front of every route, with users and sessions in this same Postgres under the
+  `neon_auth` schema (the tables the managed service left behind; the app now
+  owns them). Sign-up is disabled in code, sessions last twelve hours, and a
+  new password must be at least twelve characters — all of which are now
+  reviewable in `src/lib/better-auth.ts` rather than set in a managed service's
+  dashboard. `proxy.ts` does an optimistic check only; the real authorisation is
+  re-checked inside every page and Server Function, because Server Functions are
+  reachable by direct POST and cannot rely on the proxy having run.
 - **Access is granted per person, in the database.** `neon_auth.user.role` must
-  be `admin`. Because it is read on every request, withdrawing someone's access
-  is one `UPDATE` and takes effect immediately — it does not wait for a deploy.
-  Public sign-up is disabled, so accounts exist only because someone created
-  them.
+  be `admin` or `super_admin`. Because it is read on every request, withdrawing
+  someone's access takes effect immediately — it does not wait for a deploy.
+  Public sign-up is disabled, so accounts exist only because a super admin
+  created them on `/staff`.
+- **Account changes are themselves privileged and logged.** Creating an
+  account, setting a password, changing a role, suspending and signing someone
+  out are super-admin-only, and each appends to `audit_log` as
+  `staff_account`. Suspending also revokes that person's sessions, so access
+  ends with the click rather than with their cookie.
 - **Nothing is hard-deleted.** Clients archive via `archived_at`. Progress notes
   have `onDelete: "restrict"` on their client reference, so a client with notes
   cannot be removed by accident.

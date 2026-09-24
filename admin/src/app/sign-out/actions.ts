@@ -1,9 +1,10 @@
 "use server";
 
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { auth } from "@/lib/neon-auth";
+import { getAuth } from "@/lib/better-auth";
 
 export async function signOut() {
-  await auth.signOut();
+  await getAuth().api.signOut({ headers: await headers() });
   redirect("/sign-in");
 }
