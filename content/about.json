@@ -8,9 +8,9 @@
     "title": "I did not begin in psychology.",
     "paragraphs": [
       "My early career was in the energy sector, in security and risk assessment. My job was to look at a system and answer one question honestly: where is this exposed, and what happens when that point fails?",
-      "Catastrophes are almost never sudden — they are the visible moment of a failure that has been quietly accumulating for a long time, in a place nobody was looking.",
+      "Catastrophes are almost never sudden, they are the visible moment of a failure that has been quietly accumulating for a long time, in a place nobody was looking.",
       "Then I started noticing the same pattern in people. Capable, senior, accomplished people would go home to relationships they had no framework for at all: no assessment, no maintenance, no repair protocol. Just hope, and the assumption that love would cover what nobody had ever been taught to build.",
-      "I have spent the years since bringing an assessor’s discipline to work that is usually done with nothing but good intentions."
+      "I have spent the years since bringing an assessor’s discipline to work that is usually done with nothing but good intentions..."
     ],
     "portrait": {
       "image": null,
@@ -67,7 +67,10 @@
   "closing": {
     "title": "Twenty-five years married.",
     "intro": "Which does not make me an authority on your marriage. It does mean I have made most of the ordinary mistakes personally, before I ever saw them professionally.",
-    "primaryCta": { "label": "Book a free conversation", "href": "/contact" },
+    "primaryCta": {
+      "label": "Book a free conversation",
+      "href": "/contact"
+    },
     "secondaryCta": {
       "label": "Nine things I’d tell my younger self",
       "href": "/insights/twenty-five-years-married"
