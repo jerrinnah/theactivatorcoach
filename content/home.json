@@ -1,10 +1,19 @@
 {
   "hero": {
     "eyebrow": "Assessment · Repair · Relational risk",
-    "titleLines": ["Where is your", "**relationship** exposed?"],
+    "titleLines": [
+      "Where is your",
+      "**relationship** exposed?"
+    ],
     "intro": "Psychotherapy and relational risk assessment for individuals and couples. Twenty-five years of practice, an assessor’s discipline, and no interest in deciding who is right.",
-    "primaryCta": { "label": "Book a free conversation", "href": "/contact" },
-    "secondaryCta": { "label": "Take the Self-Audit", "href": "/self-audit" },
+    "primaryCta": {
+      "label": "Book a free conversation",
+      "href": "/contact"
+    },
+    "secondaryCta": {
+      "label": "Take the Self-Audit",
+      "href": "/self-audit"
+    },
     "reassurance": "Confidential · Online worldwide · In person in Port Harcourt",
     "portrait": {
       "image": null,
@@ -20,11 +29,14 @@
     "eyebrow": "About me",
     "title": "I did not begin in psychology.",
     "paragraphs": [
-      "My early career was in the energy sector, in security and risk assessment. My job was to look at a system and answer one question honestly: where is this exposed, and what happens when that point fails?",
+      "I'm a psychotherapist, counsellor and coach. I work with people who are carrying something, anxiety, grief, burnout, a marriage that's gone quiet, a version of themselves they don't recognise anymore.\n\nMost of them are managing. That's usually the problem. They're functioning well enough that nobody's asked how they are in a long time.\n\nHow I got here\n\nI didn't start in psychology. Most of my working life has been in security and risk — and I'm still in it. It's not a past career I left behind for something more meaningful. I do both.\n\nPeople find that combination odd until they think about it. Security work puts you around people on their worst days: after the incident, during the emergency, in the hours when things have gone wrong and someone has to stay calm. I spent years doing that before I ever sat in a therapy room.\n\n",
       "Then I started noticing the same pattern in people. Capable, senior, accomplished people would go home to relationships they had no framework for at all. No assessment, no maintenance, no repair protocol. Just hope."
     ],
     "quote": "“Catastrophes are almost never sudden. They are the visible moment of a failure that has been quietly accumulating somewhere nobody was looking.”",
-    "cta": { "label": "Read my full story", "href": "/about" },
+    "cta": {
+      "label": "Read my full story",
+      "href": "/about"
+    },
     "credentialLine": "PhD, Psychology · Founder, Activator Coaching Academy",
     "portrait": {
       "image": null,
@@ -36,7 +48,10 @@
     "eyebrow": "How I can help",
     "title": "Six ways to work together",
     "intro": "Every one of them starts the same way — a free fifteen-minute conversation, with no charge, no obligation, and nothing on record.",
-    "cta": { "label": "Compare all services and fees", "href": "/work-with-me" }
+    "cta": {
+      "label": "Compare all services and fees",
+      "href": "/work-with-me"
+    }
   },
   "assessments": {
     "eyebrow": "Start here",
@@ -71,7 +86,10 @@
   "insights": {
     "eyebrow": "Insights",
     "title": "Writing from the practice",
-    "cta": { "label": "All articles", "href": "/insights" }
+    "cta": {
+      "label": "All articles",
+      "href": "/insights"
+    }
   },
   "letter": {
     "eyebrow": "The Activator Letter",
@@ -79,9 +97,15 @@
     "intro": "One idea from the practice, written properly, sent once a month. No sequences, no upsells, and you can leave in one click."
   },
   "closing": {
-    "titleLines": ["You do not have to", "work this out alone."],
+    "titleLines": [
+      "You do not have to",
+      "work this out alone."
+    ],
     "intro": "Fifteen minutes, no charge, no obligation. You describe what is happening; I tell you honestly whether I am the right person for it — and if I am not, who is.",
-    "primaryCta": { "label": "Book a free conversation", "href": "/contact" },
+    "primaryCta": {
+      "label": "Book a free conversation",
+      "href": "/contact"
+    },
     "whatsappCtaLabel": "Message on WhatsApp"
   }
 }
