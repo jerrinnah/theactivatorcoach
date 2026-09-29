@@ -18,13 +18,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # No npm ci: the static build only imports node: built-ins and files in
+      # this repo, and skipping the install shaves seconds off every publish.
+      # If build.mjs ever imports a package, put `npm ci` back here.
       - uses: actions/setup-node@v4
         with:
           # build:static runs --experimental-strip-types, which needs Node 22+
           node-version: 22
-          cache: npm
-
-      - run: npm ci
 
       - name: Build the static site
         run: npm run build:static

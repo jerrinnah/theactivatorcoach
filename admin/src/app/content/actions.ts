@@ -3,11 +3,11 @@
 import { revalidatePath } from "next/cache";
 import { requireSuperAdmin } from "@/lib/auth";
 import { record } from "@/lib/audit";
-import { readJson, writeJson } from "@/lib/github";
+import { deploymentFor, readJson, writeJson } from "@/lib/github";
 import { fileForSlug } from "@/lib/content-files";
 
 export type SaveResult =
-  | { ok: true; commit: string }
+  | { ok: true; commit: string; sha: string }
   | { ok: false; error: string; stale?: boolean };
 
 /**
@@ -38,7 +38,7 @@ export async function saveContent(
     : `content: update ${file.title.toLowerCase()}`;
 
   try {
-    const { commit } = await writeJson({
+    const { commit, sha: newSha } = await writeJson({
       path: file.path,
       data,
       sha,
@@ -50,7 +50,7 @@ export async function saveContent(
     await record(admin, "updated", "content", file.slug);
     revalidatePath("/content");
     revalidatePath(`/content/${slug}`);
-    return { ok: true, commit };
+    return { ok: true, commit, sha: newSha };
   } catch (e) {
     const msg = e instanceof Error ? e.message : "Could not save.";
     // 409 means the file moved on since this editor loaded it. Overwriting
@@ -65,6 +65,14 @@ export async function saveContent(
     }
     return { ok: false, error: msg };
   }
+}
+
+/** Where the deploy for a saved commit has got to, polled by the editor. */
+export async function deployStatus(commit: string) {
+  await requireSuperAdmin();
+  // Only ever a commit sha — it goes into a GitHub query string.
+  if (!/^[0-9a-f]{40}$/.test(commit)) return null;
+  return deploymentFor(commit).catch(() => null);
 }
 
 /** Re-reads a file so the editor can recover from a stale-sha conflict. */
