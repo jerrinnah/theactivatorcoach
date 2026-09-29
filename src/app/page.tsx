@@ -1,13 +1,15 @@
 import Link from "next/link";
 import TrustBar from "@/components/TrustBar";
 import LetterSignup from "@/components/LetterSignup";
-import PortraitFrame, { portraits } from "@/components/ui/PortraitFrame";
+import PortraitFrame from "@/components/ui/PortraitFrame";
 import ServiceIcon from "@/components/ui/ServiceIcon";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { RichLines } from "@/components/ui/Rich";
 import { ButtonLink, WhatsAppIcon } from "@/components/ui/Button";
 import { Blob, LeafBranch, PsiMark } from "@/components/ui/Ornaments";
 import { beliefs, contactDetails, processSteps, serviceCards, whatsappLink } from "@/lib/siteData";
 import { featuredArticles, formatArticleDate } from "@/lib/insights";
+import { homePage as content } from "@/lib/pageContent";
 
 export default function Home() {
   return (
@@ -27,6 +29,7 @@ export default function Home() {
 }
 
 function Hero() {
+  const { hero } = content;
   return (
     <section className="relative overflow-hidden bg-cream-deep">
       <Blob className="pointer-events-none absolute -right-32 -top-40 h-[46rem] w-[46rem] text-sage-soft/50" />
@@ -34,24 +37,18 @@ function Hero() {
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-6 py-16 lg:grid-cols-[1fr_0.9fr] lg:gap-16 lg:px-8 lg:py-24">
         <div>
-          <p className="eyebrow">Assessment · Repair · Relational risk</p>
+          <p className="eyebrow">{hero.eyebrow}</p>
           <h1 className="mt-6 font-display text-[3rem] leading-[1.02] text-ink sm:text-[4rem] lg:text-[4.5rem]">
-            Where is your
-            <br />
-            <span className="text-sage-deep">relationship</span> exposed?
+            <RichLines lines={hero.titleLines} />
           </h1>
-          <p className="mt-7 max-w-md text-[1.0625rem] leading-[1.8] text-ink-soft">
-            Psychotherapy and relational risk assessment for individuals and couples. Twenty-five
-            years of practice, an assessor&apos;s discipline, and no interest in deciding who is
-            right.
-          </p>
+          <p className="mt-7 max-w-md text-[1.0625rem] leading-[1.8] text-ink-soft">{hero.intro}</p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <ButtonLink href="/contact" size="lg">
-              Book a free conversation
+            <ButtonLink href={hero.primaryCta.href} size="lg">
+              {hero.primaryCta.label}
             </ButtonLink>
-            <ButtonLink href="/self-audit" variant="outline" size="lg">
-              Take the Self-Audit
+            <ButtonLink href={hero.secondaryCta.href} variant="outline" size="lg">
+              {hero.secondaryCta.label}
             </ButtonLink>
           </div>
 
@@ -71,25 +68,23 @@ function Hero() {
                 strokeLinejoin="round"
               />
             </svg>
-            Confidential · Online worldwide · In person in Port Harcourt
+            {hero.reassurance}
           </div>
         </div>
 
         <div className="relative">
           <LeafBranch className="pointer-events-none absolute -left-10 top-8 z-10 hidden h-64 w-32 text-sage/40 lg:block" />
           <PortraitFrame
-            src={portraits.hero}
-            alt="Dr. Lauretta Ogbum, psychotherapist"
+            src={hero.portrait.image}
+            alt={hero.portrait.alt}
             aspect="aspect-[4/5]"
             priority
-            label="Dr. Lauretta Ogbum"
+            label={hero.portrait.label}
             className="shadow-xl shadow-sage-deep/10"
           />
           <div className="absolute -bottom-6 -left-4 max-w-[15rem] rounded-3xl border border-line bg-white/95 p-5 shadow-lg shadow-sage-deep/10 backdrop-blur sm:-left-8">
-            <p className="font-display text-3xl text-sage-deep">25 yrs</p>
-            <p className="mt-1 text-xs leading-5 text-muted">
-              Married, and in practice long enough to have made the ordinary mistakes first.
-            </p>
+            <p className="font-display text-3xl text-sage-deep">{hero.badge.value}</p>
+            <p className="mt-1 text-xs leading-5 text-muted">{hero.badge.caption}</p>
           </div>
         </div>
       </div>
@@ -98,46 +93,39 @@ function Hero() {
 }
 
 function AboutPreview() {
+  const { aboutPreview } = content;
   return (
     <section className="bg-cream">
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-[0.8fr_1.1fr] lg:gap-16 lg:px-8 lg:py-24">
         <PortraitFrame
-          src={portraits.about}
-          alt="Dr. Lauretta Ogbum in her consulting room"
+          src={aboutPreview.portrait.image}
+          alt={aboutPreview.portrait.alt}
           aspect="aspect-[4/5]"
-          label="In the consulting room"
+          label={aboutPreview.portrait.label}
         />
 
         <div className="flex flex-col justify-center">
           <SectionHeading
-            eyebrow="About me"
-            title="I did not begin in psychology."
+            eyebrow={aboutPreview.eyebrow}
+            title={aboutPreview.title}
             intro={
               <>
-                <p>
-                  My early career was in the energy sector, in security and risk assessment. My job
-                  was to look at a system and answer one question honestly: where is this exposed,
-                  and what happens when that point fails?
-                </p>
-                <p className="mt-4">
-                  Then I started noticing the same pattern in people. Capable, senior, accomplished
-                  people would go home to relationships they had no framework for at all. No
-                  assessment, no maintenance, no repair protocol. Just hope.
-                </p>
+                {aboutPreview.paragraphs.map((paragraph, index) => (
+                  <p key={paragraph} className={index > 0 ? "mt-4" : undefined}>
+                    {paragraph}
+                  </p>
+                ))}
               </>
             }
           />
           <p className="mt-6 font-display text-2xl leading-snug text-sage-deep">
-            &ldquo;Catastrophes are almost never sudden. They are the visible moment of a failure
-            that has been quietly accumulating somewhere nobody was looking.&rdquo;
+            {aboutPreview.quote}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <ButtonLink href="/about" variant="outline">
-              Read my full story
+            <ButtonLink href={aboutPreview.cta.href} variant="outline">
+              {aboutPreview.cta.label}
             </ButtonLink>
-            <p className="text-sm text-muted">
-              PhD, Psychology · Founder, Activator Coaching Academy
-            </p>
+            <p className="text-sm text-muted">{aboutPreview.credentialLine}</p>
           </div>
         </div>
       </div>
@@ -146,14 +134,15 @@ function AboutPreview() {
 }
 
 function Services() {
+  const { services } = content;
   return (
     <section className="relative overflow-hidden border-y border-line bg-cream-deep">
       <LeafBranch className="pointer-events-none absolute -right-10 top-16 h-80 w-40 text-sage/15" />
       <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
         <SectionHeading
-          eyebrow="How I can help"
-          title="Six ways to work together"
-          intro="Every one of them starts the same way — a free fifteen-minute conversation, with no charge, no obligation, and nothing on record."
+          eyebrow={services.eyebrow}
+          title={services.title}
+          intro={services.intro}
           align="center"
         />
 
@@ -183,8 +172,8 @@ function Services() {
         </div>
 
         <div className="mt-12 text-center">
-          <ButtonLink href="/work-with-me" variant="outline">
-            Compare all services and fees
+          <ButtonLink href={services.cta.href} variant="outline">
+            {services.cta.label}
           </ButtonLink>
         </div>
       </div>
@@ -193,34 +182,19 @@ function Services() {
 }
 
 function Assessments() {
-  const items = [
-    {
-      eyebrow: "Free · 10 minutes · 15 questions",
-      title: "The Self-Audit",
-      body: "Before you assess anyone else, assess yourself. Five dimensions — self-knowledge, regulation, inherited patterns, capacity, and repair.",
-      href: "/self-audit",
-      cta: "Begin the Self-Audit",
-    },
-    {
-      eyebrow: "Free · 12 minutes · 15 questions",
-      title: "The Relational Risk Assessment",
-      body: "Where is your relationship exposed, and what happens when that point fails? The five exposure points that account for most of what arrives in my room.",
-      href: "/relational-risk-assessment",
-      cta: "Run the assessment",
-    },
-  ];
+  const { assessments } = content;
 
   return (
     <section className="bg-cream">
       <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
         <SectionHeading
-          eyebrow="Start here"
-          title="Two instruments, both free"
-          intro="Neither is a diagnosis and neither will tell you what to do. They show you, in writing, where you are solid and where you are thin — which is the only place real work can start."
+          eyebrow={assessments.eyebrow}
+          title={assessments.title}
+          intro={assessments.intro}
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          {items.map((item) => (
+          {assessments.cards.map((item) => (
             <div
               key={item.href}
               className="relative overflow-hidden rounded-4xl bg-sage-dark p-9 text-sage-soft sm:p-11"
@@ -253,7 +227,11 @@ function Beliefs() {
     <section className="relative overflow-hidden border-y border-line bg-sage-mist">
       <LeafBranch className="pointer-events-none absolute -left-12 top-10 h-80 w-40 text-sage/25" />
       <div className="relative mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
-        <SectionHeading eyebrow="What I believe" title="Four things I will say out loud" align="center" />
+        <SectionHeading
+          eyebrow={content.beliefs.eyebrow}
+          title={content.beliefs.title}
+          align="center"
+        />
         <div className="mt-14 grid gap-6 sm:grid-cols-2">
           {beliefs.map((belief) => (
             <div key={belief.title} className="rounded-4xl border border-sage/25 bg-white/80 p-8">
@@ -272,9 +250,9 @@ function Process() {
     <section className="bg-cream">
       <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
         <SectionHeading
-          eyebrow="What happens"
-          title="Four steps, and you can stop at any of them"
-          intro="Nothing here is a commitment you cannot withdraw from. The first step costs nothing and goes nowhere on record."
+          eyebrow={content.process.eyebrow}
+          title={content.process.title}
+          intro={content.process.intro}
         />
         <ol className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step) => (
@@ -295,9 +273,9 @@ function Insights() {
     <section className="border-t border-line bg-cream-deep">
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading eyebrow="Insights" title="Writing from the practice" />
-          <ButtonLink href="/insights" variant="outline">
-            All articles
+          <SectionHeading eyebrow={content.insights.eyebrow} title={content.insights.title} />
+          <ButtonLink href={content.insights.cta.href} variant="outline">
+            {content.insights.cta.label}
           </ButtonLink>
         </div>
 
@@ -332,9 +310,9 @@ function Letter() {
       <div className="mx-auto max-w-4xl px-6 py-20 lg:px-8">
         <div className="rounded-4xl border border-line bg-white p-9 sm:p-12">
           <SectionHeading
-            eyebrow="The Activator Letter"
-            title="One letter a month. No noise."
-            intro="One idea from the practice, written properly, sent once a month. No sequences, no upsells, and you can leave in one click."
+            eyebrow={content.letter.eyebrow}
+            title={content.letter.title}
+            intro={content.letter.intro}
           />
           <div className="mt-8">
             <LetterSignup />
@@ -346,6 +324,7 @@ function Letter() {
 }
 
 function ClosingCta() {
+  const { closing } = content;
   return (
     <section className="relative overflow-hidden bg-sage-mist">
       <LeafBranch className="pointer-events-none absolute -left-14 bottom-0 h-96 w-48 text-sage/30" />
@@ -362,22 +341,19 @@ function ClosingCta() {
         </svg>
 
         <h2 className="mt-7 font-display text-[2.5rem] leading-[1.08] text-ink sm:text-[3.25rem]">
-          You do not have to
-          <br />
-          work this out alone.
+          <RichLines lines={closing.titleLines} />
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-[1.0625rem] leading-[1.8] text-ink-soft">
-          Fifteen minutes, no charge, no obligation. You describe what is happening; I tell you
-          honestly whether I am the right person for it — and if I am not, who is.
+          {closing.intro}
         </p>
 
         <div className="mt-9 flex flex-wrap justify-center gap-3">
-          <ButtonLink href="/contact" size="lg">
-            Book a free conversation
+          <ButtonLink href={closing.primaryCta.href} size="lg">
+            {closing.primaryCta.label}
           </ButtonLink>
           <ButtonLink href={whatsappLink} variant="outline" size="lg">
             <WhatsAppIcon />
-            Message on WhatsApp
+            {closing.whatsappCtaLabel}
           </ButtonLink>
         </div>
 

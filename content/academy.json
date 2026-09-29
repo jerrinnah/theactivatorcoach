@@ -1,0 +1,77 @@
+{
+  "seo": {
+    "title": "Activator Coaching Academy",
+    "description": "Training for coaches, pastoral workers, HR professionals and therapists who find themselves holding other people's relationships — taught by Dr. Lauretta Ogbum."
+  },
+  "hero": {
+    "eyebrow": "Activator Coaching Academy",
+    "title": "Training for people who hold other people’s relationships.",
+    "intro": "A very large number of people end up doing this work without ever having been taught it — pastors, coaches, HR leads, and the sensible friend everyone calls. This is the training I wish had existed when I started.",
+    "cta": { "label": "Register your interest", "href": "/contact" }
+  },
+  "audience": {
+    "eyebrow": "Who it's for",
+    "title": "You are probably already doing this work.",
+    "intro": "The question is whether you are doing it with a framework or with instinct. Instinct is not nothing — but it does not tell you when to stop, and it does not protect the people in front of you.",
+    "items": [
+      "Coaches who keep ending up in relationship conversations they were not trained for",
+      "Pastoral and ministry workers doing marriage counselling by default",
+      "HR and employee-wellbeing professionals holding staff through personal crisis",
+      "Early-career therapists who want structure for couples work",
+      "Community and NGO practitioners working with families"
+    ]
+  },
+  "curriculum": {
+    "eyebrow": "The curriculum",
+    "title": "Six modules",
+    "intro": "Taught live in cohorts, with practice and supervision built in rather than bolted on.",
+    "modules": [
+      {
+        "number": "01",
+        "title": "Assessment before intervention",
+        "body": "How to find out what is actually happening in front of you before you do anything about it. The five exposure points, and how to run them in a real conversation rather than on paper."
+      },
+      {
+        "number": "02",
+        "title": "The room, and your place in it",
+        "body": "Neutrality as a practical skill. How to refuse recruitment onto a side, hold two accounts at once, and notice the moment you have started taking one."
+      },
+      {
+        "number": "03",
+        "title": "Repair as a teachable protocol",
+        "body": "What repair actually consists of, why most apologies fail structurally, and how to teach a couple a way back that survives contact with a real argument."
+      },
+      {
+        "number": "04",
+        "title": "Culture, family and the third party",
+        "body": "Working with extended family as context rather than obstacle. Where the boundary goes in our setting, who defends it, and how to help without importing advice that doesn't fit."
+      },
+      {
+        "number": "05",
+        "title": "Safety, limits and referral",
+        "body": "Screening for harm. When couples work is contraindicated. Recognising what is outside your scope, and referring properly rather than reluctantly."
+      },
+      {
+        "number": "06",
+        "title": "Practice and supervision",
+        "body": "Live practice with feedback, then ongoing group supervision. Nobody leaves this course having only heard about the work."
+      }
+    ]
+  },
+  "joining": {
+    "title": "How to join a cohort",
+    "intro": "Cohorts are small and run a few times a year, and places are offered after a short application conversation rather than on a first-come basis — partly to keep the group workable, and partly because this material is not right for everyone who wants it.",
+    "steps": [
+      "Register your interest using the form, or email the Academy directly.",
+      "You will receive the current cohort dates, the full syllabus, and the fee.",
+      "A short conversation to check the fit in both directions.",
+      "Confirm your place and receive the pre-course material."
+    ],
+    "note": "Fees and dates are confirmed at application stage and vary by cohort format. Ask and you will be told plainly."
+  },
+  "closing": {
+    "title": "Interested in the next cohort?",
+    "intro": "Tell me what work you already do and what keeps arriving that you feel unequipped for. That is usually the most useful thing to start from.",
+    "cta": { "label": "Register your interest", "href": "/contact" }
+  }
+}

@@ -6,6 +6,19 @@
     "logoName": "Lauretta Ogbum",
     "logoCredential": "PhD · Psychotherapist"
   },
+  "seo": {
+    "tagline": "Psychotherapist & Relational Risk Specialist",
+    "description": "Psychotherapy, couples work and relational risk assessment with Dr. Lauretta Ogbum — Port Harcourt and online worldwide. Assess where your relationship is exposed before it fails.",
+    "shareDescription": "Therapy and relational risk assessment for individuals and couples. Port Harcourt and online worldwide.",
+    "keywords": [
+      "psychotherapist Nigeria",
+      "couples therapy Port Harcourt",
+      "marriage counselling Nigeria",
+      "relationship assessment",
+      "premarital counselling",
+      "diaspora therapy"
+    ]
+  },
   "contactDetails": {
     "email": "hello@theactivatorcoach.com",
     "speakingEmail": "speaking@theactivatorcoach.com",
@@ -49,6 +62,12 @@
       "href": "/insights"
     }
   ],
+  "header": {
+    "ctaLabel": "Book a conversation",
+    "mobileCtaLabel": "Book a free conversation",
+    "currencyLabel": "Show fees in",
+    "menuLabel": "Menu"
+  },
   "footerSections": {
     "work": [
       {
@@ -116,6 +135,16 @@
         "href": "/crisis"
       }
     ]
+  },
+  "footer": {
+    "bio": "psychotherapist, founder of the Activator Coaching Academy, and co-author of *The ABC of Marriage*.",
+    "workHeading": "Work With Me",
+    "learnHeading": "Learn",
+    "moreHeading": "More",
+    "emergencyNote": "This practice is not an emergency service. If you or someone you know is in immediate danger or at risk of harm, please contact emergency services or a crisis line now.",
+    "crisisLinkLabel": "Crisis resources →",
+    "privacyLinkLabel": "Privacy & confidentiality",
+    "credit": "Website by OctaveDev"
   },
   "trustItems": [
     "PhD, Psychology",
@@ -215,5 +244,29 @@
       "title": "Review",
       "body": "At session six we stop and look at it together. What has moved, what has not, and whether to continue."
     }
-  ]
+  ],
+  "notFound": {
+    "metaTitle": "Page not found",
+    "title": "That page isn’t here.",
+    "intro": "Either it has moved or the link was wrong. Here is where most people were heading.",
+    "links": [
+      {
+        "label": "Work with me",
+        "href": "/work-with-me"
+      },
+      {
+        "label": "The Self-Audit",
+        "href": "/self-audit"
+      },
+      {
+        "label": "Insights",
+        "href": "/insights"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
+    ],
+    "homeLabel": "Back to the home page"
+  }
 }

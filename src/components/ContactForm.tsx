@@ -4,18 +4,9 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { sendEnquiry } from "@/app/actions";
 import { initialFormState } from "@/lib/formState";
+import { contactPage } from "@/lib/pageContent";
 
-const topics = [
-  "Individual Therapy",
-  "Couples Therapy",
-  "Before You Marry",
-  "The Annual Review",
-  "The Intensive",
-  "Diaspora Sessions",
-  "The Academy",
-  "Speaking or media",
-  "Something else",
-];
+const copy = contactPage.form;
 
 const fieldClass =
   "w-full rounded-2xl border border-line bg-cream px-5 py-3.5 text-[0.9375rem] text-ink placeholder:text-muted/70 transition focus:border-sage focus:bg-white focus:outline-none";
@@ -28,7 +19,7 @@ function SubmitButton() {
       disabled={pending}
       className="w-full rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark disabled:opacity-60 sm:w-auto"
     >
-      {pending ? "Sending…" : "Send this to Dr. Ogbum"}
+      {pending ? copy.submittingLabel : copy.submitLabel}
     </button>
   );
 }
@@ -54,7 +45,7 @@ export default function ContactForm() {
             strokeLinejoin="round"
           />
         </svg>
-        <h2 className="mt-6 font-display text-3xl text-ink">Message received</h2>
+        <h2 className="mt-6 font-display text-3xl text-ink">{copy.successTitle}</h2>
         <p role="status" className="mx-auto mt-4 max-w-md text-[0.9375rem] leading-7 text-ink-soft">
           {state.message}
         </p>
@@ -73,7 +64,7 @@ export default function ContactForm() {
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-2 block text-sm font-medium text-ink">
-            What should I call you?
+            {copy.nameLabel}
           </label>
           <input
             id="name"
@@ -81,7 +72,7 @@ export default function ContactForm() {
             type="text"
             required
             autoComplete="name"
-            placeholder="First name is enough"
+            placeholder={copy.namePlaceholder}
             aria-invalid={state.fieldErrors?.name ? true : undefined}
             aria-describedby={state.fieldErrors?.name ? "name-error" : undefined}
             className={fieldClass}
@@ -93,7 +84,7 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="email" className="mb-2 block text-sm font-medium text-ink">
-            Email address
+            {copy.emailLabel}
           </label>
           <input
             id="email"
@@ -101,7 +92,7 @@ export default function ContactForm() {
             type="email"
             required
             autoComplete="email"
-            placeholder="you@example.com"
+            placeholder={copy.emailPlaceholder}
             aria-invalid={state.fieldErrors?.email ? true : undefined}
             aria-describedby={state.fieldErrors?.email ? "email-error" : undefined}
             className={fieldClass}
@@ -115,11 +106,11 @@ export default function ContactForm() {
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor="topic" className="mb-2 block text-sm font-medium text-ink">
-            What is this about?
+            {copy.topicLabel}
           </label>
           <select id="topic" name="topic" defaultValue="" className={fieldClass}>
-            <option value="">Choose one — or leave it blank</option>
-            {topics.map((topic) => (
+            <option value="">{copy.topicPlaceholder}</option>
+            {copy.topics.map((topic) => (
               <option key={topic} value={topic}>
                 {topic}
               </option>
@@ -129,31 +120,33 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="preferredContact" className="mb-2 block text-sm font-medium text-ink">
-            How should I reply?
+            {copy.replyLabel}
           </label>
           <select
             id="preferredContact"
             name="preferredContact"
-            defaultValue="Email"
+            defaultValue={copy.replyOptions[0]}
             className={fieldClass}
           >
-            <option value="Email">Email</option>
-            <option value="WhatsApp">WhatsApp</option>
-            <option value="Either">Either is fine</option>
+            {copy.replyOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
           </select>
         </div>
       </div>
 
       <div>
         <label htmlFor="message" className="mb-2 block text-sm font-medium text-ink">
-          What is happening?
+          {copy.messageLabel}
         </label>
         <textarea
           id="message"
           name="message"
           rows={6}
           required
-          placeholder="A sentence or two is enough. You do not need to explain everything here — that is what the conversation is for."
+          placeholder={copy.messagePlaceholder}
           aria-invalid={state.fieldErrors?.message ? true : undefined}
           aria-describedby={state.fieldErrors?.message ? "message-error" : undefined}
           className={`${fieldClass} resize-y`}
@@ -172,10 +165,7 @@ export default function ContactForm() {
             className="mt-1 h-4 w-4 shrink-0 rounded border-line accent-sage-deep"
             aria-invalid={state.fieldErrors?.consent ? true : undefined}
           />
-          <span className="text-sm leading-6 text-ink-soft">
-            I&apos;m happy for Dr. Ogbum to reply to me using the details above. Enquiries are kept
-            confidential and are never shared or used for marketing.
-          </span>
+          <span className="text-sm leading-6 text-ink-soft">{copy.consentLabel}</span>
         </label>
         <FieldError message={state.fieldErrors?.consent} />
       </div>
@@ -188,10 +178,7 @@ export default function ContactForm() {
 
       <SubmitButton />
 
-      <p className="text-xs leading-5 text-muted">
-        This form is not monitored continuously and is not an emergency service. If you are at risk
-        of harm, please use the crisis resources rather than waiting for a reply.
-      </p>
+      <p className="text-xs leading-5 text-muted">{copy.footnote}</p>
     </form>
   );
 }

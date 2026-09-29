@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
-import { bandFor, type Assessment } from "@/lib/assessments";
+import { bandFor, type Assessment , assessmentPageCopy } from "@/lib/assessments";
 import { ButtonLink } from "@/components/ui/Button";
 
 type Stage = "intro" | "questions" | "safety" | "safe-exit" | "result";
@@ -15,6 +15,8 @@ const MAX_PER_QUESTION = 3;
 function keyFor(dimensionId: string, index: number) {
   return `${dimensionId}:${index}`;
 }
+
+const copy = assessmentPageCopy.quiz;
 
 export default function AssessmentQuiz({ assessment }: { assessment: Assessment }) {
   const [stage, setStage] = useState<Stage>("intro");
@@ -103,9 +105,12 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
         <div className="mb-8">
           <div className="flex items-center justify-between text-xs text-muted">
             <span>
-              Step {progress} of {totalSteps}
+              {copy.stepLabel} {progress} {copy.ofLabel} {totalSteps}
             </span>
-            <span>{Math.round((progress / totalSteps) * 100)}% complete</span>
+            <span>
+              {Math.round((progress / totalSteps) * 100)}
+              {copy.completeLabel}
+            </span>
           </div>
           <div
             className="mt-2 h-1.5 overflow-hidden rounded-full bg-sage-mist"
@@ -113,7 +118,7 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
             aria-valuenow={progress}
             aria-valuemin={0}
             aria-valuemax={totalSteps}
-            aria-label="Assessment progress"
+            aria-label={copy.progressLabel}
           >
             <div
               className="h-full rounded-full bg-sage-deep transition-all duration-300"
@@ -127,21 +132,12 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
         <div>
           <p className="eyebrow">{assessment.eyebrow}</p>
           <h2 className="mt-4 font-display text-[2rem] leading-tight text-ink">
-            Before you begin
+            {copy.introTitle}
           </h2>
           <ul className="mt-6 space-y-3 text-[0.9375rem] leading-7 text-ink-soft">
-            <li>
-              Answer honestly rather than aspirationally. An accurate low score is worth more than a
-              flattering high one.
-            </li>
-            <li>
-              Nothing you enter leaves your browser. There is no account, no submission, and no
-              record kept — refreshing the page clears it.
-            </li>
-            <li>
-              This is not a diagnosis and it will not tell you what to do. It shows you where you are
-              solid and where you are thin.
-            </li>
+            {copy.introPoints.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
           </ul>
           <button
             type="button"
@@ -151,7 +147,9 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
             }}
             className="mt-8 rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark"
           >
-            Begin — {assessment.dimensions.reduce((n, d) => n + d.questions.length, 0)} questions
+            {copy.beginPrefix}{" "}
+            {assessment.dimensions.reduce((n, d) => n + d.questions.length, 0)}{" "}
+            {copy.beginSuffix}
           </button>
         </div>
       ) : null}
@@ -159,7 +157,7 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
       {stage === "questions" && dimension ? (
         <div>
           <p className="eyebrow">
-            Dimension {step + 1} of {assessment.dimensions.length}
+            {copy.dimensionLabel} {step + 1} {copy.ofLabel} {assessment.dimensions.length}
           </p>
           <h2 className="mt-3 font-display text-[2rem] leading-tight text-ink">{dimension.title}</h2>
 
@@ -200,7 +198,7 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
                     })}
                   </div>
                   {unanswered ? (
-                    <p className="mt-2 text-sm text-red-700">Please choose an answer.</p>
+                    <p className="mt-2 text-sm text-red-700">{copy.unansweredError}</p>
                   ) : null}
                 </fieldset>
               );
@@ -213,14 +211,14 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
               onClick={goBack}
               className="rounded-full border border-line px-6 py-3 text-sm text-ink-soft transition hover:bg-sage-mist"
             >
-              Back
+              {copy.backLabel}
             </button>
             <button
               type="button"
               onClick={goNext}
               className="rounded-full bg-sage-deep px-8 py-3.5 text-sm font-medium text-white transition hover:bg-sage-dark"
             >
-              {step < assessment.dimensions.length - 1 ? "Next dimension" : "Continue"}
+              {step < assessment.dimensions.length - 1 ? copy.nextLabel : copy.continueLabel}
             </button>
           </div>
         </div>
@@ -228,7 +226,7 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
 
       {stage === "safety" ? (
         <div>
-          <p className="eyebrow">One more question</p>
+          <p className="eyebrow">{copy.safetyEyebrow}</p>
           <h2 className="mt-3 font-display text-[2rem] leading-tight text-ink">
             {assessment.safetyQuestion}
           </h2>
@@ -243,7 +241,7 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
               }}
               className="rounded-full border border-sage-deep/40 px-8 py-3.5 text-sm text-sage-dark transition hover:bg-sage-mist"
             >
-              Yes, or I&apos;m not sure
+              {copy.safetyYesLabel}
             </button>
             <button
               type="button"
@@ -253,7 +251,7 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
               }}
               className="rounded-full bg-sage-deep px-8 py-3.5 text-sm font-medium text-white transition hover:bg-sage-dark"
             >
-              No — show my results
+              {copy.safetyNoLabel}
             </button>
           </div>
 
@@ -262,7 +260,7 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
             onClick={goBack}
             className="mt-6 text-sm text-muted underline-offset-4 hover:text-sage-deep hover:underline"
           >
-            ← Back to the last dimension
+            {copy.safetyBackLabel}
           </button>
         </div>
       ) : null}
@@ -270,29 +268,19 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
       {stage === "safe-exit" ? (
         <div>
           <h2 className="font-display text-[2rem] leading-tight text-ink">
-            Thank you for answering that honestly.
+            {copy.safeExitTitle}
           </h2>
           <div className="mt-6 space-y-4 text-[1.0625rem] leading-[1.8] text-ink-soft">
-            <p>
-              I am not going to show you a score, because a score is not what this needs and it would
-              be the wrong response to what you have just told me.
-            </p>
-            <p>
-              Where there is harm in a relationship, couples work is not the right first step — it can
-              make things more dangerous, not less. What matters first is your safety, and there are
-              people whose specific job that is.
-            </p>
-            <p>
-              If you would like to talk to me directly, you are welcome to. Nothing you say obliges
-              you to do anything, and I will not push you towards any service.
-            </p>
+            {copy.safeExitParagraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href="/crisis" size="lg">
-              Crisis and safety resources
+            <ButtonLink href={copy.safeExitCrisisCta.href} size="lg">
+              {copy.safeExitCrisisCta.label}
             </ButtonLink>
-            <ButtonLink href="/contact" variant="outline" size="lg">
-              Speak to me directly
+            <ButtonLink href={copy.safeExitContactCta.href} variant="outline" size="lg">
+              {copy.safeExitContactCta.label}
             </ButtonLink>
           </div>
           <button
@@ -300,14 +288,14 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
             onClick={restart}
             className="mt-6 text-sm text-muted underline-offset-4 hover:text-sage-deep hover:underline"
           >
-            Start the assessment again
+            {copy.restartLabel}
           </button>
         </div>
       ) : null}
 
       {stage === "result" ? (
         <div>
-          <p className="eyebrow">Your result</p>
+          <p className="eyebrow">{copy.resultEyebrow}</p>
 
           <div className="mt-5 flex flex-wrap items-end gap-x-6 gap-y-2">
             <p className="font-display text-6xl leading-none text-sage-deep">{scores.percentage}%</p>
@@ -321,7 +309,7 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
           </p>
 
           <div className="mt-10 space-y-6">
-            <h3 className="font-display text-2xl text-ink">Dimension by dimension</h3>
+            <h3 className="font-display text-2xl text-ink">{copy.perDimensionTitle}</h3>
             {scores.perDimension.map((entry) => (
               <div key={entry.dimension.id}>
                 <div className="flex items-baseline justify-between gap-4">
@@ -351,16 +339,12 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
 
           <div className="mt-10 rounded-3xl bg-sage-mist p-7">
             <h3 className="font-display text-2xl text-ink">
-              Your thinnest point: {scores.lowest.dimension.title}
+              {copy.lowestTitlePrefix} {scores.lowest.dimension.title}
             </h3>
             <p className="mt-3 text-[0.9375rem] leading-7 text-ink-soft">
               {scores.lowest.dimension.thin}
             </p>
-            <p className="mt-3 text-[0.9375rem] leading-7 text-ink-soft">
-              If you do one thing with this result, make it this dimension. It is where the next
-              difficulty is most likely to originate, and it is the cheapest thing on the list to
-              work on now rather than later.
-            </p>
+            <p className="mt-3 text-[0.9375rem] leading-7 text-ink-soft">{copy.lowestAdvice}</p>
           </div>
 
           <div className="mt-9 flex flex-wrap gap-3">
@@ -372,18 +356,16 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
               onClick={() => window.print()}
               className="rounded-full border border-sage-deep/35 px-8 py-4 text-[0.9375rem] text-sage-dark transition hover:bg-sage-mist"
             >
-              Print or save as PDF
+              {copy.printLabel}
             </button>
           </div>
 
           <p className="mt-8 border-t border-line-soft pt-6 text-sm leading-6 text-muted">
-            This is a reflective instrument, not a clinical diagnosis, and it has not been
-            psychometrically validated. It is designed to start an honest conversation — with
-            yourself, with a partner, or with me.{" "}
+            {copy.disclaimer}{" "}
             <Link href="/contact" className="text-sage-deep underline-offset-4 hover:underline">
-              Book a free conversation
+              {copy.disclaimerLinkLabel}
             </Link>{" "}
-            if you would like to go through it properly.
+            {copy.disclaimerSuffix}
           </p>
 
           <button
@@ -391,7 +373,7 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
             onClick={restart}
             className="mt-6 text-sm text-muted underline-offset-4 hover:text-sage-deep hover:underline"
           >
-            Take it again
+            {copy.retakeLabel}
           </button>
         </div>
       ) : null}

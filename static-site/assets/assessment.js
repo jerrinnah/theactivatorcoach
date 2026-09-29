@@ -1,12 +1,14 @@
 /* The Self-Audit and Relational Risk Assessment.
-   Reads window.ASSESSMENT, emitted inline by the build. Nothing is sent
-   anywhere: answers live in memory and vanish when the page is closed. */
+   Reads window.ASSESSMENT and window.ASSESSMENT_COPY, both emitted inline by
+   the build from content/assessments.json. Nothing is sent anywhere: answers
+   live in memory and vanish when the page is closed. */
 (function () {
   "use strict";
 
   var root = document.getElementById("assessment");
   var data = window.ASSESSMENT;
-  if (!root || !data) return;
+  var copy = window.ASSESSMENT_COPY;
+  if (!root || !data || !copy) return;
 
   var MAX = 3; // highest Likert index
   var answers = {};
@@ -61,8 +63,8 @@
     var pct = Math.round((current / totalSteps) * 100);
     return (
       '<div class="mb-8">' +
-      '<div class="flex items-center justify-between text-xs text-muted"><span>Step ' + current + " of " + totalSteps + "</span><span>" + pct + '% complete</span></div>' +
-      '<div class="mt-2 h-1.5 overflow-hidden rounded-full bg-sage-mist" role="progressbar" aria-valuenow="' + current + '" aria-valuemin="0" aria-valuemax="' + totalSteps + '" aria-label="Assessment progress">' +
+      '<div class="flex items-center justify-between text-xs text-muted"><span>' + esc(copy.stepLabel) + " " + current + " " + esc(copy.ofLabel) + " " + totalSteps + "</span><span>" + pct + esc(copy.completeLabel) + "</span></div>" +
+      '<div class="mt-2 h-1.5 overflow-hidden rounded-full bg-sage-mist" role="progressbar" aria-valuenow="' + current + '" aria-valuemin="0" aria-valuemax="' + totalSteps + '" aria-label="' + esc(copy.progressLabel) + '">' +
       '<div class="h-full rounded-full bg-sage-deep transition-all duration-300" style="width:' + pct + '%"></div></div></div>'
     );
   }
@@ -70,13 +72,11 @@
   function viewIntro() {
     return (
       '<p class="eyebrow">' + esc(data.eyebrow) + "</p>" +
-      '<h2 class="mt-4 font-display text-[2rem] leading-tight text-ink">Before you begin</h2>' +
+      '<h2 class="mt-4 font-display text-[2rem] leading-tight text-ink">' + esc(copy.introTitle) + "</h2>" +
       '<ul class="mt-6 space-y-3 text-[0.9375rem] leading-7 text-ink-soft">' +
-      "<li>Answer honestly rather than aspirationally. An accurate low score is worth more than a flattering high one.</li>" +
-      "<li>Nothing you enter leaves your browser. There is no account, no submission, and no record kept — refreshing the page clears it.</li>" +
-      "<li>This is not a diagnosis and it will not tell you what to do. It shows you where you are solid and where you are thin.</li>" +
+      copy.introPoints.map(function (point) { return "<li>" + esc(point) + "</li>"; }).join("") +
       "</ul>" +
-      '<button type="button" data-action="begin" class="mt-8 rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark">Begin — ' + totalQuestions + " questions</button>"
+      '<button type="button" data-action="begin" class="mt-8 rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark">' + esc(copy.beginPrefix) + " " + totalQuestions + " " + esc(copy.beginSuffix) + "</button>"
     );
   }
 
@@ -105,50 +105,50 @@
           '<fieldset class="' + (missing ? "rounded-2xl bg-red-50/60 p-4 -m-1" : "") + '">' +
           '<legend class="text-[1.0625rem] leading-7 text-ink">' + esc(question) + "</legend>" +
           '<div class="mt-4 grid gap-2 sm:grid-cols-4">' + options + "</div>" +
-          (missing ? '<p class="mt-2 text-sm text-red-700">Please choose an answer.</p>' : "") +
+          (missing ? '<p class="mt-2 text-sm text-red-700">' + esc(copy.unansweredError) + "</p>" : "") +
           "</fieldset>"
         );
       })
       .join("");
 
     return (
-      '<p class="eyebrow">Dimension ' + (step + 1) + " of " + data.dimensions.length + "</p>" +
+      '<p class="eyebrow">' + esc(copy.dimensionLabel) + " " + (step + 1) + " " + esc(copy.ofLabel) + " " + data.dimensions.length + "</p>" +
       '<h2 class="mt-3 font-display text-[2rem] leading-tight text-ink">' + esc(dim.title) + "</h2>" +
       '<div class="mt-8 space-y-8">' + fields + "</div>" +
       '<div class="mt-10 flex items-center justify-between gap-4">' +
-      '<button type="button" data-action="back" class="rounded-full border border-line px-6 py-3 text-sm text-ink-soft transition hover:bg-sage-mist">Back</button>' +
+      '<button type="button" data-action="back" class="rounded-full border border-line px-6 py-3 text-sm text-ink-soft transition hover:bg-sage-mist">' + esc(copy.backLabel) + "</button>" +
       '<button type="button" data-action="next" class="rounded-full bg-sage-deep px-8 py-3.5 text-sm font-medium text-white transition hover:bg-sage-dark">' +
-      (step < data.dimensions.length - 1 ? "Next dimension" : "Continue") +
+      esc(step < data.dimensions.length - 1 ? copy.nextLabel : copy.continueLabel) +
       "</button></div>"
     );
   }
 
   function viewSafety() {
     return (
-      '<p class="eyebrow">One more question</p>' +
+      '<p class="eyebrow">' + esc(copy.safetyEyebrow) + "</p>" +
       '<h2 class="mt-3 font-display text-[2rem] leading-tight text-ink">' + esc(data.safetyQuestion) + "</h2>" +
       '<p class="mt-4 text-[0.9375rem] leading-7 text-muted">' + esc(data.safetyHelp) + "</p>" +
       '<div class="mt-8 flex flex-wrap gap-3">' +
-      '<button type="button" data-action="safety-yes" class="rounded-full border border-sage-deep/40 px-8 py-3.5 text-sm text-sage-dark transition hover:bg-sage-mist">Yes, or I&rsquo;m not sure</button>' +
-      '<button type="button" data-action="safety-no" class="rounded-full bg-sage-deep px-8 py-3.5 text-sm font-medium text-white transition hover:bg-sage-dark">No — show my results</button>' +
+      '<button type="button" data-action="safety-yes" class="rounded-full border border-sage-deep/40 px-8 py-3.5 text-sm text-sage-dark transition hover:bg-sage-mist">' + esc(copy.safetyYesLabel) + "</button>" +
+      '<button type="button" data-action="safety-no" class="rounded-full bg-sage-deep px-8 py-3.5 text-sm font-medium text-white transition hover:bg-sage-dark">' + esc(copy.safetyNoLabel) + "</button>" +
       "</div>" +
-      '<button type="button" data-action="back" class="mt-6 text-sm text-muted underline-offset-4 hover:text-sage-deep hover:underline">← Back to the last dimension</button>'
+      '<button type="button" data-action="back" class="mt-6 text-sm text-muted underline-offset-4 hover:text-sage-deep hover:underline">' + esc(copy.safetyBackLabel) + "</button>"
     );
   }
 
   function viewSafeExit() {
     return (
-      '<h2 class="font-display text-[2rem] leading-tight text-ink">Thank you for answering that honestly.</h2>' +
+      '<h2 class="font-display text-[2rem] leading-tight text-ink">' + esc(copy.safeExitTitle) + "</h2>" +
       '<div class="mt-6 space-y-4 text-[1.0625rem] leading-[1.8] text-ink-soft">' +
       "<p>I am not going to show you a score, because a score is not what this needs and it would be the wrong response to what you have just told me.</p>" +
       "<p>Where there is harm in a relationship, couples work is not the right first step — it can make things more dangerous, not less. What matters first is your safety, and there are people whose specific job that is.</p>" +
       "<p>If you would like to talk to me directly, you are welcome to. Nothing you say obliges you to do anything, and I will not push you towards any service.</p>" +
       "</div>" +
       '<div class="mt-8 flex flex-wrap gap-3">' +
-      '<a href="/crisis" class="inline-flex items-center justify-center rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark">Crisis and safety resources</a>' +
-      '<a href="/contact" class="inline-flex items-center justify-center rounded-full border border-sage-deep/35 px-8 py-4 text-[0.9375rem] text-sage-dark transition hover:bg-sage-mist">Speak to me directly</a>' +
+      '<a href="' + esc(copy.safeExitCrisisCta.href) + '" class="inline-flex items-center justify-center rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark">' + esc(copy.safeExitCrisisCta.label) + "</a>" +
+      '<a href="' + esc(copy.safeExitContactCta.href) + '" class="inline-flex items-center justify-center rounded-full border border-sage-deep/35 px-8 py-4 text-[0.9375rem] text-sage-dark transition hover:bg-sage-mist">' + esc(copy.safeExitContactCta.label) + "</a>" +
       "</div>" +
-      '<button type="button" data-action="restart" class="mt-6 text-sm text-muted underline-offset-4 hover:text-sage-deep hover:underline">Start the assessment again</button>'
+      '<button type="button" data-action="restart" class="mt-6 text-sm text-muted underline-offset-4 hover:text-sage-deep hover:underline">' + esc(copy.restartLabel) + "</button>"
     );
   }
 
@@ -169,21 +169,21 @@
       .join("");
 
     return (
-      '<p class="eyebrow">Your result</p>' +
+      '<p class="eyebrow">' + esc(copy.resultEyebrow) + "</p>" +
       '<div class="mt-5 flex flex-wrap items-end gap-x-6 gap-y-2"><p class="font-display text-6xl leading-none text-sage-deep">' + s.percentage + '%</p><p class="font-display text-3xl text-ink">' + esc(b.label) + "</p></div>" +
       '<p class="mt-5 max-w-2xl text-[1.0625rem] leading-[1.8] text-ink-soft">' + esc(b.summary) + "</p>" +
-      '<div class="mt-10 space-y-6"><h3 class="font-display text-2xl text-ink">Dimension by dimension</h3>' + rows + "</div>" +
+      '<div class="mt-10 space-y-6"><h3 class="font-display text-2xl text-ink">' + esc(copy.perDimensionTitle) + "</h3>" + rows + "</div>" +
       '<div class="mt-10 rounded-3xl bg-sage-mist p-7">' +
-      '<h3 class="font-display text-2xl text-ink">Your thinnest point: ' + esc(s.lowest.dimension.title) + "</h3>" +
+      '<h3 class="font-display text-2xl text-ink">' + esc(copy.lowestTitlePrefix) + " " + esc(s.lowest.dimension.title) + "</h3>" +
       '<p class="mt-3 text-[0.9375rem] leading-7 text-ink-soft">' + esc(s.lowest.dimension.thin) + "</p>" +
-      '<p class="mt-3 text-[0.9375rem] leading-7 text-ink-soft">If you do one thing with this result, make it this dimension. It is where the next difficulty is most likely to originate, and it is the cheapest thing on the list to work on now rather than later.</p>' +
+      '<p class="mt-3 text-[0.9375rem] leading-7 text-ink-soft">' + esc(copy.lowestAdvice) + "</p>" +
       "</div>" +
       '<div class="mt-9 flex flex-wrap gap-3">' +
       '<a href="' + data.ctaHref + '" class="inline-flex items-center justify-center rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark">' + esc(data.ctaLabel) + "</a>" +
-      '<button type="button" data-action="print" class="rounded-full border border-sage-deep/35 px-8 py-4 text-[0.9375rem] text-sage-dark transition hover:bg-sage-mist">Print or save as PDF</button>' +
+      '<button type="button" data-action="print" class="rounded-full border border-sage-deep/35 px-8 py-4 text-[0.9375rem] text-sage-dark transition hover:bg-sage-mist">' + esc(copy.printLabel) + "</button>" +
       "</div>" +
-      '<p class="mt-8 border-t border-line-soft pt-6 text-sm leading-6 text-muted">This is a reflective instrument, not a clinical diagnosis, and it has not been psychometrically validated. It is designed to start an honest conversation — with yourself, with a partner, or with me. <a href="/contact" class="text-sage-deep underline-offset-4 hover:underline">Book a free conversation</a> if you would like to go through it properly.</p>' +
-      '<button type="button" data-action="restart" class="mt-6 text-sm text-muted underline-offset-4 hover:text-sage-deep hover:underline">Take it again</button>'
+      '<p class="mt-8 border-t border-line-soft pt-6 text-sm leading-6 text-muted">' + esc(copy.disclaimer) + ' <a href="/contact" class="text-sage-deep underline-offset-4 hover:underline">' + esc(copy.disclaimerLinkLabel) + "</a> " + esc(copy.disclaimerSuffix) + "</p>" +
+      '<button type="button" data-action="restart" class="mt-6 text-sm text-muted underline-offset-4 hover:text-sage-deep hover:underline">' + esc(copy.retakeLabel) + "</button>"
     );
   }
 

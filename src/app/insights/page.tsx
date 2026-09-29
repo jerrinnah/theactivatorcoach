@@ -3,12 +3,11 @@ import Link from "next/link";
 import LetterSignup from "@/components/LetterSignup";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Blob, LeafBranch } from "@/components/ui/Ornaments";
-import { categories, formatArticleDate, sortedArticles } from "@/lib/insights";
+import { categories, formatArticleDate, insightsPage, sortedArticles } from "@/lib/insights";
 
 export const metadata: Metadata = {
-  title: "Insights",
-  description:
-    "Writing from the practice — on self-assessment, relational risk, in-laws and boundaries, faith and counselling, and what twenty-five years of marriage actually teaches.",
+  title: insightsPage.seo.title,
+  description: insightsPage.seo.description,
 };
 
 export default function InsightsPage() {
@@ -20,13 +19,12 @@ export default function InsightsPage() {
         <Blob className="pointer-events-none absolute -right-40 -top-44 h-[38rem] w-[38rem] text-sage-soft/45" />
         <LeafBranch className="pointer-events-none absolute -left-10 bottom-0 h-72 w-40 text-sage/20" />
         <div className="relative mx-auto max-w-4xl px-6 py-20 lg:px-8 lg:py-24">
-          <p className="eyebrow">Insights</p>
+          <p className="eyebrow">{insightsPage.eyebrow}</p>
           <h1 className="mt-5 font-display text-[2.75rem] leading-[1.05] text-ink sm:text-[3.75rem]">
-            Writing from the practice.
+            {insightsPage.title}
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-[1.8] text-ink-soft">
-            Not tips. Not listicles. Ideas I use in the room, written out properly, mostly because I
-            got tired of explaining them one person at a time.
+            {insightsPage.intro}
           </p>
           <div className="mt-9 flex flex-wrap gap-2">
             {categories.map((category) => (
@@ -50,7 +48,7 @@ export default function InsightsPage() {
           >
             <div>
               <span className="inline-flex rounded-full bg-sage-mist px-3 py-1 text-[0.6875rem] uppercase tracking-[0.14em] text-sage-deep">
-                Latest · {lead.category}
+                {insightsPage.leadBadgePrefix} · {lead.category}
               </span>
               <h2 className="mt-5 font-display text-[2.25rem] leading-tight text-ink sm:text-[2.75rem]">
                 {lead.title}
@@ -60,7 +58,7 @@ export default function InsightsPage() {
                 {formatArticleDate(lead.date)} · {lead.readingMinutes} min read
               </p>
               <p className="mt-6 text-sm text-sage-deep transition group-hover:translate-x-0.5">
-                Read the article →
+                {insightsPage.leadCtaLabel}
               </p>
             </div>
             <div className="relative hidden aspect-square items-center justify-center rounded-[2rem] bg-sage-mist lg:flex">
@@ -72,7 +70,10 @@ export default function InsightsPage() {
 
       <section className="border-t border-line bg-cream-deep">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8 lg:py-20">
-          <SectionHeading eyebrow="Archive" title="Everything else" />
+          <SectionHeading
+            eyebrow={insightsPage.archiveEyebrow}
+            title={insightsPage.archiveTitle}
+          />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {rest.map((article) => (
               <Link
@@ -100,9 +101,9 @@ export default function InsightsPage() {
         <div className="mx-auto max-w-4xl px-6 py-20 lg:px-8">
           <div className="rounded-4xl border border-line bg-white p-9 sm:p-12">
             <SectionHeading
-              eyebrow="The Activator Letter"
-              title="Get the next one by email."
-              intro="One idea from the practice, once a month. No sequences, no upsells, unsubscribe in one click."
+              eyebrow={insightsPage.letterEyebrow}
+              title={insightsPage.letterTitle}
+              intro={insightsPage.letterIntro}
             />
             <div className="mt-8">
               <LetterSignup />

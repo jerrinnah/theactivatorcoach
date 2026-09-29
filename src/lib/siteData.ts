@@ -42,3 +42,38 @@ export const beliefs: Belief[] = site.beliefs;
 
 export type ProcessStep = { step: string; title: string; body: string };
 export const processSteps: ProcessStep[] = site.processSteps;
+
+export const seo: {
+  tagline: string;
+  description: string;
+  shareDescription: string;
+  keywords: string[];
+} = site.seo;
+
+export const header: {
+  ctaLabel: string;
+  mobileCtaLabel: string;
+  currencyLabel: string;
+  menuLabel: string;
+} = site.header;
+
+export const footer: {
+  /** Rendered after the practitioner's full name and an em dash. */
+  bio: string;
+  workHeading: string;
+  learnHeading: string;
+  moreHeading: string;
+  emergencyNote: string;
+  crisisLinkLabel: string;
+  privacyLinkLabel: string;
+  credit: string;
+} = site.footer;
+
+export const notFound: {
+  /** Browser/tab title. The on-page headline is `title`. */
+  metaTitle: string;
+  title: string;
+  intro: string;
+  links: NavLink[];
+  homeLabel: string;
+} = site.notFound;

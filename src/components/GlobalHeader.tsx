@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { practitioner, siteNav } from "@/lib/siteData";
+import { header as copy, practitioner, siteNav } from "@/lib/siteData";
 import CurrencyToggle from "@/components/CurrencyToggle";
 import { PsiBadge } from "@/components/ui/Ornaments";
 
@@ -55,7 +55,7 @@ export default function GlobalHeader() {
               href="/contact"
               className="rounded-full bg-sage-deep px-5 py-2.5 text-sm font-medium text-white shadow-sm shadow-sage-deep/20 transition hover:bg-sage-dark"
             >
-              Book a conversation
+              {copy.ctaLabel}
             </Link>
           </div>
 
@@ -66,7 +66,7 @@ export default function GlobalHeader() {
             aria-expanded={open}
             aria-controls="mobile-nav"
           >
-            {open ? "Close" : "Menu"}
+            {open ? "Close" : copy.menuLabel}
             <span aria-hidden="true" className="text-xs">
               {open ? "✕" : "☰"}
             </span>
@@ -98,7 +98,9 @@ export default function GlobalHeader() {
               </Link>
             </nav>
             <div className="mt-5 flex items-center justify-between border-t border-line pt-5">
-              <span className="text-xs uppercase tracking-[0.2em] text-muted">Show fees in</span>
+              <span className="text-xs uppercase tracking-[0.2em] text-muted">
+                {copy.currencyLabel}
+              </span>
               <CurrencyToggle />
             </div>
           </div>
@@ -111,7 +113,7 @@ export default function GlobalHeader() {
           href="/contact"
           className="mx-auto flex max-w-md items-center justify-center rounded-full bg-sage-deep px-5 py-3.5 text-sm font-medium text-white shadow-lg shadow-sage-deep/20 transition hover:bg-sage-dark"
         >
-          Book a free conversation
+          {copy.mobileCtaLabel}
         </Link>
       </div>
     </>

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { requireSuperAdmin } from "@/lib/auth";
 import { record } from "@/lib/audit";
 import { missingConfig, readJson } from "@/lib/github";
-import { fileForSlug } from "@/lib/content-files";
+import { fileForSlug, notesFor } from "@/lib/content-files";
 import { ContentEditor } from "@/components/ContentEditor";
 import type { Json } from "@/components/JsonFields";
 
@@ -81,6 +81,14 @@ export default async function ContentFilePage({
           {file.title}
         </h1>
         <p className="mt-1 max-w-2xl text-sm text-muted">{file.blurb}</p>
+        {notesFor(file).map((note) => (
+          <p
+            key={note}
+            className="mt-3 max-w-2xl border-l-2 border-amber-300 bg-amber-50/60 py-2 pl-3 text-sm text-slate-700"
+          >
+            {note}
+          </p>
+        ))}
       </div>
 
       <ContentEditor

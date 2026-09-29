@@ -1,0 +1,36 @@
+{
+  "seo": {
+    "title": "The Activator Letter",
+    "description": "One idea from the practice, written out properly, once a month. No sequences, no upsells, unsubscribe in one click."
+  },
+  "hero": {
+    "eyebrow": "The Activator Letter",
+    "title": "One letter a month. No noise.",
+    "intro": "One idea from the practice, written out properly and sent once a month. It is the same material I use in the room — occasionally something I have changed my mind about, which in my experience is the more interesting kind of letter."
+  },
+  "promises": {
+    "title": "What you are agreeing to",
+    "items": [
+      {
+        "title": "Once a month",
+        "body": "Not weekly, not whenever something occurs to me. One letter, at the start of the month."
+      },
+      {
+        "title": "One idea, properly",
+        "body": "A single thing from the practice, written at enough length to actually be useful. Not tips."
+      },
+      {
+        "title": "No sequences",
+        "body": "You will not be dropped into an automated funnel. Nothing gets sold to you between letters."
+      },
+      {
+        "title": "One click out",
+        "body": "Unsubscribe is in every email and works immediately. Your address is never shared or sold."
+      }
+    ]
+  },
+  "samples": {
+    "title": "The kind of thing you’ll get",
+    "intro": "These went out as letters first. If they read like something you want in your inbox, sign up above."
+  }
+}

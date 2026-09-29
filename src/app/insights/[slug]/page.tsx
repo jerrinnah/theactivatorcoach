@@ -5,7 +5,7 @@ import ArticleBody from "@/components/ArticleBody";
 import LetterSignup from "@/components/LetterSignup";
 import { ButtonLink } from "@/components/ui/Button";
 import { LeafBranch } from "@/components/ui/Ornaments";
-import { articles, formatArticleDate, getArticle } from "@/lib/insights";
+import { articles, formatArticleDate, getArticle, insightsPage } from "@/lib/insights";
 import { practitioner } from "@/lib/siteData";
 
 export function generateStaticParams() {
@@ -53,7 +53,7 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
               href="/insights"
               className="text-sm text-muted underline-offset-4 transition hover:text-sage-deep hover:underline"
             >
-              ← All insights
+              {insightsPage.articleBackLabel}
             </Link>
             <p className="eyebrow mt-8">{article.category}</p>
             <h1 className="mt-4 font-display text-[2.5rem] leading-[1.08] text-ink sm:text-[3.25rem]">
@@ -73,15 +73,17 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
 
             <div className="mt-14 rounded-4xl bg-sage-mist p-8 sm:p-10">
               <h2 className="font-display text-[1.75rem] leading-snug text-ink">
-                If any of this landed, it is worth a conversation.
+                {insightsPage.articleCtaTitle}
               </h2>
               <p className="mt-3 text-[0.9375rem] leading-7 text-ink-soft">
-                Fifteen minutes, no charge, no obligation, and nothing goes on record.
+                {insightsPage.articleCtaIntro}
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <ButtonLink href="/contact">Book a free conversation</ButtonLink>
-                <ButtonLink href="/self-audit" variant="outline">
-                  Take the Self-Audit
+                <ButtonLink href={insightsPage.articleCtaPrimary.href}>
+                  {insightsPage.articleCtaPrimary.label}
+                </ButtonLink>
+                <ButtonLink href={insightsPage.articleCtaSecondary.href} variant="outline">
+                  {insightsPage.articleCtaSecondary.label}
                 </ButtonLink>
               </div>
             </div>
@@ -91,7 +93,7 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
 
       <section className="border-t border-line bg-cream-deep">
         <div className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
-          <h2 className="font-display text-3xl text-ink">Read next</h2>
+          <h2 className="font-display text-3xl text-ink">{insightsPage.readNextTitle}</h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             {suggestions.map((item) => (
               <Link
@@ -105,7 +107,7 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
                 <h3 className="mt-4 font-display text-2xl leading-snug text-ink">{item.title}</h3>
                 <p className="mt-3 flex-1 text-sm leading-7 text-muted">{item.excerpt}</p>
                 <span className="mt-5 text-sm text-sage-deep transition group-hover:translate-x-0.5">
-                  Read →
+                  {insightsPage.readNextLabel}
                 </span>
               </Link>
             ))}
@@ -116,8 +118,10 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
       <section className="bg-cream">
         <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
           <div className="rounded-4xl border border-line bg-white p-8 sm:p-10">
-            <p className="eyebrow">The Activator Letter</p>
-            <h2 className="mt-3 font-display text-3xl text-ink">One letter a month. No noise.</h2>
+            <p className="eyebrow">{insightsPage.letterEyebrow}</p>
+            <h2 className="mt-3 font-display text-3xl text-ink">
+              {insightsPage.articleLetterTitle}
+            </h2>
             <div className="mt-6">
               <LetterSignup />
             </div>

@@ -1,0 +1,53 @@
+{
+  "seo": {
+    "title": "Books",
+    "description": "The ABC of Marriage — an alphabetical guide to activating bliss in your marriage, by Lauretta & Johnson Ogbum.",
+    "shareTitle": "The ABC of Marriage",
+    "shareDescription": "An alphabetical guide to activating bliss in your marriage, by Lauretta & Johnson Ogbum."
+  },
+  "hero": {
+    "eyebrow": "Books",
+    "title": "The ABC of Marriage",
+    "subtitle": "An alphabetical guide to activating bliss in your marriage.",
+    "byline": "By Lauretta & Johnson Ogbum",
+    "paragraphs": [
+      "A bestselling book on marriage, written by two people who have been in one for twenty-five years — and who work with other people’s for a living.",
+      "It is organised alphabetically rather than as an argument, which means you can open it at whatever you happen to need this week and put it down again. Marriages are not repaired in one sitting, and the book does not pretend otherwise."
+    ],
+    "primaryCta": { "label": "Ask about copies", "href": "/contact" },
+    "secondaryCtaLabel": "Bulk & church orders",
+    "note": "Retail links are being finalised — email in the meantime and copies will be arranged directly.",
+    "cover": {
+      "image": "/abc-of-marriage.jpg",
+      "alt": "Front cover of The ABC of Marriage by Lauretta and Johnson Ogbum"
+    }
+  },
+  "uses": {
+    "eyebrow": "How people use it",
+    "title": "Four ways it gets read",
+    "intro": "An alphabetical guide is a reference, not a course. That is deliberate — it survives being picked up and put down, which is the only reading pattern a busy marriage actually supports.",
+    "items": [
+      {
+        "title": "For couples",
+        "body": "Read a letter at a time, together. The alphabetical structure means you can start anywhere and finish nothing — which is exactly how most couples actually read."
+      },
+      {
+        "title": "For marriage preparation",
+        "body": "Used alongside the Before You Marry programme as a shared reference, so both of you are working from the same language."
+      },
+      {
+        "title": "For churches and groups",
+        "body": "The structure lends itself to small-group study — one entry per session. Bulk pricing is available on request."
+      },
+      {
+        "title": "As a gift",
+        "body": "Frequently bought for weddings, anniversaries and engagements. Ask about signed copies when you order."
+      }
+    ]
+  },
+  "letter": {
+    "eyebrow": "The Activator Letter",
+    "title": "Hear about new writing and new editions.",
+    "intro": "One letter a month from the practice. Subscribers hear about new work first."
+  }
+}

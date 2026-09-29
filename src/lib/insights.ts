@@ -35,3 +35,26 @@ export function formatArticleDate(date: string): string {
     timeZone: "UTC",
   });
 }
+
+/** Copy for the /insights index and the article template itself. */
+export const insightsPage: {
+  seo: { title: string; description: string };
+  eyebrow: string;
+  title: string;
+  intro: string;
+  leadBadgePrefix: string;
+  leadCtaLabel: string;
+  archiveEyebrow: string;
+  archiveTitle: string;
+  letterEyebrow: string;
+  letterTitle: string;
+  letterIntro: string;
+  articleCtaTitle: string;
+  articleCtaIntro: string;
+  articleBackLabel: string;
+  articleLetterTitle: string;
+  articleCtaPrimary: { label: string; href: string };
+  articleCtaSecondary: { label: string; href: string };
+  readNextTitle: string;
+  readNextLabel: string;
+} = insights.page;

@@ -5,49 +5,13 @@ import CurrencyToggle from "@/components/CurrencyToggle";
 import { ButtonLink } from "@/components/ui/Button";
 import { Blob, LeafBranch } from "@/components/ui/Ornaments";
 import { serviceCards } from "@/lib/siteData";
-import type { PriceKey } from "@/lib/pricing";
+import { servicePageCopy as copy, type ServicePage } from "@/lib/servicePages";
 
-export interface ServiceSection {
-  title: string;
-  content: string[];
-  /** Render the content as a checklist rather than paragraphs. */
-  list?: boolean;
-}
-
-export interface Fee {
-  label: string;
-  amount: PriceKey;
-  note?: string;
-}
-
-interface ServicePageShellProps {
-  eyebrow: string;
-  title: string;
-  heroCopy: string[];
-  format: string[];
-  fees: Fee[];
-  feeNote?: string;
-  sections: ServiceSection[];
-  ctaLabel: string;
-  ctaHref: string;
-  ctaNote?: string;
-  /** Hrefs of other services to surface at the foot of the page. */
-  related?: string[];
-}
-
-export default function ServicePageShell({
-  eyebrow,
-  title,
-  heroCopy,
-  format,
-  fees,
-  feeNote,
-  sections,
-  ctaLabel,
-  ctaHref,
-  ctaNote,
-  related = [],
-}: ServicePageShellProps) {
+export default function ServicePageShell({ page }: { page: ServicePage }) {
+  const {
+    eyebrow, title, heroCopy, format, fees, feeNote, sections,
+    ctaLabel, ctaNote, related,
+  } = page;
   const relatedServices = serviceCards.filter((card) => related.includes(card.href));
 
   return (
@@ -69,7 +33,7 @@ export default function ServicePageShell({
             ))}
           </div>
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <ButtonLink href={ctaHref} size="lg">
+            <ButtonLink href={copy.closingCta.href} size="lg">
               {ctaLabel}
             </ButtonLink>
             {ctaNote ? <p className="text-sm text-muted">{ctaNote}</p> : null}
@@ -82,7 +46,7 @@ export default function ServicePageShell({
         <div className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
           <div className="grid gap-10 rounded-4xl border border-line bg-white p-8 sm:p-10 lg:grid-cols-2">
             <div>
-              <h2 className="font-display text-3xl text-ink">Format</h2>
+              <h2 className="font-display text-3xl text-ink">{copy.formatTitle}</h2>
               <ul className="mt-5 space-y-3">
                 {format.map((line) => (
                   <li key={line} className="flex gap-3 text-[0.9375rem] leading-7 text-ink-soft">
@@ -94,7 +58,7 @@ export default function ServicePageShell({
             </div>
             <div className="lg:border-l lg:border-line lg:pl-10">
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <h2 className="font-display text-3xl text-ink">Investment</h2>
+                <h2 className="font-display text-3xl text-ink">{copy.feesTitle}</h2>
                 <CurrencyToggle />
               </div>
               <dl className="mt-5 space-y-4">
@@ -161,15 +125,14 @@ export default function ServicePageShell({
         <LeafBranch className="pointer-events-none absolute -right-8 -top-6 h-72 w-40 rotate-12 text-sage/25" />
         <div className="relative mx-auto max-w-3xl px-6 py-20 text-center lg:px-8">
           <h2 className="font-display text-[2.25rem] leading-tight text-ink sm:text-[2.75rem]">
-            Start with a free conversation.
+            {copy.closingTitle}
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-[1.0625rem] leading-[1.75] text-ink-soft">
-            Fifteen minutes, no charge, no obligation, and nothing goes on record. You describe what
-            is happening; I tell you honestly whether I am the right person for it.
+            {copy.closingIntro}
           </p>
           <div className="mt-8 flex justify-center">
-            <ButtonLink href="/contact" size="lg">
-              Book that conversation
+            <ButtonLink href={copy.closingCta.href} size="lg">
+              {copy.closingCta.label}
             </ButtonLink>
           </div>
         </div>
@@ -178,7 +141,7 @@ export default function ServicePageShell({
       {relatedServices.length > 0 ? (
         <section className="border-t border-line bg-cream">
           <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-            <h2 className="font-display text-3xl text-ink">You might also be looking at</h2>
+            <h2 className="font-display text-3xl text-ink">{copy.relatedTitle}</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {relatedServices.map((card) => (
                 <Link
@@ -189,7 +152,7 @@ export default function ServicePageShell({
                   <h3 className="font-display text-2xl text-ink">{card.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-muted">{card.tagline}</p>
                   <p className="mt-6 text-sm text-sage-deep transition group-hover:translate-x-0.5">
-                    Read more →
+                    {copy.relatedCtaLabel}
                   </p>
                 </Link>
               ))}

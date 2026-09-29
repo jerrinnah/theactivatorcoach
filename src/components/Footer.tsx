@@ -1,11 +1,18 @@
 import Link from "next/link";
-import { contactDetails, footerSections, practitioner, whatsappLink } from "@/lib/siteData";
+import {
+  contactDetails,
+  footer as copy,
+  footerSections,
+  practitioner,
+  whatsappLink,
+} from "@/lib/siteData";
 import { LeafBranch, PsiBadge } from "@/components/ui/Ornaments";
+import Rich from "@/components/ui/Rich";
 
 const columns = [
-  { heading: "Work With Me", items: footerSections.work },
-  { heading: "Learn", items: footerSections.learn },
-  { heading: "More", items: footerSections.more },
+  { heading: copy.workHeading, items: footerSections.work },
+  { heading: copy.learnHeading, items: footerSections.learn },
+  { heading: copy.moreHeading, items: footerSections.more },
 ];
 
 export default function Footer() {
@@ -21,8 +28,7 @@ export default function Footer() {
             <span className="font-display text-2xl text-white">{practitioner.logoName}</span>
           </div>
           <p className="text-sm leading-7 text-sage-soft/85">
-            {practitioner.fullName} — psychotherapist, founder of the Activator Coaching Academy, and
-            co-author of <em>The ABC of Marriage</em>.
+            {practitioner.fullName} — <Rich text={copy.bio} />
           </p>
           <div className="space-y-1.5 text-sm text-sage-soft/75">
             <p>{contactDetails.location}</p>
@@ -73,15 +79,12 @@ export default function Footer() {
 
       <div className="relative border-t border-white/10 px-6 py-8 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <p className="max-w-2xl text-sm leading-6 text-sage-soft/70">
-            This practice is not an emergency service. If you or someone you know is in immediate
-            danger or at risk of harm, please contact emergency services or a crisis line now.
-          </p>
+          <p className="max-w-2xl text-sm leading-6 text-sage-soft/70">{copy.emergencyNote}</p>
           <Link
             href="/crisis"
             className="shrink-0 rounded-full border border-white/25 px-5 py-2.5 text-sm text-white transition hover:bg-white/10"
           >
-            Crisis resources →
+            {copy.crisisLinkLabel}
           </Link>
         </div>
         <div className="mx-auto mt-8 flex max-w-7xl flex-col gap-3 text-xs text-sage-soft/50 sm:flex-row sm:items-center sm:justify-between">
@@ -90,9 +93,9 @@ export default function Footer() {
           </p>
           <div className="flex gap-5">
             <Link href="/privacy" className="transition hover:text-white">
-              Privacy & confidentiality
+              {copy.privacyLinkLabel}
             </Link>
-            <span>Website by OctaveDev</span>
+            <span>{copy.credit}</span>
           </div>
         </div>
       </div>

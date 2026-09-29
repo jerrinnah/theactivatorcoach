@@ -1,0 +1,64 @@
+{
+  "seo": {
+    "title": "Crisis & Safety Resources",
+    "description": "If you are in immediate danger or thinking about suicide, this page lists where to get help now. This practice is not an emergency service."
+  },
+  "hero": {
+    "eyebrow": "Crisis & safety",
+    "title": "If you are in danger right now, do not wait for me.",
+    "intro": "This practice is not an emergency service. Enquiries are answered within two working days, which is not fast enough for an emergency. What follows is where to go instead.",
+    "emergencyLabel": "Call 112 — Nigeria emergency",
+    "emergencyHref": "tel:112",
+    "note": "Outside Nigeria, use your local emergency number — 999 in the UK, 911 in the US and Canada."
+  },
+  "resources": {
+    "title": "Where to get help now",
+    "items": [
+      {
+        "name": "Emergency services (Nigeria)",
+        "detail": "112 — the national toll-free emergency number, reachable from any phone.",
+        "action": "Call 112",
+        "href": "tel:112",
+        "urgent": true
+      },
+      {
+        "name": "Find a helpline — worldwide",
+        "detail": "A free directory of verified crisis lines in almost every country, including the UK, US, Canada and the Gulf. Useful if you are outside Nigeria.",
+        "action": "findahelpline.com",
+        "href": "https://findahelpline.com",
+        "urgent": false
+      }
+    ],
+    "note": "If you are in Port Harcourt or elsewhere in Nigeria and need a local service — domestic violence, sexual assault, or mental health — your nearest teaching hospital’s emergency department can direct you, and 112 can connect you to police and medical response."
+  },
+  "ifUnsafe": {
+    "title": "If someone is hurting you",
+    "items": [
+      "If you can leave safely, leave. Go to a public place, a trusted person's home, or a police station.",
+      "Tell one person outside the household what is happening. Isolation is the condition that harm depends on.",
+      "Keep identification, money and a phone somewhere you can reach quickly, and if it is safe to, keep a charged phone on you.",
+      "Note that couples counselling is not a safe first step where there is violence or coercion. It can increase risk. Individual support comes first."
+    ]
+  },
+  "ifSuicidal": {
+    "title": "If you are thinking about suicide",
+    "items": [
+      "You do not have to be certain, or in immediate danger, to deserve help. Wanting it to stop is enough of a reason to tell someone.",
+      "Tell one person tonight — a friend, a family member, a doctor, or a helpline. Saying it out loud to another person is the single most useful thing available right now.",
+      "If you have a plan or the means to act, treat this as an emergency and call 112 or go to your nearest hospital.",
+      "Try not to be alone while you feel this way. Ask someone to stay, or go to where other people are."
+    ]
+  },
+  "coveringTracks": {
+    "title": "Covering your tracks",
+    "paragraphs": [
+      "If you are reading this on a device someone else can access, the **Quick exit** button on this page leaves immediately and removes this site from your back button. Pressing **Escape three times** does the same thing.",
+      "It does not clear your browsing history. To do that, use your browser’s history settings — or use a private/incognito window, or a device the other person cannot reach, such as a friend’s phone or a library computer."
+    ]
+  },
+  "whenSafe": {
+    "title": "When you are safe",
+    "intro": "When the immediate danger has passed, there is work worth doing and you are welcome to bring it here. Nothing you say obliges you to book anything.",
+    "cta": { "label": "Contact Dr. Ogbum", "href": "/contact" }
+  }
+}

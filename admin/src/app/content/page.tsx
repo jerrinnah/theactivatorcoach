@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { requireSuperAdmin } from "@/lib/auth";
 import { isConfigured, missingConfig, latestDeployment } from "@/lib/github";
-import { CONTENT_FILES } from "@/lib/content-files";
+import { CONTENT_FILES, CONTENT_GROUPS } from "@/lib/content-files";
 
 export const dynamic = "force-dynamic";
 
@@ -90,19 +90,27 @@ export default async function ContentPage() {
             content/uploads/
           </p>
         </Link>
-
-        {CONTENT_FILES.map((f) => (
-          <Link
-            key={f.slug}
-            href={`/content/${f.slug}`}
-            className="card p-6 transition hover:shadow-md"
-          >
-            <h2 className="text-lg font-semibold tracking-tight">{f.title}</h2>
-            <p className="mt-2 text-sm text-muted">{f.blurb}</p>
-            <p className="mt-4 font-mono text-xs text-slate-400">{f.path}</p>
-          </Link>
-        ))}
       </div>
+
+      {CONTENT_GROUPS.map((group) => (
+        <section key={group.id} className="mt-10">
+          <h2 className="text-lg font-semibold tracking-tight">{group.title}</h2>
+          <p className="mt-1 max-w-2xl text-sm text-muted">{group.blurb}</p>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            {CONTENT_FILES.filter((f) => f.group === group.id).map((f) => (
+              <Link
+                key={f.slug}
+                href={`/content/${f.slug}`}
+                className="card p-6 transition hover:shadow-md"
+              >
+                <h3 className="text-lg font-semibold tracking-tight">{f.title}</h3>
+                <p className="mt-2 text-sm text-muted">{f.blurb}</p>
+                <p className="mt-4 font-mono text-xs text-slate-400">{f.path}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ))}
     </div>
   );
 }
