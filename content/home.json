@@ -1,0 +1,87 @@
+{
+  "hero": {
+    "eyebrow": "Assessment · Repair · Relational risk",
+    "titleLines": ["Where is your", "**relationship** exposed?"],
+    "intro": "Psychotherapy and relational risk assessment for individuals and couples. Twenty-five years of practice, an assessor’s discipline, and no interest in deciding who is right.",
+    "primaryCta": { "label": "Book a free conversation", "href": "/contact" },
+    "secondaryCta": { "label": "Take the Self-Audit", "href": "/self-audit" },
+    "reassurance": "Confidential · Online worldwide · In person in Port Harcourt",
+    "portrait": {
+      "image": null,
+      "alt": "Dr. Lauretta Ogbum, psychotherapist",
+      "label": "Dr. Lauretta Ogbum"
+    },
+    "badge": {
+      "value": "25 yrs",
+      "caption": "Married, and in practice long enough to have made the ordinary mistakes first."
+    }
+  },
+  "aboutPreview": {
+    "eyebrow": "About me",
+    "title": "I did not begin in psychology.",
+    "paragraphs": [
+      "My early career was in the energy sector, in security and risk assessment. My job was to look at a system and answer one question honestly: where is this exposed, and what happens when that point fails?",
+      "Then I started noticing the same pattern in people. Capable, senior, accomplished people would go home to relationships they had no framework for at all. No assessment, no maintenance, no repair protocol. Just hope."
+    ],
+    "quote": "“Catastrophes are almost never sudden. They are the visible moment of a failure that has been quietly accumulating somewhere nobody was looking.”",
+    "cta": { "label": "Read my full story", "href": "/about" },
+    "credentialLine": "PhD, Psychology · Founder, Activator Coaching Academy",
+    "portrait": {
+      "image": null,
+      "alt": "Dr. Lauretta Ogbum in her consulting room",
+      "label": "In the consulting room"
+    }
+  },
+  "services": {
+    "eyebrow": "How I can help",
+    "title": "Six ways to work together",
+    "intro": "Every one of them starts the same way — a free fifteen-minute conversation, with no charge, no obligation, and nothing on record.",
+    "cta": { "label": "Compare all services and fees", "href": "/work-with-me" }
+  },
+  "assessments": {
+    "eyebrow": "Start here",
+    "title": "Two instruments, both free",
+    "intro": "Neither is a diagnosis and neither will tell you what to do. They show you, in writing, where you are solid and where you are thin — which is the only place real work can start.",
+    "cards": [
+      {
+        "eyebrow": "Free · 10 minutes · 15 questions",
+        "title": "The Self-Audit",
+        "body": "Before you assess anyone else, assess yourself. Five dimensions — self-knowledge, regulation, inherited patterns, capacity, and repair.",
+        "href": "/self-audit",
+        "cta": "Begin the Self-Audit"
+      },
+      {
+        "eyebrow": "Free · 12 minutes · 15 questions",
+        "title": "The Relational Risk Assessment",
+        "body": "Where is your relationship exposed, and what happens when that point fails? The five exposure points that account for most of what arrives in my room.",
+        "href": "/relational-risk-assessment",
+        "cta": "Run the assessment"
+      }
+    ]
+  },
+  "beliefs": {
+    "eyebrow": "What I believe",
+    "title": "Four things I will say out loud"
+  },
+  "process": {
+    "eyebrow": "What happens",
+    "title": "Four steps, and you can stop at any of them",
+    "intro": "Nothing here is a commitment you cannot withdraw from. The first step costs nothing and goes nowhere on record."
+  },
+  "insights": {
+    "eyebrow": "Insights",
+    "title": "Writing from the practice",
+    "cta": { "label": "All articles", "href": "/insights" }
+  },
+  "letter": {
+    "eyebrow": "The Activator Letter",
+    "title": "One letter a month. No noise.",
+    "intro": "One idea from the practice, written properly, sent once a month. No sequences, no upsells, and you can leave in one click."
+  },
+  "closing": {
+    "titleLines": ["You do not have to", "work this out alone."],
+    "intro": "Fifteen minutes, no charge, no obligation. You describe what is happening; I tell you honestly whether I am the right person for it — and if I am not, who is.",
+    "primaryCta": { "label": "Book a free conversation", "href": "/contact" },
+    "whatsappCtaLabel": "Message on WhatsApp"
+  }
+}

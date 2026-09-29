@@ -4,16 +4,12 @@ import { HeadOutline, LeafBranch } from "@/components/ui/Ornaments";
 /**
  * Photography slot.
  *
- * No portrait has been supplied yet, so every instance currently renders a
- * designed placeholder rather than a broken image. To use real photography:
- * drop the files into /public and set the paths in `portraits` below — the
- * layout, cropping and ornament work is already done.
+ * The image path, alt text and placeholder label all come from the content
+ * files, so a portrait is set by uploading it in the admin's Images library
+ * and pasting the path into that page's portrait field. With no image set
+ * this renders a designed placeholder rather than a broken image — the
+ * layout, cropping and ornament work is already done either way.
  */
-export const portraits = {
-  hero: null as string | null, // e.g. "/lauretta-hero.jpg"
-  about: null as string | null, // e.g. "/lauretta-portrait.jpg"
-} as const;
-
 interface PortraitFrameProps {
   src: string | null;
   alt: string;

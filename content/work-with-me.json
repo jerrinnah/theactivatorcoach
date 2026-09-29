@@ -1,0 +1,90 @@
+{
+  "seo": {
+    "title": "Work With Me",
+    "description": "Six ways to work with Dr. Lauretta Ogbum — individual and couples therapy, premarital work, the Annual Review, Intensives and Diaspora sessions. Fees shown in ₦, £ or $."
+  },
+  "hero": {
+    "eyebrow": "Work with me",
+    "title": "Every piece of work here starts the same way.",
+    "intro": "A free fifteen-minute conversation. There is no charge, no obligation, and nothing goes on record. You describe what is happening; I tell you honestly which of these — if any — is the right one.",
+    "cta": { "label": "Book that conversation", "href": "/contact" }
+  },
+  "services": {
+    "eyebrow": "The six services",
+    "title": "Choose where to start"
+  },
+  "fees": {
+    "eyebrow": "Fees",
+    "title": "Side by side",
+    "toggleLabel": "Show fees in",
+    "tableCaption": "Comparison of services, who each is for, session length and fee",
+    "columns": {
+      "service": "Service",
+      "who": "Who it’s for",
+      "format": "Format",
+      "fee": "Fee"
+    },
+    "rows": [
+      {
+        "service": "Individual Therapy",
+        "href": "/individual-therapy",
+        "who": "One person, patterns that repeat",
+        "length": "50 min · 8–16 sessions",
+        "price": "individualSession",
+        "priceLabel": "per session"
+      },
+      {
+        "service": "Couples Therapy",
+        "href": "/couples-therapy",
+        "who": "Two people, still willing",
+        "length": "75–90 min · 8–12 sessions",
+        "price": "couplesSession",
+        "priceLabel": "per session"
+      },
+      {
+        "service": "Before You Marry",
+        "href": "/before-you-marry",
+        "who": "Engaged, or seriously considering",
+        "length": "5 × 75 min",
+        "price": "beforeYouMarry",
+        "priceLabel": "full programme"
+      },
+      {
+        "service": "The Annual Review",
+        "href": "/annual-review",
+        "who": "Couples who are genuinely fine",
+        "length": "120 min · yearly",
+        "price": "annualReview",
+        "priceLabel": "per review"
+      },
+      {
+        "service": "The Intensive",
+        "href": "/the-intensive",
+        "who": "Crisis, or no time for weekly",
+        "length": "1–2 full days",
+        "price": "intensiveOneDay",
+        "priceLabel": "from, one day"
+      },
+      {
+        "service": "Diaspora Sessions",
+        "href": "/diaspora",
+        "who": "Nigerians abroad",
+        "length": "50–90 min · out of hours",
+        "price": "diasporaIndividual",
+        "priceLabel": "from, individual"
+      }
+    ],
+    "note": "Block and programme rates carry a saving on the per-session fee — see each service page for the full breakdown. A limited number of reduced-fee places are held at any time; if cost is the only thing in the way, say so in your first conversation."
+  },
+  "process": {
+    "eyebrow": "What happens",
+    "title": "Four steps, and you can stop at any of them",
+    "intro": "Nothing here is a commitment you cannot withdraw from."
+  },
+  "closing": {
+    "title": "Not sure which one?",
+    "intro": "Most people aren’t. That is what the free conversation is for — and if you would rather look at it privately first, either assessment will tell you a great deal in ten minutes.",
+    "primaryCta": { "label": "Book a free conversation", "href": "/contact" },
+    "secondaryCta": { "label": "Take the Self-Audit", "href": "/self-audit" }
+  }
+}

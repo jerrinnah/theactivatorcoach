@@ -1,4 +1,16 @@
 {
+  "pageCopy": {
+    "formatTitle": "Format",
+    "feesTitle": "Investment",
+    "closingTitle": "Start with a free conversation.",
+    "closingIntro": "Fifteen minutes, no charge, no obligation, and nothing goes on record. You describe what is happening; I tell you honestly whether I am the right person for it.",
+    "closingCta": {
+      "label": "Book that conversation",
+      "href": "/contact"
+    },
+    "relatedTitle": "You might also be looking at",
+    "relatedCtaLabel": "Read more →"
+  },
   "servicePages": [
     {
       "path": "/individual-therapy",

@@ -1,0 +1,76 @@
+{
+  "seo": {
+    "title": "About",
+    "description": "Dr. Lauretta Ogbum came into psychotherapy from risk assessment in the energy sector. Twenty-five years married, PhD in Psychology, and an assessor's discipline applied to relationships."
+  },
+  "hero": {
+    "eyebrow": "From risk assessment to the human heart",
+    "title": "I did not begin in psychology.",
+    "paragraphs": [
+      "My early career was in the energy sector, in security and risk assessment. My job was to look at a system and answer one question honestly: where is this exposed, and what happens when that point fails?",
+      "Catastrophes are almost never sudden — they are the visible moment of a failure that has been quietly accumulating for a long time, in a place nobody was looking.",
+      "Then I started noticing the same pattern in people. Capable, senior, accomplished people would go home to relationships they had no framework for at all: no assessment, no maintenance, no repair protocol. Just hope, and the assumption that love would cover what nobody had ever been taught to build.",
+      "I have spent the years since bringing an assessor’s discipline to work that is usually done with nothing but good intentions."
+    ],
+    "portrait": {
+      "image": null,
+      "alt": "Dr. Lauretta Ogbum, psychotherapist",
+      "label": "Dr. Lauretta Ogbum"
+    }
+  },
+  "beliefs": {
+    "eyebrow": "What I believe",
+    "title": "Four things I will say out loud",
+    "intro": "These are not marketing lines. They are the assumptions everything in my practice is built on, and it is fair for you to know them before you book anything."
+  },
+  "notForYou": {
+    "eyebrow": "Being straight with you",
+    "title": "When I am not the right person",
+    "intro": "I would rather tell you this now than take a booking and disappoint you at session three. If any of the following is what you are looking for, I am not it — and in the free conversation I will say so and point you somewhere better.",
+    "items": [
+      "You want someone to confirm that your partner is the problem.",
+      "You want a verdict on whether to stay or go, delivered by me.",
+      "You want it fixed in three sessions because twenty years is inconvenient.",
+      "You want a diagnosis of somebody who is not in the room."
+    ]
+  },
+  "credentials": {
+    "eyebrow": "Credentials",
+    "title": "Training, practice and public work",
+    "items": [
+      {
+        "label": "PhD, Psychology",
+        "detail": "Doctoral training in psychology and psychotherapeutic practice."
+      },
+      {
+        "label": "Executive Council, Life Coaches Association of Nigeria",
+        "detail": "Serving on the executive council of the national professional body."
+      },
+      {
+        "label": "Founder & Lead Therapist, Activator Coaching Academy",
+        "detail": "Training coaches, pastoral workers and practitioners in relational assessment and repair."
+      },
+      {
+        "label": "Bestselling co-author — The ABC of Marriage",
+        "detail": "An alphabetical guide to activating bliss in your marriage, written with Johnson Ogbum."
+      },
+      {
+        "label": "Pan-African Impact & Leadership Laureate nominee",
+        "detail": "Recognised for work on relational health across the continent and diaspora."
+      },
+      {
+        "label": "Featured in Her Network",
+        "detail": "Writing and commentary on relationships, risk, and the private cost of public careers."
+      }
+    ]
+  },
+  "closing": {
+    "title": "Twenty-five years married.",
+    "intro": "Which does not make me an authority on your marriage. It does mean I have made most of the ordinary mistakes personally, before I ever saw them professionally.",
+    "primaryCta": { "label": "Book a free conversation", "href": "/contact" },
+    "secondaryCta": {
+      "label": "Nine things I’d tell my younger self",
+      "href": "/insights/twenty-five-years-married"
+    }
+  }
+}

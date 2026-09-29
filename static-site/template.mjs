@@ -9,10 +9,16 @@ import theme from "../content/theme.json" with { type: "json" };
  */
 
 const SRC = new URL("../src/lib/", import.meta.url).pathname;
-const { practitioner, siteNav, footerSections, contactDetails, whatsappLink, trustItems } =
-  await import(SRC + "siteData.ts");
+const {
+  practitioner, siteNav, footerSections, contactDetails, whatsappLink, trustItems,
+  seo, header: headerCopy, footer: footerCopy, notFound,
+} = await import(SRC + "siteData.ts");
+const { parseInline } = await import(SRC + "richText.ts");
 
-export { practitioner, siteNav, footerSections, contactDetails, whatsappLink, trustItems };
+export {
+  practitioner, siteNav, footerSections, contactDetails, whatsappLink, trustItems,
+  seo, headerCopy, footerCopy, notFound,
+};
 
 /**
  * Canonical origin for this site, no trailing slash. Used for canonical tags,
@@ -29,6 +35,33 @@ export function esc(value) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 }
+
+/**
+ * Inline emphasis from the content files. Escape first, then apply the
+ * markers, so `**` in copy can never introduce markup of its own. In a display
+ * heading `strong` paints the accent colour rather than bolding — the React
+ * side does the same, see src/components/ui/Rich.tsx.
+ *
+ * `strongClass` must be a utility that already appears in the compiled
+ * stylesheet; an arbitrary variant invented here has no rule to match.
+ */
+export function rich(text, { emphasis = "strong", strongClass = "" } = {}) {
+  return parseInline(String(text))
+    .map((token) => {
+      const body = esc(token.text);
+      if (token.emphasis === "em") return `<em>${body}</em>`;
+      if (token.emphasis === "strong") {
+        if (emphasis === "accent") return `<span class="text-sage-deep">${body}</span>`;
+        return strongClass ? `<strong class="${strongClass}">${body}</strong>` : `<strong>${body}</strong>`;
+      }
+      return body;
+    })
+    .join("");
+}
+
+/** Multi-line display headings: one content line per rendered line. */
+export const richLines = (lines, options = { emphasis: "accent" }) =>
+  lines.map((line) => rich(line, options)).join("<br/>");
 
 /* ------------------------------------------------------------------ *
  * Ornaments — ported verbatim from src/components/ui/Ornaments.tsx
@@ -216,11 +249,11 @@ function header(current) {
     </nav>
     <div class="hidden items-center gap-3 lg:flex">
       ${currencyToggle()}
-      <a href="/contact" class="rounded-full bg-sage-deep px-5 py-2.5 text-sm font-medium text-white shadow-sm shadow-sage-deep/20 transition hover:bg-sage-dark">Book a conversation</a>
+      <a href="/contact" class="rounded-full bg-sage-deep px-5 py-2.5 text-sm font-medium text-white shadow-sm shadow-sage-deep/20 transition hover:bg-sage-dark">${esc(headerCopy.ctaLabel)}</a>
     </div>
     <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav"
       class="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm text-ink transition hover:border-sage-deep/50 hover:bg-sage-mist lg:hidden">
-      <span data-menu-label>Menu</span><span aria-hidden="true" class="text-xs" data-menu-icon>☰</span>
+      <span data-menu-label>${esc(headerCopy.menuLabel)}</span><span aria-hidden="true" class="text-xs" data-menu-icon>☰</span>
     </button>
   </div>
   <div id="mobile-nav" hidden class="border-t border-line bg-cream px-6 pb-6 pt-4 lg:hidden">
@@ -236,21 +269,21 @@ function header(current) {
       <a href="/contact" class="rounded-2xl px-4 py-3 text-base text-ink-soft transition hover:bg-sage-mist/70">Contact</a>
     </nav>
     <div class="mt-5 flex items-center justify-between border-t border-line pt-5">
-      <span class="text-xs uppercase tracking-[0.2em] text-muted">Show fees in</span>
+      <span class="text-xs uppercase tracking-[0.2em] text-muted">${esc(headerCopy.currencyLabel)}</span>
       ${currencyToggle()}
     </div>
   </div>
 </header>
 <div class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-cream/95 px-4 py-3 backdrop-blur-xl md:hidden">
-  <a href="/contact" class="mx-auto flex max-w-md items-center justify-center rounded-full bg-sage-deep px-5 py-3.5 text-sm font-medium text-white shadow-lg shadow-sage-deep/20 transition hover:bg-sage-dark">Book a free conversation</a>
+  <a href="/contact" class="mx-auto flex max-w-md items-center justify-center rounded-full bg-sage-deep px-5 py-3.5 text-sm font-medium text-white shadow-lg shadow-sage-deep/20 transition hover:bg-sage-dark">${esc(headerCopy.mobileCtaLabel)}</a>
 </div>`;
 }
 
 function footer() {
   const columns = [
-    ["Work With Me", footerSections.work],
-    ["Learn", footerSections.learn],
-    ["More", footerSections.more],
+    [footerCopy.workHeading, footerSections.work],
+    [footerCopy.learnHeading, footerSections.learn],
+    [footerCopy.moreHeading, footerSections.more],
   ];
   return `
 <footer class="relative overflow-hidden border-t border-sage-dark/20 bg-sage-dark text-sage-soft">
@@ -259,7 +292,7 @@ function footer() {
   <div class="relative mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.1fr_1.6fr] lg:px-8 lg:py-20">
     <div class="space-y-5">
       <div class="flex items-center gap-3">${logoMark("h-10 w-10 text-sage-soft")}${theme.logo?.image ? "" : `<span class="font-display text-2xl text-white">${esc(practitioner.logoName)}</span>`}</div>
-      <p class="text-sm leading-7 text-sage-soft/85">${esc(practitioner.fullName)} — psychotherapist, founder of the Activator Coaching Academy, and co-author of <em>The ABC of Marriage</em>.</p>
+      <p class="text-sm leading-7 text-sage-soft/85">${esc(practitioner.fullName)} — ${rich(footerCopy.bio)}</p>
       <div class="space-y-1.5 text-sm text-sage-soft/75"><p>${esc(contactDetails.location)}</p><p>${esc(contactDetails.reach)}</p></div>
       <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm">
         <a href="mailto:${contactDetails.email}" class="underline-offset-4 hover:text-white hover:underline">${contactDetails.email}</a>
@@ -271,7 +304,7 @@ function footer() {
       ${columns
         .map(
           ([heading, items]) => `<div>
-        <h2 class="mb-4 text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-white/70">${heading}</h2>
+        <h2 class="mb-4 text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-white/70">${esc(heading)}</h2>
         <ul class="space-y-3 text-sm text-sage-soft/80">${items.map((i) => `<li><a href="${i.href}" class="transition hover:text-white">${esc(i.label)}</a></li>`).join("")}</ul>
       </div>`,
         )
@@ -280,12 +313,12 @@ function footer() {
   </div>
   <div class="relative border-t border-white/10 px-6 py-8 lg:px-8">
     <div class="mx-auto flex max-w-7xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
-      <p class="max-w-2xl text-sm leading-6 text-sage-soft/70">This practice is not an emergency service. If you or someone you know is in immediate danger or at risk of harm, please contact emergency services or a crisis line now.</p>
-      <a href="/crisis" class="shrink-0 rounded-full border border-white/25 px-5 py-2.5 text-sm text-white transition hover:bg-white/10">Crisis resources →</a>
+      <p class="max-w-2xl text-sm leading-6 text-sage-soft/70">${esc(footerCopy.emergencyNote)}</p>
+      <a href="/crisis" class="shrink-0 rounded-full border border-white/25 px-5 py-2.5 text-sm text-white transition hover:bg-white/10">${esc(footerCopy.crisisLinkLabel)}</a>
     </div>
     <div class="mx-auto mt-8 flex max-w-7xl flex-col gap-3 text-xs text-sage-soft/50 sm:flex-row sm:items-center sm:justify-between">
       <p>© ${new Date().getFullYear()} ${esc(practitioner.shortName)}. All rights reserved.</p>
-      <div class="flex gap-5"><a href="/privacy" class="transition hover:text-white">Privacy &amp; confidentiality</a><span>Website by OctaveDev</span></div>
+      <div class="flex gap-5"><a href="/privacy" class="transition hover:text-white">${esc(footerCopy.privacyLinkLabel)}</a><span>${esc(footerCopy.credit)}</span></div>
     </div>
   </div>
 </footer>`;

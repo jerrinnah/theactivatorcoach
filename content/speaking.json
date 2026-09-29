@@ -1,0 +1,69 @@
+{
+  "seo": {
+    "title": "Speaking & Corporate",
+    "description": "Keynotes and corporate sessions on relational risk, burnout and the private cost of high-performing careers — from a psychotherapist with a background in risk assessment."
+  },
+  "hero": {
+    "eyebrow": "Speaking & corporate",
+    "title": "Your people are competent at work and unassessed at home.",
+    "intro": "I came into psychology from risk assessment in the energy sector, and I talk about relationships the way I used to talk about systems: where is this exposed, and what happens when that point fails?",
+    "primaryCtaLabel": "Enquire about a booking",
+    "secondaryCta": { "label": "Use the contact form", "href": "/contact" }
+  },
+  "talks": {
+    "eyebrow": "Talks",
+    "title": "Four sessions, adapted to your room",
+    "intro": "Each of these can run as a keynote, a workshop, or a series. Tell me who is in the room and what you want them to leave with, and I will tell you which of these fits — or propose something else.",
+    "items": [
+      {
+        "title": "Where is this exposed?",
+        "audience": "Keynote · 45–60 minutes",
+        "body": "The five exposure points, taken from risk assessment and applied to the relationships your people go home to. The talk that most often produces a queue afterwards."
+      },
+      {
+        "title": "The private cost of a public career",
+        "audience": "Corporate & leadership · 60 minutes",
+        "body": "What sustained high performance does to a household, why the most competent people are frequently the least maintained, and what an organisation can reasonably do about it."
+      },
+      {
+        "title": "Repair is a skill",
+        "audience": "Workshop · 90 minutes–half day",
+        "body": "Practical repair mechanics for teams and for couples. Interactive, uncomfortable in the useful way, and immediately usable."
+      },
+      {
+        "title": "Before you marry",
+        "audience": "Church, campus & community · 60–90 minutes",
+        "body": "The six subjects that end marriages, delivered to a room rather than a couple. Frequently booked as a marriage-preparation series."
+      }
+    ]
+  },
+  "formats": {
+    "eyebrow": "Formats",
+    "title": "Where this usually happens",
+    "intro": "In person across Nigeria, and remotely worldwide. Corporate sessions can be paired with confidential one-to-one slots for staff on the day, which is frequently where the real work starts.",
+    "items": [
+      "Conference keynotes",
+      "Leadership offsites and executive retreats",
+      "Employee wellbeing and EAP programmes",
+      "Church and community marriage series",
+      "University and campus events",
+      "Panels, podcasts and broadcast media"
+    ]
+  },
+  "enquiry": {
+    "title": "What to include in your enquiry",
+    "items": [
+      "Date, city and format — in person or remote",
+      "Who is in the room, roughly how many, and what they do",
+      "What you want them to leave with",
+      "Session length and whether you'd like one-to-one slots alongside",
+      "Whether this is a one-off or part of a series"
+    ],
+    "note": "Speaker biography, headshots and a one-page overview are available on request. Fees depend on format, travel and whether one-to-one slots are included — ask and you will get a straight number."
+  },
+  "closing": {
+    "title": "Booking or media enquiry?",
+    "intro": "Speaking, media and corporate enquiries go to a dedicated inbox and are answered within two working days.",
+    "secondaryCta": { "label": "Contact form", "href": "/contact" }
+  }
+}

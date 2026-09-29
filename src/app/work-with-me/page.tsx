@@ -8,90 +8,32 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Blob, LeafBranch } from "@/components/ui/Ornaments";
 import { processSteps, serviceCards } from "@/lib/siteData";
 import type { PriceKey } from "@/lib/pricing";
+import { workWithMePage as content } from "@/lib/pageContent";
 
 export const metadata: Metadata = {
-  title: "Work With Me",
-  description:
-    "Six ways to work with Dr. Lauretta Ogbum — individual and couples therapy, premarital work, the Annual Review, Intensives and Diaspora sessions. Fees shown in ₦, £ or $.",
+  title: content.seo.title,
+  description: content.seo.description,
 };
 
-const comparison: {
-  service: string;
-  href: string;
-  who: string;
-  length: string;
-  price: PriceKey;
-  priceLabel: string;
-}[] = [
-  {
-    service: "Individual Therapy",
-    href: "/individual-therapy",
-    who: "One person, patterns that repeat",
-    length: "50 min · 8–16 sessions",
-    price: "individualSession",
-    priceLabel: "per session",
-  },
-  {
-    service: "Couples Therapy",
-    href: "/couples-therapy",
-    who: "Two people, still willing",
-    length: "75–90 min · 8–12 sessions",
-    price: "couplesSession",
-    priceLabel: "per session",
-  },
-  {
-    service: "Before You Marry",
-    href: "/before-you-marry",
-    who: "Engaged, or seriously considering",
-    length: "5 × 75 min",
-    price: "beforeYouMarry",
-    priceLabel: "full programme",
-  },
-  {
-    service: "The Annual Review",
-    href: "/annual-review",
-    who: "Couples who are genuinely fine",
-    length: "120 min · yearly",
-    price: "annualReview",
-    priceLabel: "per review",
-  },
-  {
-    service: "The Intensive",
-    href: "/the-intensive",
-    who: "Crisis, or no time for weekly",
-    length: "1–2 full days",
-    price: "intensiveOneDay",
-    priceLabel: "from, one day",
-  },
-  {
-    service: "Diaspora Sessions",
-    href: "/diaspora",
-    who: "Nigerians abroad",
-    length: "50–90 min · out of hours",
-    price: "diasporaIndividual",
-    priceLabel: "from, individual",
-  },
-];
-
 export default function WorkWithMePage() {
+  const { fees } = content;
+
   return (
     <>
       <section className="relative overflow-hidden border-b border-line bg-cream-deep">
         <Blob className="pointer-events-none absolute -right-44 -top-44 h-[40rem] w-[40rem] text-sage-soft/45" />
         <LeafBranch className="pointer-events-none absolute -left-10 bottom-0 h-72 w-40 text-sage/20" />
         <div className="relative mx-auto max-w-4xl px-6 py-20 lg:px-8 lg:py-24">
-          <p className="eyebrow">Work with me</p>
+          <p className="eyebrow">{content.hero.eyebrow}</p>
           <h1 className="mt-5 font-display text-[2.75rem] leading-[1.05] text-ink sm:text-[3.75rem]">
-            Every piece of work here starts the same way.
+            {content.hero.title}
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-[1.8] text-ink-soft">
-            A free fifteen-minute conversation. There is no charge, no obligation, and nothing goes
-            on record. You describe what is happening; I tell you honestly which of these — if any —
-            is the right one.
+            {content.hero.intro}
           </p>
           <div className="mt-9">
-            <ButtonLink href="/contact" size="lg">
-              Book that conversation
+            <ButtonLink href={content.hero.cta.href} size="lg">
+              {content.hero.cta.label}
             </ButtonLink>
           </div>
         </div>
@@ -99,7 +41,7 @@ export default function WorkWithMePage() {
 
       <section className="bg-cream">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-          <SectionHeading eyebrow="The six services" title="Choose where to start" />
+          <SectionHeading eyebrow={content.services.eyebrow} title={content.services.title} />
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {serviceCards.map((card) => (
               <Link
@@ -132,36 +74,36 @@ export default function WorkWithMePage() {
       <section className="border-y border-line bg-cream-deep">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeading eyebrow="Fees" title="Side by side" />
+            <SectionHeading eyebrow={fees.eyebrow} title={fees.title} />
             <div className="flex items-center gap-3">
-              <span className="text-xs uppercase tracking-[0.16em] text-muted">Show fees in</span>
+              <span className="text-xs uppercase tracking-[0.16em] text-muted">
+                {fees.toggleLabel}
+              </span>
               <CurrencyToggle />
             </div>
           </div>
 
           <div className="mt-10 overflow-x-auto rounded-4xl border border-line bg-white">
             <table className="w-full min-w-[46rem] border-collapse text-left">
-              <caption className="sr-only">
-                Comparison of services, who each is for, session length and fee
-              </caption>
+              <caption className="sr-only">{fees.tableCaption}</caption>
               <thead>
                 <tr className="border-b border-line text-xs uppercase tracking-[0.14em] text-muted">
                   <th scope="col" className="px-7 py-5 font-medium">
-                    Service
+                    {fees.columns.service}
                   </th>
                   <th scope="col" className="px-7 py-5 font-medium">
-                    Who it&apos;s for
+                    {fees.columns.who}
                   </th>
                   <th scope="col" className="px-7 py-5 font-medium">
-                    Format
+                    {fees.columns.format}
                   </th>
                   <th scope="col" className="px-7 py-5 text-right font-medium">
-                    Fee
+                    {fees.columns.fee}
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {comparison.map((row) => (
+                {fees.rows.map((row) => (
                   <tr key={row.href} className="border-b border-line-soft last:border-0">
                     <th scope="row" className="px-7 py-6 align-top font-normal">
                       <Link
@@ -177,7 +119,7 @@ export default function WorkWithMePage() {
                     </td>
                     <td className="px-7 py-6 align-top text-right">
                       <span className="font-display text-2xl text-sage-dark">
-                        <Price amount={row.price} />
+                        <Price amount={row.price as PriceKey} />
                       </span>
                       <span className="mt-0.5 block text-xs text-muted">{row.priceLabel}</span>
                     </td>
@@ -187,20 +129,16 @@ export default function WorkWithMePage() {
             </table>
           </div>
 
-          <p className="mt-6 max-w-3xl text-sm leading-6 text-muted">
-            Block and programme rates carry a saving on the per-session fee — see each service page
-            for the full breakdown. A limited number of reduced-fee places are held at any time; if
-            cost is the only thing in the way, say so in your first conversation.
-          </p>
+          <p className="mt-6 max-w-3xl text-sm leading-6 text-muted">{fees.note}</p>
         </div>
       </section>
 
       <section className="bg-cream">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <SectionHeading
-            eyebrow="What happens"
-            title="Four steps, and you can stop at any of them"
-            intro="Nothing here is a commitment you cannot withdraw from."
+            eyebrow={content.process.eyebrow}
+            title={content.process.title}
+            intro={content.process.intro}
           />
           <ol className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {processSteps.map((step) => (
@@ -218,19 +156,17 @@ export default function WorkWithMePage() {
         <LeafBranch className="pointer-events-none absolute -right-10 -top-6 h-72 w-40 rotate-12 text-sage/25" />
         <div className="relative mx-auto max-w-3xl px-6 py-20 text-center lg:px-8">
           <h2 className="font-display text-[2.25rem] leading-tight text-ink sm:text-[2.75rem]">
-            Not sure which one?
+            {content.closing.title}
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-[1.0625rem] leading-[1.8] text-ink-soft">
-            Most people aren&apos;t. That is what the free conversation is for — and if you would
-            rather look at it privately first, either assessment will tell you a great deal in ten
-            minutes.
+            {content.closing.intro}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <ButtonLink href="/contact" size="lg">
-              Book a free conversation
+            <ButtonLink href={content.closing.primaryCta.href} size="lg">
+              {content.closing.primaryCta.label}
             </ButtonLink>
-            <ButtonLink href="/self-audit" variant="outline" size="lg">
-              Take the Self-Audit
+            <ButtonLink href={content.closing.secondaryCta.href} variant="outline" size="lg">
+              {content.closing.secondaryCta.label}
             </ButtonLink>
           </div>
         </div>

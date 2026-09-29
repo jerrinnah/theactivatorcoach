@@ -3,7 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import GlobalHeader from "@/components/GlobalHeader";
 import Footer from "@/components/Footer";
-import { practitioner } from "@/lib/siteData";
+import { practitioner, seo } from "@/lib/siteData";
 import { siteUrl } from "@/lib/siteUrl";
 
 const display = Cormorant_Garamond({
@@ -22,26 +22,17 @@ const body = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${practitioner.shortName} | Psychotherapist & Relational Risk Specialist`,
+    default: `${practitioner.shortName} | ${seo.tagline}`,
     template: `%s | ${practitioner.shortName}`,
   },
-  description:
-    "Psychotherapy, couples work and relational risk assessment with Dr. Lauretta Ogbum — Port Harcourt and online worldwide. Assess where your relationship is exposed before it fails.",
-  keywords: [
-    "psychotherapist Nigeria",
-    "couples therapy Port Harcourt",
-    "marriage counselling Nigeria",
-    "relationship assessment",
-    "premarital counselling",
-    "diaspora therapy",
-  ],
+  description: seo.description,
+  keywords: seo.keywords,
   openGraph: {
     type: "website",
     locale: "en_NG",
     siteName: practitioner.shortName,
-    title: `${practitioner.shortName} | Psychotherapist & Relational Risk Specialist`,
-    description:
-      "Therapy and relational risk assessment for individuals and couples. Port Harcourt and online worldwide.",
+    title: `${practitioner.shortName} | ${seo.tagline}`,
+    description: seo.shareDescription,
   },
   robots: { index: true, follow: true },
 };

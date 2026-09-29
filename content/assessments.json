@@ -1,7 +1,78 @@
 {
+  "pageCopy": {
+    "privacyNote": "Nothing is stored or submitted",
+    "startLabel": "Start the assessment",
+    "aboutTitle": "What this is, and what it isn’t",
+    "isTitle": "What it is",
+    "isItems": [
+      "A structured way to look at five things at once",
+      "Private — it runs entirely in your browser",
+      "A starting point for an honest conversation",
+      "Free, with nothing to sign up for"
+    ],
+    "isntTitle": "What it isn’t",
+    "isntItems": [
+      "A clinical diagnosis or a validated psychometric",
+      "A verdict on you or on anyone else",
+      "Advice on whether to stay or leave",
+      "A substitute for speaking to someone"
+    ],
+    "siblingEyebrow": "The other instrument",
+    "siblingCtaLabel": "Take it →",
+    "quiz": {
+      "stepLabel": "Step",
+      "ofLabel": "of",
+      "completeLabel": "% complete",
+      "progressLabel": "Assessment progress",
+      "introTitle": "Before you begin",
+      "introPoints": [
+        "Answer honestly rather than aspirationally. An accurate low score is worth more than a flattering high one.",
+        "Nothing you enter leaves your browser. There is no account, no submission, and no record kept — refreshing the page clears it.",
+        "This is not a diagnosis and it will not tell you what to do. It shows you where you are solid and where you are thin."
+      ],
+      "beginPrefix": "Begin —",
+      "beginSuffix": "questions",
+      "dimensionLabel": "Dimension",
+      "unansweredError": "Please choose an answer.",
+      "backLabel": "Back",
+      "nextLabel": "Next dimension",
+      "continueLabel": "Continue",
+      "safetyEyebrow": "One more question",
+      "safetyYesLabel": "Yes, or I’m not sure",
+      "safetyNoLabel": "No — show my results",
+      "safetyBackLabel": "← Back to the last dimension",
+      "safeExitTitle": "Thank you for answering that honestly.",
+      "safeExitParagraphs": [
+        "I am not going to show you a score, because a score is not what this needs and it would be the wrong response to what you have just told me.",
+        "Where there is harm in a relationship, couples work is not the right first step — it can make things more dangerous, not less. What matters first is your safety, and there are people whose specific job that is.",
+        "If you would like to talk to me directly, you are welcome to. Nothing you say obliges you to do anything, and I will not push you towards any service."
+      ],
+      "safeExitCrisisCta": {
+        "label": "Crisis and safety resources",
+        "href": "/crisis"
+      },
+      "safeExitContactCta": {
+        "label": "Speak to me directly",
+        "href": "/contact"
+      },
+      "restartLabel": "Start the assessment again",
+      "resultEyebrow": "Your result",
+      "perDimensionTitle": "Dimension by dimension",
+      "lowestTitlePrefix": "Your thinnest point:",
+      "lowestAdvice": "If you do one thing with this result, make it this dimension. It is where the next difficulty is most likely to originate, and it is the cheapest thing on the list to work on now rather than later.",
+      "printLabel": "Print or save as PDF",
+      "disclaimer": "This is a reflective instrument, not a clinical diagnosis, and it has not been psychometrically validated. It is designed to start an honest conversation — with yourself, with a partner, or with me.",
+      "disclaimerLinkLabel": "Book a free conversation",
+      "disclaimerSuffix": "if you would like to go through it properly.",
+      "retakeLabel": "Take it again"
+    }
+  },
   "selfAudit": {
     "slug": "self-audit",
     "name": "The Self-Audit",
+    "headline": "Before you assess anyone else, assess yourself.",
+    "metaDescription": "A free ten-minute self-assessment across five dimensions — self-knowledge, emotional regulation, inherited patterns, capacity and repair. Private, nothing stored.",
+    "siblingBlurb": "Most people evaluating a relationship are running the assessment on the wrong person. Ten minutes of honest questions about you.",
     "eyebrow": "Free · 15 questions · about 10 minutes",
     "intro": "Most people evaluating a relationship are running the assessment on the wrong person. This is ten minutes of honest questions about you — your patterns, your capacity, your history, and what you actually bring into a room with another human being.",
     "scale": [
@@ -92,6 +163,9 @@
   "relationalRisk": {
     "slug": "relational-risk-assessment",
     "name": "The Relational Risk Assessment",
+    "headline": "Where is your relationship exposed?",
+    "metaDescription": "A free twelve-minute assessment of the five exposure points in a relationship — unaudited individuals, repair protocol, third parties, silent withdrawal and scheduled review.",
+    "siblingBlurb": "Where is your relationship exposed, and what happens when that point fails? The five exposure points that account for most of what arrives in my room.",
     "eyebrow": "Free · 15 questions · about 12 minutes",
     "intro": "In risk assessment we never ask “is the system fine?” We ask: where is it exposed, and what happens when that point fails? Almost no couple has ever run that assessment on their own marriage.",
     "scale": [

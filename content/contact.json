@@ -1,0 +1,65 @@
+{
+  "seo": {
+    "title": "Contact & Booking",
+    "description": "Book a free fifteen-minute conversation with Dr. Lauretta Ogbum, or send an enquiry. Port Harcourt by appointment, online worldwide. Replies within two working days."
+  },
+  "hero": {
+    "eyebrow": "Contact & booking",
+    "title": "Start with a free conversation.",
+    "intro": "Fifteen minutes, no charge, no obligation, and nothing goes on record. You describe what is happening; I tell you honestly whether I am the right person for it — and if I am not, I will tell you who is."
+  },
+  "form": {
+    "title": "Send me a message",
+    "intro": "Everything here comes to me directly. You do not need to explain your whole situation — a sentence or two is enough to go on.",
+    "nameLabel": "What should I call you?",
+    "namePlaceholder": "First name is enough",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "you@example.com",
+    "topicLabel": "What is this about?",
+    "topicPlaceholder": "Choose one — or leave it blank",
+    "topics": [
+      "Individual Therapy",
+      "Couples Therapy",
+      "Before You Marry",
+      "The Annual Review",
+      "The Intensive",
+      "Diaspora Sessions",
+      "The Academy",
+      "Speaking or media",
+      "Something else"
+    ],
+    "replyLabel": "How should I reply?",
+    "replyOptions": ["Email", "WhatsApp", "Either is fine"],
+    "messageLabel": "What is happening?",
+    "messagePlaceholder": "A sentence or two is enough. You do not need to explain everything here — that is what the conversation is for.",
+    "consentLabel": "I’m happy for Dr. Ogbum to reply to me using the details above. Enquiries are kept confidential and are never shared or used for marketing.",
+    "submitLabel": "Send this to Dr. Ogbum",
+    "submittingLabel": "Sending…",
+    "footnote": "This form is not monitored continuously and is not an emergency service. If you are at risk of harm, please use the crisis resources rather than waiting for a reply.",
+    "successTitle": "Message received"
+  },
+  "whatsapp": {
+    "title": "Prefer WhatsApp?",
+    "intro": "Scheduling and admin only — please do not send clinical detail over WhatsApp."
+  },
+  "directEmail": {
+    "title": "Direct email",
+    "generalLabel": "General & practice enquiries",
+    "speakingLabel": "Speaking, media & corporate",
+    "academyLabel": "Academy applications"
+  },
+  "practicalities": {
+    "title": "Practicalities",
+    "inPersonLabel": "In person",
+    "onlineLabel": "Online",
+    "onlineSuffix": " — timezone-aware scheduling for diaspora clients",
+    "responseLabel": "Response time",
+    "confidentialityLabel": "Confidentiality",
+    "confidentiality": "Enquiries are private and never shared. Nothing you send here goes on a clinical record."
+  },
+  "urgent": {
+    "title": "If your situation is urgent",
+    "intro": "This practice is not an emergency service and this form is not monitored continuously. If you or someone you know is in immediate danger, at risk of harm, or thinking about suicide, please do not wait for a reply from me.",
+    "cta": { "label": "Crisis and safety resources →", "href": "/crisis" }
+  }
+}

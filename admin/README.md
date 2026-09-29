@@ -112,6 +112,35 @@ rather than erroring — the rest of the app works without them.
   copying them into the database would create a second set of confidential
   records to protect.
 
+## Website content
+
+Everything the public site says lives in `content/*.json` at the repo root.
+The **Website** section of the admin lists them; saving commits the file and
+the deploy workflow rebuilds theactivatorcoach.com.
+
+Two rules keep this honest:
+
+1. **A file is only editable if it is listed in `src/lib/content-files.ts`.**
+   That list is also the allowlist the save action checks, so a path from the
+   client can never turn into a commit against an arbitrary repo file. Adding a
+   file to `content/` without adding it there leaves it invisible to the admin —
+   which is how the page copy came to be uneditable in the first place.
+2. **Both renderers read the same file.** The Next app under `src/app` and the
+   static generator under `static-site/` import the same modules in `src/lib`
+   (`pageContent.ts`, `siteData.ts`, `servicePages.ts`, `insights.ts`,
+   `assessments.ts`, `pricing.ts`). Copy must never be typed into a page
+   component or into `static-site/pages-extra.mjs` — the two would drift, and
+   only one of them is what visitors see.
+
+The editor walks whatever JSON it finds rather than a hand-written schema, so a
+field added to a content file is editable immediately, with no admin change.
+
+Copy is plain text with two exceptions: `**text**` is strong emphasis (the
+accent colour in a display heading) and `*text*` is italic. Any class used to
+style them must already exist in `static-site/assets/styles.css`, which is the
+Tailwind bundle compiled from the React app — an arbitrary variant invented in
+the static templates has no rule to match and fails silently.
+
 ## Staff accounts
 
 Accounts live in `neon_auth.user`, in this project's own database. There is no

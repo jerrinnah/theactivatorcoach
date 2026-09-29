@@ -1,4 +1,34 @@
 {
+  "page": {
+    "seo": {
+      "title": "Insights",
+      "description": "Writing from the practice — on self-assessment, relational risk, in-laws and boundaries, faith and counselling, and what twenty-five years of marriage actually teaches."
+    },
+    "eyebrow": "Insights",
+    "title": "Writing from the practice.",
+    "intro": "Not tips. Not listicles. Ideas I use in the room, written out properly, mostly because I got tired of explaining them one person at a time.",
+    "leadBadgePrefix": "Latest",
+    "leadCtaLabel": "Read the article →",
+    "archiveEyebrow": "Archive",
+    "archiveTitle": "Everything else",
+    "letterEyebrow": "The Activator Letter",
+    "letterTitle": "Get the next one by email.",
+    "letterIntro": "One idea from the practice, once a month. No sequences, no upsells, unsubscribe in one click.",
+    "articleCtaTitle": "If any of this landed, it is worth a conversation.",
+    "articleCtaIntro": "Fifteen minutes, no charge, no obligation, and nothing goes on record.",
+    "articleBackLabel": "← All insights",
+    "articleLetterTitle": "One letter a month. No noise.",
+    "articleCtaPrimary": {
+      "label": "Book a free conversation",
+      "href": "/contact"
+    },
+    "articleCtaSecondary": {
+      "label": "Take the Self-Audit",
+      "href": "/self-audit"
+    },
+    "readNextTitle": "Read next",
+    "readNextLabel": "Read →"
+  },
   "categories": [
     "The Self-Audit",
     "Relational Risk",
