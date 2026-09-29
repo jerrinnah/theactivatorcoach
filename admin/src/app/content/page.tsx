@@ -22,8 +22,8 @@ export default async function ContentPage() {
         </h1>
         <p className="mt-1 max-w-2xl text-sm text-muted">
           Edit what the public site says. Saving commits to the repository, and
-          the deploy workflow rebuilds theactivatorcoach.com — usually within a
-          couple of minutes.
+          the deploy workflow rebuilds theactivatorcoach.com — usually within
+          half a minute.
         </p>
       </div>
 

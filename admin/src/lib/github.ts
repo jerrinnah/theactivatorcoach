@@ -105,7 +105,7 @@ export async function writeJson({
   message: string;
   authorEmail: string;
   authorName: string;
-}): Promise<{ commit: string }> {
+}): Promise<{ commit: string; sha: string }> {
   const { repo, branch } = config();
 
   // Trailing newline matches what the extraction wrote, so diffs stay clean.
@@ -124,7 +124,9 @@ export async function writeJson({
     }),
   });
 
-  return { commit: json.commit?.sha ?? "" };
+  // The new blob sha lets the editor keep going without a reload — the next
+  // save is checked against this version rather than the one it opened with.
+  return { commit: json.commit?.sha ?? "", sha: json.content?.sha ?? "" };
 }
 
 export type Upload = {
@@ -235,7 +237,30 @@ export async function latestDeployment(): Promise<Deployment | null> {
   const json = await gh(
     `/repos/${repo}/actions/runs?branch=${encodeURIComponent(branch)}&per_page=1`,
   );
-  const run = json.workflow_runs?.[0];
+  return toDeployment(json.workflow_runs?.[0]);
+}
+
+/**
+ * The deploy run for one commit. Null for the few seconds between the commit
+ * landing and GitHub queueing its run, so callers should keep asking.
+ */
+export async function deploymentFor(commit: string): Promise<Deployment | null> {
+  const { repo } = config();
+  const json = await gh(
+    `/repos/${repo}/actions/runs?head_sha=${encodeURIComponent(commit)}&per_page=1`,
+  );
+  return toDeployment(json.workflow_runs?.[0]);
+}
+
+type WorkflowRun = {
+  status: string;
+  conclusion: string | null;
+  run_started_at?: string | null;
+  html_url: string;
+  head_sha: string;
+};
+
+function toDeployment(run: WorkflowRun | undefined): Deployment | null {
   if (!run) return null;
   return {
     status: run.status,
