@@ -209,7 +209,7 @@ ${quietExit()}
         </label>
         <p data-error-for="consent" class="mt-1.5 text-sm text-red-700"></p>
       </div>
-      <button type="submit" class="w-full rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark sm:w-auto">${esc(form.submitLabel)}</button>
+      <button type="submit" class="w-full rounded-full bg-sage px-8 py-4 text-[0.9375rem] font-medium text-sage-dark transition hover:bg-sage-dark sm:w-auto hover:text-white">${esc(form.submitLabel)}</button>
       <p class="js-status text-sm leading-6" role="status"></p>
       <p class="text-xs leading-5 text-muted">${esc(form.footnote)}</p>
     </form>
@@ -300,7 +300,7 @@ ${quietExit()}
     <h2 class="font-display text-2xl text-ink">${esc(privacyPage.questions.title)}</h2>
     <p class="mt-3 text-[0.9375rem] leading-7 text-ink-soft">${esc(privacyPage.questions.intro)}</p>
     <div class="mt-5 flex flex-wrap gap-4 text-sm">
-      <a href="mailto:${contactDetails.email}" class="rounded-full bg-sage-deep px-6 py-3 font-medium text-white transition hover:bg-sage-dark">${contactDetails.email}</a>
+      <a href="mailto:${contactDetails.email}" class="rounded-full bg-sage px-6 py-3 font-medium text-sage-dark transition hover:bg-sage-dark hover:text-white">${contactDetails.email}</a>
       <a href="/contact" class="rounded-full border border-line px-6 py-3 text-ink-soft transition hover:bg-sage-mist">${esc(privacyPage.questions.contactFormLabel)}</a>
     </div>
     <p class="mt-6 text-xs text-muted">${esc(privacyPage.questions.controllerPrefix)} ${esc(practitioner.fullName)}, ${esc(contactDetails.location)}.</p>

@@ -253,7 +253,7 @@ ${quietExit()}
     <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted">
       <span>${esc(assessment.eyebrow)}</span><span aria-hidden="true" class="hidden h-4 w-px bg-line sm:block"></span><span>${esc(assessmentPageCopy.privacyNote)}</span>
     </div>
-    <a href="#assessment" class="mt-9 inline-flex rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark">${esc(assessmentPageCopy.startLabel)}</a>
+    <a href="#assessment" class="mt-9 inline-flex rounded-full bg-sage px-8 py-4 text-[0.9375rem] font-medium text-sage-dark transition hover:bg-sage-dark hover:text-white">${esc(assessmentPageCopy.startLabel)}</a>
   </div>
 </section>
 

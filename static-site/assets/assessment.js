@@ -78,7 +78,7 @@
     );
   }
 
-  var PRIMARY = "inline-flex items-center justify-center rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark";
+  var PRIMARY = "inline-flex items-center justify-center rounded-full bg-sage px-8 py-4 text-[0.9375rem] font-medium text-sage-dark transition hover:bg-sage-dark hover:text-white";
   var OUTLINE = "inline-flex items-center justify-center rounded-full border border-sage-deep/35 px-8 py-4 text-[0.9375rem] text-sage-dark transition hover:bg-sage-mist";
   var TEXT_LINK = "mt-6 text-sm text-muted underline-offset-4 hover:text-sage-deep hover:underline";
 
@@ -92,7 +92,7 @@
       }).join("") +
       "</ul>" +
       (data.scaleHelp ? '<p class="mt-6 text-[0.9375rem] leading-7 text-muted">' + esc(data.scaleHelp) + "</p>" : "") +
-      '<button type="button" data-action="begin" class="mt-8 rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark">' + esc(copy.beginPrefix) + " " + totalQuestions + " " + esc(copy.beginSuffix) + "</button>"
+      '<button type="button" data-action="begin" class="mt-8 rounded-full bg-sage px-8 py-4 text-[0.9375rem] font-medium text-sage-dark transition hover:bg-sage-dark hover:text-white">' + esc(copy.beginPrefix) + " " + totalQuestions + " " + esc(copy.beginSuffix) + "</button>"
     );
   }
 
@@ -134,7 +134,7 @@
       '<div class="mt-8 space-y-8">' + fields + "</div>" +
       '<div class="mt-10 flex items-center justify-between gap-4">' +
       '<button type="button" data-action="back" class="rounded-full border border-line px-6 py-3 text-sm text-ink-soft transition hover:bg-sage-mist">' + esc(copy.backLabel) + "</button>" +
-      '<button type="button" data-action="next" class="rounded-full bg-sage-deep px-8 py-3.5 text-sm font-medium text-white transition hover:bg-sage-dark">' +
+      '<button type="button" data-action="next" class="rounded-full bg-sage px-8 py-3.5 text-sm font-medium text-sage-dark transition hover:bg-sage-dark hover:text-white">' +
       esc(step < data.dimensions.length - 1 ? copy.nextLabel : copy.continueLabel) +
       "</button></div>"
     );

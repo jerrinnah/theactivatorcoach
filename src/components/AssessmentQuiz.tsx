@@ -162,7 +162,7 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
           <button
             type="button"
             onClick={() => go("questions")}
-            className="mt-8 rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark"
+            className="mt-8 rounded-full bg-sage px-8 py-4 text-[0.9375rem] font-medium text-sage-dark transition hover:bg-sage-dark hover:text-white"
           >
             {copy.beginPrefix} {assessment.dimensions.reduce((n, d) => n + d.questions.length, 0)}{" "}
             {copy.beginSuffix}
@@ -231,7 +231,7 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
             <button
               type="button"
               onClick={goNext}
-              className="rounded-full bg-sage-deep px-8 py-3.5 text-sm font-medium text-white transition hover:bg-sage-dark"
+              className="rounded-full bg-sage px-8 py-3.5 text-sm font-medium text-sage-dark transition hover:bg-sage-dark hover:text-white"
             >
               {step < assessment.dimensions.length - 1 ? copy.nextLabel : copy.continueLabel}
             </button>

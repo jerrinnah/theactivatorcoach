@@ -35,7 +35,7 @@ export default function AssessmentPageShell({ assessment, sibling }: AssessmentP
           </div>
           <a
             href="#assessment"
-            className="mt-9 inline-flex rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark"
+            className="mt-9 inline-flex rounded-full bg-sage px-8 py-4 text-[0.9375rem] font-medium text-sage-dark transition hover:bg-sage-dark hover:text-white"
           >
             {copy.startLabel}
           </a>

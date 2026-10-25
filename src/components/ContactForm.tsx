@@ -17,7 +17,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark disabled:opacity-60 sm:w-auto"
+      className="w-full rounded-full bg-sage px-8 py-4 text-[0.9375rem] font-medium text-sage-dark transition hover:bg-sage-dark disabled:opacity-60 sm:w-auto hover:text-white"
     >
       {pending ? copy.submittingLabel : copy.submitLabel}
     </button>

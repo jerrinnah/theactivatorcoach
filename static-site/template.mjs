@@ -120,7 +120,7 @@ export const checkIcon = (cls = "h-4 w-4") =>
 const BTN_BASE =
   "inline-flex items-center justify-center gap-2.5 rounded-full font-medium transition duration-200";
 const BTN_VARIANT = {
-  primary: "bg-sage-deep text-white shadow-sm shadow-sage-deep/20 hover:bg-sage-dark",
+  primary: "bg-sage text-sage-dark shadow-sm shadow-sage-deep/20 hover:bg-sage-dark hover:text-white",
   outline: "border border-sage-deep/35 text-sage-dark hover:border-sage-deep hover:bg-sage-mist",
   light: "bg-white text-sage-dark shadow-sm hover:bg-sage-mist",
   onDark: "border border-white/30 text-white hover:bg-white/10",
@@ -246,7 +246,7 @@ function header(current) {
     </nav>
     <div class="hidden items-center gap-3 lg:flex">
       ${currencyToggle()}
-      <a href="/contact" class="rounded-full bg-sage-deep px-5 py-2.5 text-sm font-medium text-white shadow-sm shadow-sage-deep/20 transition hover:bg-sage-dark">${esc(headerCopy.ctaLabel)}</a>
+      <a href="/contact" class="rounded-full bg-sage px-5 py-2.5 text-sm font-medium text-sage-dark shadow-sm shadow-sage-deep/20 transition hover:bg-sage-dark hover:text-white">${esc(headerCopy.ctaLabel)}</a>
     </div>
     <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav"
       class="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm text-ink transition hover:border-sage-deep/50 hover:bg-sage-mist lg:hidden">
@@ -272,7 +272,7 @@ function header(current) {
   </div>
 </header>
 <div class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-cream/95 px-4 py-3 backdrop-blur-xl md:hidden">
-  <a href="/contact" class="mx-auto flex max-w-md items-center justify-center rounded-full bg-sage-deep px-5 py-3.5 text-sm font-medium text-white shadow-lg shadow-sage-deep/20 transition hover:bg-sage-dark">${esc(headerCopy.mobileCtaLabel)}</a>
+  <a href="/contact" class="mx-auto flex max-w-md items-center justify-center rounded-full bg-sage px-5 py-3.5 text-sm font-medium text-sage-dark shadow-lg shadow-sage-deep/20 transition hover:bg-sage-dark hover:text-white">${esc(headerCopy.mobileCtaLabel)}</a>
 </div>`;
 }
 
@@ -283,7 +283,7 @@ function footer() {
     [footerCopy.moreHeading, footerSections.more],
   ];
   return `
-<footer class="relative overflow-hidden border-t border-sage-dark/20 bg-sage-dark text-sage-soft">
+<footer class="relative overflow-hidden border-t-4 border-sage bg-sage-dark text-sage-soft">
   ${leafBranch("pointer-events-none absolute -left-16 top-10 h-72 w-44 text-white/[0.07]")}
   <div class="pointer-events-none absolute -right-10 top-1/4 hidden lg:block" aria-hidden="true">${psiBadge("h-64 w-64 text-white/[0.05]")}</div>
   <div class="relative mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.1fr_1.6fr] lg:px-8 lg:py-20">
@@ -311,7 +311,7 @@ function footer() {
     <div class="mx-auto max-w-7xl">
       <p class="max-w-2xl text-sm leading-6 text-sage-soft/70">${esc(footerCopy.emergencyNote)}</p>
     </div>
-    <div class="mx-auto mt-8 flex max-w-7xl flex-col gap-3 text-xs text-sage-soft/50 sm:flex-row sm:items-center sm:justify-between">
+    <div class="mx-auto mt-8 flex max-w-7xl flex-col gap-3 text-xs text-sage-soft/70 sm:flex-row sm:items-center sm:justify-between">
       <p>© ${new Date().getFullYear()} ${esc(practitioner.shortName)}. All rights reserved.</p>
       <div class="flex gap-5"><a href="/privacy" class="transition hover:text-white">${esc(footerCopy.privacyLinkLabel)}</a><span>${esc(footerCopy.credit)}</span></div>
     </div>

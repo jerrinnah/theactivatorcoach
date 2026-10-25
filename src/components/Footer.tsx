@@ -16,7 +16,7 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-sage-dark/20 bg-sage-dark text-sage-soft">
+    <footer className="relative overflow-hidden border-t-4 border-sage bg-sage-dark text-sage-soft">
       <LeafBranch className="pointer-events-none absolute -left-16 top-10 h-72 w-44 text-white/[0.07]" />
       <PsiMarkBackdrop />
 
@@ -65,7 +65,7 @@ export default function Footer() {
         <div className="mx-auto max-w-7xl">
           <p className="max-w-2xl text-sm leading-6 text-sage-soft/70">{copy.emergencyNote}</p>
         </div>
-        <div className="mx-auto mt-8 flex max-w-7xl flex-col gap-3 text-xs text-sage-soft/50 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto mt-8 flex max-w-7xl flex-col gap-3 text-xs text-sage-soft/70 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {practitioner.shortName}. All rights reserved.
           </p>

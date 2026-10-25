@@ -1,16 +1,16 @@
 {
   "colors": {
-    "cream-deep": "#fdf1df",
+    "cream-deep": "#ffecd1",
     "cream": "#faf7f2",
     "ink-soft": "#474c41",
     "ink": "#23261f",
     "line-soft": "#efeae0",
     "line": "#e4dfd3",
-    "muted": "#767c6e",
+    "muted": "#5c6356",
     "sage-dark": "#062f40",
     "sage-deep": "#0b6d8f",
-    "sage-mist": "#eaf9ff",
-    "sage-soft": "#c2f0ff",
+    "sage-mist": "#d4f5ff",
+    "sage-soft": "#19d1ff",
     "sage": "#ffa319"
   },
   "fonts": {
