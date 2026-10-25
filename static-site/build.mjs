@@ -377,9 +377,11 @@ await writeFile(
   "utf8",
 );
 
-// Book cover
-if (existsSync(path.join(ROOT, "public", "abc-of-marriage.jpg"))) {
-  await copyFile(path.join(ROOT, "public", "abc-of-marriage.jpg"), path.join(DIST, "abc-of-marriage.jpg"));
+// Book covers
+for (const cover of ["abc-of-marriage.jpg", "love-intentionally.jpg"]) {
+  if (existsSync(path.join(ROOT, "public", cover))) {
+    await copyFile(path.join(ROOT, "public", cover), path.join(DIST, cover));
+  }
 }
 
 // Favicon

@@ -14,9 +14,12 @@
       "Practical wisdom on communication, trust and intimacy in modern relationships.",
       "Through my therapeutic practice, writing and professional engagements, I am committed to helping people better understand themselves, navigate relationship challenges and build healthier connections."
     ],
-    "primaryCta": { "label": "Ask about the book", "href": "/contact" },
+    "primaryCta": {
+      "label": "Buy the Book",
+      "href": "https://tebebabooks.com/store/details/528/"
+    },
     "cover": {
-      "image": null,
+      "image": "/love-intentionally.jpg",
       "alt": "Front cover of Love Intentionally by Lauretta Ovine Ogbum, PhD",
       "label": "Love Intentionally"
     }
