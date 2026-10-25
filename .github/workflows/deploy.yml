@@ -86,7 +86,7 @@ jobs:
 
       - name: Confirm the site is serving the new build
         run: |
-          for p in / /about/ /contact/ /insights/; do
+          for p in / /about/ /contact/ /work-with-me/; do
             code=$(curl -sS -m 20 -o /dev/null -w '%{http_code}' "http://theactivatorcoach.com$p")
             echo "$p -> $code"
             test "$code" = 200
