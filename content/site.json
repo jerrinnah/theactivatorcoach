@@ -1,36 +1,28 @@
 {
   "practitioner": {
-    "shortName": "Dr. Lauretta Ogbum",
-    "fullName": "Dr. Lauretta Ovine Ogbum (PhD)",
-    "credential": "Psychotherapist & Relational Risk Specialist",
+    "shortName": "Dr Lauretta Ogbum",
+    "fullName": "Dr Lauretta Ovine Ogbum, PhD",
+    "credential": "Psychotherapist, Counsellor and Coach",
     "logoName": "Lauretta Ogbum",
     "logoCredential": "PhD · Psychotherapist"
   },
   "seo": {
-    "tagline": "Psychotherapist & Relational Risk Specialist",
-    "description": "Psychotherapy, couples work and relational risk assessment with Dr. Lauretta Ogbum — Port Harcourt and online worldwide. Assess where your relationship is exposed before it fails.",
-    "shareDescription": "Therapy and relational risk assessment for individuals and couples. Port Harcourt and online worldwide.",
+    "tagline": "Psychotherapy, Counselling and Relationship Support",
+    "description": "Psychotherapy, counselling and relationship support for individuals and couples with Dr Lauretta Ogbum. Online worldwide, and in-person sessions by appointment in Lekki Phase 1, Lagos.",
+    "shareDescription": "A supportive space for understanding yourself, navigating life's challenges and building healthier relationships.",
     "keywords": [
-      "psychotherapist Nigeria",
-      "couples therapy Port Harcourt",
-      "marriage counselling Nigeria",
-      "relationship assessment",
+      "psychotherapy Lagos",
+      "counselling Lagos",
+      "couples therapy",
       "premarital counselling",
+      "relationship support",
       "diaspora therapy"
     ]
   },
   "contactDetails": {
     "email": "hello@theactivatorcoach.com",
-    "speakingEmail": "speaking@theactivatorcoach.com",
-    "academyEmail": "academy@theactivatorcoach.com",
-    "whatsappDisplay": "+234 703 077 3008",
-    "whatsappNumber": "2347030773008",
-    "instagram": "@drlaurettaogbum",
-    "instagramUrl": "https://instagram.com/drlaurettaogbum",
-    "linkedinUrl": "https://www.linkedin.com/in/laurettaogbum",
-    "location": "Port Harcourt, Nigeria — in person by appointment",
-    "reach": "Online worldwide",
-    "responseTime": "Within 2 working days"
+    "location": "Lekki Phase 1, Lagos — in-person sessions by appointment",
+    "reach": "Online worldwide"
   },
   "siteNav": [
     {
@@ -42,29 +34,21 @@
       "href": "/work-with-me"
     },
     {
-      "label": "Assessments",
+      "label": "Self-Audit",
       "href": "/self-audit"
     },
     {
-      "label": "Academy",
-      "href": "/academy"
+      "label": "Risk Assessment",
+      "href": "/relational-risk-assessment"
     },
     {
       "label": "Books",
       "href": "/books"
-    },
-    {
-      "label": "Speaking",
-      "href": "/speaking"
-    },
-    {
-      "label": "Insights",
-      "href": "/insights"
     }
   ],
   "header": {
-    "ctaLabel": "Book a conversation",
-    "mobileCtaLabel": "Book a free conversation",
+    "ctaLabel": "Book an Introductory Call",
+    "mobileCtaLabel": "Book an Introductory Call",
     "currencyLabel": "Show fees in",
     "menuLabel": "Menu"
   },
@@ -97,158 +81,153 @@
     ],
     "learn": [
       {
-        "label": "The Self-Audit",
+        "label": "The Relationship Self-Audit",
         "href": "/self-audit"
       },
       {
-        "label": "Relational Risk Assessment",
+        "label": "The Relational Risk Assessment",
         "href": "/relational-risk-assessment"
-      },
-      {
-        "label": "Insights",
-        "href": "/insights"
-      },
-      {
-        "label": "The Activator Letter",
-        "href": "/letter"
       }
     ],
     "more": [
       {
-        "label": "Academy",
-        "href": "/academy"
+        "label": "About",
+        "href": "/about"
       },
       {
-        "label": "Books",
+        "label": "Love Intentionally",
         "href": "/books"
       },
       {
-        "label": "Speaking & Corporate",
-        "href": "/speaking"
+        "label": "Fees",
+        "href": "/work-with-me#fees"
       },
       {
         "label": "Contact",
         "href": "/contact"
-      },
-      {
-        "label": "Crisis Resources",
-        "href": "/crisis"
       }
     ]
   },
   "footer": {
-    "bio": "psychotherapist, founder of the Activator Coaching Academy, and co-author of *The ABC of Marriage*.",
+    "bio": "Psychotherapist, founder of Activator Coaching Academy, and author of *Love Intentionally* and co-author of *The ABC of Marriage*.",
+    "tagline": "Psychotherapy, counselling and relationship support for individuals and couples.",
     "workHeading": "Work With Me",
-    "learnHeading": "Learn",
+    "learnHeading": "Reflect privately",
     "moreHeading": "More",
-    "emergencyNote": "This practice is not an emergency service. If you or someone you know is in immediate danger or at risk of harm, please contact emergency services or a crisis line now.",
-    "crisisLinkLabel": "Crisis resources →",
+    "emergencyNote": "If you are in immediate danger, contact local emergency services or move to a safer place if you can do so safely.",
     "privacyLinkLabel": "Privacy & confidentiality",
     "credit": "Website by OctaveDev"
   },
   "trustItems": [
-    "PhD, Psychology",
-    "Executive Council, Life Coaches Association of Nigeria",
-    "Founder, Activator Coaching Academy",
-    "Bestselling Co-author — The ABC of Marriage",
-    "Featured in Her Network",
-    "Pan-African Impact & Leadership Laureate Nominee",
-    "25 years married"
+    "PhD in Psychology",
+    "Member, British Psychological Society (BPS)",
+    "Member, Counselling Association of Nigeria (CASSON)",
+    "Member, Life Coaches Association of Nigeria (LCAN)",
+    "Founder and Lead Therapist, Activator Coaching Academy",
+    "Author, Love Intentionally",
+    "Co-author, The ABC of Marriage",
+    "Married for over 25 years"
   ],
   "serviceCards": [
     {
       "title": "Individual Therapy",
-      "tagline": "The work that has to happen first.",
-      "description": "Patterns, history, capacity, self-worth. For people who are competent almost everywhere else and stuck in one place.",
+      "tagline": "Understand yourself. Find a way forward.",
+      "description": "For people navigating anxiety, low mood, grief, trauma, stress, self-worth concerns and difficult life transitions.",
       "href": "/individual-therapy",
       "meta": "50 minutes · Weekly or fortnightly",
+      "ctaLabel": "Explore Individual Therapy",
       "icon": "person"
     },
     {
       "title": "Couples Therapy",
-      "tagline": "For two people who still want this to work.",
-      "description": "For couples who still want this to work and have run out of ways to say so. Structured, even-handed, and honest.",
+      "tagline": "For two people who still want to understand what is happening between them.",
+      "description": "A structured, balanced space to explore recurring patterns, improve communication, address conflict and work towards a healthier relationship.",
       "href": "/couples-therapy",
       "meta": "80 minutes · Fortnightly",
+      "ctaLabel": "Explore Couples Therapy",
       "icon": "couple"
     },
     {
       "title": "Before You Marry",
-      "tagline": "Five sessions that will save you five years.",
-      "description": "The conversations most couples never have until they are expensive. Money, family, faith, intimacy, and failure.",
+      "tagline": "Prepare for the marriage, not just the wedding.",
+      "description": "A five-session premarital counselling programme exploring money, family expectations, faith, values, communication, intimacy and how to navigate disagreements.",
       "href": "/before-you-marry",
-      "meta": "5 sessions · For both of you",
+      "meta": "5 sessions · For both partners",
+      "ctaLabel": "Explore Before You Marry",
       "icon": "rings"
     },
     {
       "title": "The Annual Review",
-      "tagline": "A yearly check-up for a marriage that isn't broken.",
-      "description": "Maintenance, not repair. One structured session a year to catch drift while it is still small enough to name.",
+      "tagline": "A yearly check-in for your marriage.",
+      "description": "You do not have to wait until your marriage is in trouble before giving it attention.",
       "href": "/annual-review",
-      "meta": "Half day · Once a year",
+      "meta": "120 minutes · Once a year",
+      "ctaLabel": "Explore The Annual Review",
       "icon": "calendar"
     },
     {
       "title": "The Intensive",
-      "tagline": "One or two full days.",
-      "description": "For crisis, for people whose diaries do not permit weekly work, and for couples flying in to do this properly.",
+      "tagline": "Focused therapeutic work, with more time to explore.",
+      "description": "An opportunity to work on a specific concern over one or two full days, with time for focused exploration, reflection and planning.",
       "href": "/the-intensive",
       "meta": "1–2 full days · Limited availability",
+      "ctaLabel": "Explore The Intensive",
       "icon": "clock"
     },
     {
       "title": "Diaspora Sessions",
-      "tagline": "The marriage and the culture, both understood.",
-      "description": "For Nigerians abroad who want someone who understands the marriage and the culture without needing it explained.",
+      "tagline": "Your experiences understood in context.",
+      "description": "Online therapeutic support for Nigerians living outside the country, with someone who understands the cultural context they may be navigating.",
       "href": "/diaspora",
       "meta": "Online · Timezone-aware scheduling",
+      "ctaLabel": "Explore Diaspora Sessions",
       "icon": "globe"
     }
   ],
   "beliefs": [
     {
-      "title": "Your relationship will only be as healthy as you are.",
-      "body": "This is not a slogan. It is the reason I will always start with you before I start with the marriage."
+      "title": "The relationship you have with yourself matters.",
+      "body": "How you understand yourself, manage your emotions and respond to difficult experiences can influence the relationships you build. That is why I often begin with the individual, even when the concern is about a marriage."
     },
     {
-      "title": "Rupture is normal. Unrepaired rupture is fatal.",
-      "body": "Strong couples are not couples who never fight. They are couples who have a fast, practised way back. Repair is a skill, and it can be taught."
+      "title": "Conflict is not the end. What happens next matters.",
+      "body": "Disagreements are part of relationships. What matters is how we respond to them, whether we take responsibility for our actions, and whether we can repair the hurt. Learning to reconnect after conflict is a skill that can be developed."
     },
     {
-      "title": "Counselling is not court.",
-      "body": "I am not here to decide who is right. If you leave my room feeling you won, I have failed at my job."
+      "title": "Counselling is not a courtroom.",
+      "body": "I am not here to declare a winner or decide which partner is entirely right. My role is to help you understand what is happening, recognise the patterns contributing to the problem and explore a healthier way forward. I will be honest with you, even when the conversation is uncomfortable."
     },
     {
-      "title": "You don't find the right person. You become one.",
-      "body": "This is the hardest thing I say to singles, and the truest."
+      "title": "A healthy relationship is built, not discovered.",
+      "body": "Compatibility matters, but a lasting relationship also requires self-awareness, communication, emotional responsibility and a willingness to grow. Finding someone you love is one thing. Learning how to build a healthy relationship together is another."
     }
   ],
   "processSteps": [
     {
       "step": "01",
-      "title": "A free conversation",
-      "body": "Fifteen minutes, no charge, no obligation, nothing on record. You describe what is happening. I tell you honestly whether I am the right person."
+      "title": "The introductory call",
+      "body": "We begin with a brief, 15-minute conversation. You explain what brings you here, ask initial questions and explore whether my services are a suitable fit. This is an introductory conversation, not a therapy session or assessment."
     },
     {
       "step": "02",
-      "title": "Assessment",
-      "body": "The first paid session is an examination. Your history, your patterns, and what brought you here now rather than last year."
+      "title": "Understanding your concerns",
+      "body": "Your first paid session gives us time to explore your experiences, current challenges and what you hope to achieve. Together, we identify the concerns you want to address and begin establishing meaningful goals for our work."
     },
     {
       "step": "03",
-      "title": "The work",
-      "body": "Noticing what recurs, tracing where it was learned, and building something different — deliberately, and with practice."
+      "title": "Doing the work",
+      "body": "We work towards your agreed goals, exploring patterns, developing insight and practising new ways of responding to difficulties. The process will depend on your circumstances, the service you choose and the progress we make together."
     },
     {
       "step": "04",
-      "title": "Review",
-      "body": "At session six we stop and look at it together. What has moved, what has not, and whether to continue."
+      "title": "Reviewing your progress",
+      "body": "We pause to consider what has changed, what still needs attention and whether to continue, adjust our approach or conclude the work. Reviews take place at appropriate points based on the service and your individual needs."
     }
   ],
   "notFound": {
     "metaTitle": "Page not found",
     "title": "That page isn’t here.",
-    "intro": "Either it has moved or the link was wrong. Here is where most people were heading.",
+    "intro": "It may have moved, or the link may be out of date. These are the pages most people are looking for.",
     "links": [
       {
         "label": "Work with me",
@@ -259,8 +238,8 @@
         "href": "/self-audit"
       },
       {
-        "label": "Insights",
-        "href": "/insights"
+        "label": "About",
+        "href": "/about"
       },
       {
         "label": "Contact",

@@ -19,14 +19,8 @@
     {
       "title": "What the contact form collects",
       "body": [
-        "The name, email address, topic, preferred reply method and message you enter. It is used for one purpose: replying to you.",
+        "The name, email address, topic and message you enter. It is used for one purpose: replying to you.",
         "Enquiries are not added to a marketing list, not shared with anyone, and not sold. If you decide not to proceed, say so and your enquiry is deleted."
-      ]
-    },
-    {
-      "title": "The Activator Letter",
-      "body": [
-        "Only your email address is held, and only to send the letter. It is never shared or sold. Every letter carries a one-click unsubscribe that takes effect immediately."
       ]
     },
     {

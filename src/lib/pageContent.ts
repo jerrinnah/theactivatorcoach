@@ -1,12 +1,8 @@
 import home from "../../content/home.json" with { type: "json" };
 import about from "../../content/about.json" with { type: "json" };
 import workWithMe from "../../content/work-with-me.json" with { type: "json" };
-import academy from "../../content/academy.json" with { type: "json" };
-import speaking from "../../content/speaking.json" with { type: "json" };
 import books from "../../content/books.json" with { type: "json" };
-import letter from "../../content/letter.json" with { type: "json" };
 import contact from "../../content/contact.json" with { type: "json" };
-import crisis from "../../content/crisis.json" with { type: "json" };
 import privacy from "../../content/privacy.json" with { type: "json" };
 
 /**
@@ -54,86 +50,74 @@ export interface HomePage {
   };
   beliefs: { eyebrow: string; title: string };
   process: { eyebrow: string; title: string; intro: string };
-  insights: { eyebrow: string; title: string; cta: Cta };
-  letter: { eyebrow: string; title: string; intro: string };
   closing: {
+    eyebrow: string;
     titleLines: string[];
     intro: string;
     primaryCta: Cta;
-    whatsappCtaLabel: string;
   };
 }
 
 export interface AboutPage {
   seo: Seo;
   hero: { eyebrow: string; title: string; paragraphs: string[]; portrait: Portrait };
+  approach: { eyebrow: string; title: string; paragraphs: string[] };
+  helpWith: {
+    eyebrow: string;
+    title: string;
+    items: { title: string; body: string }[];
+    note: string;
+  };
   beliefs: { eyebrow: string; title: string; intro: string };
-  notForYou: { eyebrow: string; title: string; intro: string; items: string[] };
   credentials: {
     eyebrow: string;
     title: string;
+    /** `detail` may use `*emphasis*` for book titles. */
     items: { label: string; detail: string }[];
+    note: string;
   };
-  closing: { title: string; intro: string; primaryCta: Cta; secondaryCta: Cta };
+  book: { eyebrow: string; title: string; byline: string; intro: string; cta: Cta };
+  closing: {
+    title: string;
+    paragraphs: string[];
+    tagline: string;
+    primaryCta: Cta;
+    secondaryCta: Cta;
+  };
 }
 
 export interface WorkWithMePage {
   seo: Seo;
-  hero: { eyebrow: string; title: string; intro: string; cta: Cta };
-  services: { eyebrow: string; title: string };
+  hero: { eyebrow: string; title: string; paragraphs: string[]; cta: Cta };
+  services: { eyebrow: string; title: string; intro: string };
   fees: {
     eyebrow: string;
     title: string;
+    intro: string;
     toggleLabel: string;
     tableCaption: string;
-    columns: { service: string; who: string; format: string; fee: string };
+    columns: { service: string; format: string; fee: string };
     /** `price` is a key in content/pricing.json's priceBook. */
     rows: {
       service: string;
       href: string;
-      who: string;
       length: string;
       price: string;
-      priceLabel: string;
+      /** Shown before the amount, e.g. "From". Empty for a fixed fee. */
+      pricePrefix: string;
     }[];
-    note: string;
+    currencyNote: string;
+    notes: string[];
   };
   process: { eyebrow: string; title: string; intro: string };
-  closing: { title: string; intro: string; primaryCta: Cta; secondaryCta: Cta };
-}
-
-export interface AcademyPage {
-  seo: Seo;
-  hero: { eyebrow: string; title: string; intro: string; cta: Cta };
-  audience: { eyebrow: string; title: string; intro: string; items: string[] };
-  curriculum: {
+  closing: {
     eyebrow: string;
     title: string;
-    intro: string;
-    modules: { number: string; title: string; body: string }[];
-  };
-  joining: { title: string; intro: string; steps: string[]; note: string };
-  closing: { title: string; intro: string; cta: Cta };
-}
-
-export interface SpeakingPage {
-  seo: Seo;
-  hero: {
-    eyebrow: string;
-    title: string;
-    intro: string;
-    primaryCtaLabel: string;
+    paragraphs: string[];
+    primaryCta: Cta;
+    secondaryPrompt: string;
     secondaryCta: Cta;
   };
-  talks: {
-    eyebrow: string;
-    title: string;
-    intro: string;
-    items: { title: string; audience: string; body: string }[];
-  };
-  formats: { eyebrow: string; title: string; intro: string; items: string[] };
-  enquiry: { title: string; items: string[]; note: string };
-  closing: { title: string; intro: string; secondaryCta: Cta };
 }
 
 export interface BooksPage {
@@ -145,24 +129,15 @@ export interface BooksPage {
     byline: string;
     paragraphs: string[];
     primaryCta: Cta;
-    secondaryCtaLabel: string;
-    note: string;
-    cover: { image: string; alt: string };
+    /** A null image renders the designed placeholder. */
+    cover: { image: string | null; alt: string; label: string };
   };
-  uses: {
+  also: {
     eyebrow: string;
     title: string;
-    intro: string;
-    items: { title: string; body: string }[];
+    byline: string;
+    cover: { image: string; alt: string };
   };
-  letter: { eyebrow: string; title: string; intro: string };
-}
-
-export interface LetterPage {
-  seo: Seo;
-  hero: { eyebrow: string; title: string; intro: string };
-  promises: { title: string; items: { title: string; body: string }[] };
-  samples: { title: string; intro: string };
 }
 
 export interface ContactPage {
@@ -178,8 +153,6 @@ export interface ContactPage {
     topicLabel: string;
     topicPlaceholder: string;
     topics: string[];
-    replyLabel: string;
-    replyOptions: string[];
     messageLabel: string;
     messagePlaceholder: string;
     consentLabel: string;
@@ -188,50 +161,9 @@ export interface ContactPage {
     footnote: string;
     successTitle: string;
   };
-  whatsapp: { title: string; intro: string };
-  directEmail: {
-    title: string;
-    generalLabel: string;
-    speakingLabel: string;
-    academyLabel: string;
-  };
-  practicalities: {
-    title: string;
-    inPersonLabel: string;
-    onlineLabel: string;
-    onlineSuffix: string;
-    responseLabel: string;
-    confidentialityLabel: string;
-    confidentiality: string;
-  };
-  urgent: { title: string; intro: string; cta: Cta };
-}
-
-export interface CrisisPage {
-  seo: Seo;
-  hero: {
-    eyebrow: string;
-    title: string;
-    intro: string;
-    emergencyLabel: string;
-    emergencyHref: string;
-    note: string;
-  };
-  resources: {
-    title: string;
-    items: {
-      name: string;
-      detail: string;
-      action: string;
-      href: string;
-      urgent: boolean;
-    }[];
-    note: string;
-  };
-  ifUnsafe: { title: string; items: string[] };
-  ifSuicidal: { title: string; items: string[] };
-  coveringTracks: { title: string; paragraphs: string[] };
-  whenSafe: { title: string; intro: string; cta: Cta };
+  directEmail: { title: string; generalLabel: string };
+  practicalities: { title: string; inPersonLabel: string; onlineLabel: string };
+  urgent: { title: string; intro: string };
 }
 
 export interface PrivacyPage {
@@ -249,10 +181,6 @@ export interface PrivacyPage {
 export const homePage = home as HomePage;
 export const aboutPage = about as AboutPage;
 export const workWithMePage = workWithMe as WorkWithMePage;
-export const academyPage = academy as AcademyPage;
-export const speakingPage = speaking as SpeakingPage;
 export const booksPage = books as BooksPage;
-export const letterPage = letter as LetterPage;
 export const contactPage = contact as ContactPage;
-export const crisisPage = crisis as CrisisPage;
 export const privacyPage = privacy as PrivacyPage;

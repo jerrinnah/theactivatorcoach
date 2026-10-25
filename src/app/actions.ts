@@ -11,7 +11,7 @@ function text(data: FormData, key: string): string {
   return typeof value === "string" ? value.trim() : "";
 }
 
-const FALLBACK = `Your message could not be sent automatically. Please email ${contactDetails.email} or send a WhatsApp message and it will be picked up within two working days.`;
+const FALLBACK = `Your message could not be sent automatically. Please email ${contactDetails.email} and it will be picked up.`;
 
 export async function sendEnquiry(_prev: FormState, data: FormData): Promise<FormState> {
   // Honeypot — bots fill hidden fields, humans never see them.
@@ -23,7 +23,6 @@ export async function sendEnquiry(_prev: FormState, data: FormData): Promise<For
   const email = text(data, "email");
   const topic = text(data, "topic");
   const message = text(data, "message");
-  const preferredContact = text(data, "preferredContact") || "Email";
   const consent = data.get("consent") === "on";
 
   const fieldErrors: Record<string, string> = {};
@@ -47,7 +46,6 @@ export async function sendEnquiry(_prev: FormState, data: FormData): Promise<For
       `Name: ${name}`,
       `Email: ${email}`,
       `Topic: ${topic || "Not specified"}`,
-      `Preferred contact: ${preferredContact}`,
       "",
       message,
     ].join("\n"),
@@ -60,7 +58,6 @@ export async function sendEnquiry(_prev: FormState, data: FormData): Promise<For
         name,
         email,
         topic,
-        preferredContact,
       });
     }
     return { status: "error", message: FALLBACK };
@@ -68,42 +65,6 @@ export async function sendEnquiry(_prev: FormState, data: FormData): Promise<For
 
   return {
     status: "success",
-    message: `Thank you, ${name}. Your message has arrived. I reply to everything within two working days — and if your situation is urgent, please don't wait for me.`,
-  };
-}
-
-export async function subscribeToLetter(_prev: FormState, data: FormData): Promise<FormState> {
-  if (text(data, "company")) {
-    return { status: "success", message: "You're on the list." };
-  }
-
-  const email = text(data, "email");
-
-  if (!EMAIL_PATTERN.test(email)) {
-    return {
-      status: "error",
-      message: "Please enter a valid email address.",
-      fieldErrors: { email: "Please enter a valid email address." },
-    };
-  }
-
-  const result = await deliver({
-    subject: "New Activator Letter subscriber",
-    text: `New subscriber: ${email}`,
-  });
-
-  if (!result.delivered) {
-    if (!result.configured) {
-      console.warn("[letter] mail transport not configured; subscriber logged only", { email });
-    }
-    return {
-      status: "error",
-      message: `Sign-up isn't available right now. Email ${contactDetails.email} with "Letter" in the subject and you'll be added.`,
-    };
-  }
-
-  return {
-    status: "success",
-    message: "You're on the list. The next letter goes out at the start of the month.",
+    message: `Thank you, ${name}. Your message has arrived. If you are in immediate danger, contact local emergency services rather than waiting for a reply.`,
   };
 }

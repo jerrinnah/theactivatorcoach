@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { articles } from "@/lib/insights";
 import { siteUrl } from "@/lib/siteUrl";
 
 
@@ -15,13 +14,8 @@ const staticRoutes: { path: string; priority: number; changeFrequency: "monthly"
   { path: "/diaspora", priority: 0.8, changeFrequency: "yearly" },
   { path: "/self-audit", priority: 0.9, changeFrequency: "yearly" },
   { path: "/relational-risk-assessment", priority: 0.9, changeFrequency: "yearly" },
-  { path: "/insights", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/academy", priority: 0.7, changeFrequency: "monthly" },
   { path: "/books", priority: 0.6, changeFrequency: "yearly" },
-  { path: "/speaking", priority: 0.7, changeFrequency: "yearly" },
-  { path: "/letter", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.9, changeFrequency: "yearly" },
-  { path: "/crisis", priority: 0.5, changeFrequency: "yearly" },
   { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
 ];
 
@@ -34,12 +28,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: route.changeFrequency,
       priority: route.priority,
-    })),
-    ...articles.map((article) => ({
-      url: `${siteUrl}/insights/${article.slug}`,
-      lastModified: new Date(`${article.date}T00:00:00Z`),
-      changeFrequency: "yearly" as const,
-      priority: 0.6,
     })),
   ];
 }

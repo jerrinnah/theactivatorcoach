@@ -1,47 +1,36 @@
 {
   "pageCopy": {
     "formatTitle": "Format",
-    "feesTitle": "Investment",
-    "closingTitle": "Start with a free conversation.",
-    "closingIntro": "Fifteen minutes, no charge, no obligation, and nothing goes on record. You describe what is happening; I tell you honestly whether I am the right person for it.",
+    "feesTitle": "Fee",
+    "closingTitle": "Not sure where to begin?",
+    "closingIntro": "A brief introductory call gives us an opportunity to discuss what brings you here and explore whether my services are right for you.",
     "closingCta": {
-      "label": "Book that conversation",
+      "label": "Book an Introductory Call",
       "href": "/contact"
     },
-    "relatedTitle": "You might also be looking at",
-    "relatedCtaLabel": "Read more →"
+    "relatedTitle": "Other services",
+    "relatedCtaLabel": "Explore →"
   },
   "servicePages": [
     {
       "path": "/individual-therapy",
       "title": "Individual Therapy",
-      "description": "Individual psychotherapy with Dr. Lauretta Ogbum — for patterns that keep repeating, anxiety, low mood, grief and burnout. Online worldwide or in person in Port Harcourt.",
-      "eyebrow": "The work that has to happen first",
+      "description": "Individual therapy with Dr Lauretta Ogbum — for people navigating anxiety, low mood, grief, trauma, stress, self-worth concerns and difficult life transitions.",
+      "eyebrow": "Understand yourself. Find a way forward.",
       "heroCopy": [
-        "For people who are competent almost everywhere else and stuck in one place — carrying anxiety, low mood, grief, burnout, or a pattern that keeps repeating across different relationships with different people.",
-        "Your relationship will only ever be as healthy as you are. This is where that gets addressed."
+        "Sometimes, the hardest part is understanding why you feel the way you do or why the same patterns keep appearing in your life."
       ],
       "format": [
         "50 minutes per session",
-        "Weekly or fortnightly",
-        "Online worldwide, or in person in Port Harcourt",
-        "Most people work with me for 8–16 sessions",
-        "Formally reviewed together at session six"
+        "Weekly or fortnightly"
       ],
       "fees": [
         {
-          "label": "Per session",
+          "label": "Per session (50 minutes)",
           "amount": "individualSession"
-        },
-        {
-          "label": "Block of six",
-          "amount": "individualBlock6",
-          "note": "Paid in advance — a 10% saving"
         }
       ],
-      "feeNote": "A limited number of reduced-fee places are held at any time. If cost is the only thing standing between you and this work, say so in your first conversation.",
-      "ctaLabel": "Book a free conversation",
-      "ctaNote": "Fifteen minutes · No charge · Nothing on record",
+      "ctaLabel": "Book an Introductory Call",
       "related": [
         "/couples-therapy",
         "/the-intensive",
@@ -49,26 +38,10 @@
       ],
       "sections": [
         {
-          "title": "Who this is for",
+          "title": "",
           "content": [
-            "People who are competent almost everywhere else and stuck in one place. People carrying anxiety, low mood, grief, burnout, or a pattern that keeps repeating across different relationships with different people.",
-            "People who have realised the common factor is them — which is an uncomfortable thing to notice and the most useful realisation available.",
-            "It's also for people whose partner won't come. Starting alone works more often than you'd think."
-          ]
-        },
-        {
-          "title": "What actually happens",
-          "content": [
-            "The first session is an assessment. I want your history, your patterns, and what brought you here now rather than last year. You will not be interrogated, and you can stop at any point.",
-            "From the second session we work. That means noticing what recurs, tracing where it was learned, and building something different — deliberately and with practice. It is not advice, and it is not a lecture. It's an examination, conducted with you rather than on you."
-          ]
-        },
-        {
-          "title": "What this will not do",
-          "content": [
-            "I will not tell you whether to leave your relationship. I will help you get clear enough to make that decision yourself and live with it.",
-            "I will not diagnose or prescribe. Where medication or psychiatric care is appropriate, I will refer you properly.",
-            "I will not make it quick. Patterns that took twenty years to build do not resolve in three sessions, and anyone promising otherwise is selling something."
+            "Individual therapy offers a space to explore your experiences, emotions, relationships and personal challenges. Together, we work towards greater self-awareness, healthier responses and practical ways forward.",
+            "For people navigating anxiety, low mood, grief, trauma, stress, self-worth concerns and difficult life transitions."
           ]
         }
       ]
@@ -76,60 +49,33 @@
     {
       "path": "/couples-therapy",
       "title": "Couples Therapy",
-      "description": "Structured couples therapy in Port Harcourt and online. For conflict, silence, rebuilding after infidelity, and marriages being run from the outside. Nobody wins — that is the point.",
-      "eyebrow": "For two people who still want this to work",
+      "description": "Couples therapy with Dr Lauretta Ogbum — a structured, balanced space to explore recurring patterns, improve communication, address conflict and work towards a healthier relationship.",
+      "eyebrow": "For two people who still want to understand what is happening between them.",
       "heroCopy": [
-        "For two people who still want this to work and have run out of ways to say so.",
-        "I will not take a side, and I will interrupt any attempt to recruit me into one."
+        "When communication breaks down and the same disagreements keep returning, it can become difficult to find your way back to one another."
       ],
       "format": [
-        "75–90 minutes per session",
-        "Weekly or fortnightly",
-        "Online worldwide, or in person in Port Harcourt",
-        "Typical arc: 8–12 sessions",
-        "Formally reviewed together at session six"
+        "80 minutes per session",
+        "Fortnightly"
       ],
       "fees": [
         {
-          "label": "Per session",
+          "label": "Per session (80 minutes)",
           "amount": "couplesSession"
-        },
-        {
-          "label": "Eight-session programme",
-          "amount": "couplesProgramme8",
-          "note": "Paid in advance — a 10% saving"
         }
       ],
-      "feeNote": "One fee covers both of you, including the individual sessions in weeks two and three.",
-      "ctaLabel": "Book a free conversation",
-      "ctaNote": "Either of you can make the first call",
+      "ctaLabel": "Book an Introductory Call",
       "related": [
         "/individual-therapy",
-        "/the-intensive",
+        "/before-you-marry",
         "/annual-review"
       ],
       "sections": [
         {
-          "title": "Who this is for",
+          "title": "",
           "content": [
-            "Couples in constant conflict. Couples in total silence. Couples rebuilding after infidelity. Couples being run from the outside by family.",
-            "Couples who are technically fine and quietly far apart — which, in my experience, is the group that leaves it longest."
-          ]
-        },
-        {
-          "title": "What actually happens",
-          "content": [
-            "Session 1 — Joint assessment. Both of you, together. I want the history of the relationship and the shape of the problem as each of you sees it.",
-            "Sessions 2 and 3 — Individually. One with each of you, alone. This is where the honest material usually arrives.",
-            "Session 4 onward — The work. I show you the loop. Once you can both see the loop, it stops being about character and starts being about mechanics — and mechanics can be changed."
-          ]
-        },
-        {
-          "title": "What this will not do",
-          "content": [
-            "This is not court. Nobody wins. If you leave a session feeling vindicated, the session failed.",
-            "I cannot want it more than you do. Two people have to be willing. If only one is, we do individual work instead — and that is a real option, not a consolation prize.",
-            "I will not guarantee your marriage. Sometimes the honest outcome of this work is a clear-eyed separation conducted with dignity."
+            "Couples therapy provides a structured, balanced space to explore recurring patterns, improve communication, address conflict and work towards a healthier relationship.",
+            "My role is not to take sides or declare a winner. It is to help both partners understand what is happening and consider what needs to change."
           ]
         }
       ]
@@ -137,65 +83,33 @@
     {
       "path": "/before-you-marry",
       "title": "Before You Marry",
-      "description": "A five-session premarital programme covering the six subjects that end marriages — money, family, faith, intimacy, children and conflict style. With workbook.",
-      "eyebrow": "Five sessions that will save you five years",
+      "description": "A five-session premarital counselling programme with Dr Lauretta Ogbum — money, family expectations, faith, values, communication, intimacy and how to navigate disagreements.",
+      "eyebrow": "Prepare for the marriage, not just the wedding.",
       "heroCopy": [
-        "You will spend a great deal of money on a wedding that lasts twelve hours. This is about the part that comes after.",
-        "Six subjects, five sessions, and a workbook you keep. The conversations most couples do not have until they are expensive."
+        "Love matters, but so do the conversations that shape married life."
       ],
       "format": [
-        "5 sessions × 75 minutes",
-        "Weekly, or condensed into a single weekend",
-        "Online worldwide, or in person in Port Harcourt",
-        "Includes the Before You Marry workbook",
-        "Available to singles as an individual track"
+        "5 sessions",
+        "For both partners"
       ],
       "fees": [
         {
-          "label": "Full programme",
-          "amount": "beforeYouMarry",
-          "note": "For both of you — all five sessions and materials included"
+          "label": "Five-session programme",
+          "amount": "beforeYouMarry"
         }
       ],
-      "feeNote": "Frequently paid for by parents or as an engagement gift. Say so when you book and I will handle the arrangement discreetly.",
-      "ctaLabel": "Book the programme",
-      "ctaNote": "Start with a free conversation if you'd rather",
+      "ctaLabel": "Book an Introductory Call",
       "related": [
         "/couples-therapy",
-        "/individual-therapy",
-        "/annual-review"
+        "/annual-review",
+        "/individual-therapy"
       ],
       "sections": [
         {
-          "title": "Who this is for",
+          "title": "",
           "content": [
-            "Engaged couples. Couples seriously considering it. And singles who want to do the work before there's anyone to do it with.",
-            "You don't find the right person. You become one."
-          ]
-        },
-        {
-          "title": "The curriculum",
-          "content": [
-            "This is not open-ended conversation. It's a defined programme with a workbook, and we cover the six subjects that end marriages — before they have the chance to."
-          ]
-        },
-        {
-          "title": "The six subjects",
-          "list": true,
-          "content": [
-            "Money — what is earned, what is shared, what is given to family, and who decides",
-            "Family and in-laws — where the boundary sits, and which of you defends it",
-            "Faith and values — where you actually agree, and what happens where you don't",
-            "Intimacy — expectation, frequency, refusal, and how either of you raises it",
-            "Children — whether, when, how many, and how you'll parent differently from your parents",
-            "Conflict style — what each of you does under pressure, and how you'll find your way back"
-          ]
-        },
-        {
-          "title": "What this will not do",
-          "content": [
-            "It will not tell you whether to marry this person. It will make sure that when you decide, you are deciding with full information rather than with hope.",
-            "Occasionally — rarely — a couple discovers here that they shouldn't proceed. I regard that as the programme working, not failing."
+            "This five-session premarital counselling programme helps couples explore the issues that are often overlooked until they become sources of conflict: money, family expectations, faith, values, communication, intimacy and how to navigate disagreements.",
+            "The aim is not to promise a perfect marriage. It is to help you enter marriage with greater understanding, realistic expectations and practical tools for building a life together."
           ]
         }
       ]
@@ -203,28 +117,22 @@
     {
       "path": "/annual-review",
       "title": "The Annual Review",
-      "description": "A yearly two-hour check-up for a marriage that isn't broken. The five exposure points run properly, a written summary, and three commitments for the year.",
-      "eyebrow": "Maintenance, not repair",
+      "description": "A yearly check-in for your marriage with Dr Lauretta Ogbum — one structured session to review communication, connection, shared priorities and the year ahead.",
+      "eyebrow": "A yearly check-in for your marriage.",
       "heroCopy": [
-        "You service a car that's running fine. You review your finances every year. Your company runs quarterly performance reviews.",
-        "And you have never once sat down with the person you married and formally asked: what's working, what's drifting, and what have we stopped saying?"
+        "You do not have to wait until your marriage is in trouble before giving it attention."
       ],
       "format": [
-        "120 minutes, once a year",
-        "Online worldwide, or in person in Port Harcourt",
-        "Written summary provided afterwards",
-        "Three specific commitments agreed for the year",
-        "Runs the five exposure points in full"
+        "120 minutes",
+        "Once a year"
       ],
       "fees": [
         {
-          "label": "One annual session",
+          "label": "One session (120 minutes)",
           "amount": "annualReview"
         }
       ],
-      "feeNote": "Gift vouchers are available. This makes an unusually good anniversary or wedding present, and it is regularly bought as one.",
-      "ctaLabel": "Book the Annual Review",
-      "ctaNote": "Run the free assessment first if you'd like a preview",
+      "ctaLabel": "Book an Introductory Call",
       "related": [
         "/couples-therapy",
         "/before-you-marry",
@@ -232,24 +140,10 @@
       ],
       "sections": [
         {
-          "title": "Who this is for",
+          "title": "",
           "content": [
-            "Couples who are fine. Genuinely. This is the only service on this site you should book while nothing is wrong.",
-            "It is also, for that reason, the one most people skip — and then arrive three years later needing something considerably more expensive."
-          ]
-        },
-        {
-          "title": "What actually happens",
-          "content": [
-            "One structured two-hour session, once a year. We run the five exposure points properly, surface anything drifting while it's still small, and you leave with a written summary and three specific commitments for the year.",
-            "No crisis. No blame. No excavation of things that don't need excavating."
-          ]
-        },
-        {
-          "title": "What this will not do",
-          "content": [
-            "This is not therapy and it is not for couples in crisis.",
-            "If something is actively wrong, book couples therapy instead — you need more than two hours, and I would rather tell you that now than take the booking."
+            "The Annual Review offers couples an opportunity to pause, reflect on their relationship and consider what is working, what has changed and what needs more care.",
+            "Think of it as relationship maintenance: one structured session to review communication, connection, shared priorities and the year ahead."
           ]
         }
       ]
@@ -257,63 +151,34 @@
     {
       "path": "/the-intensive",
       "title": "The Intensive",
-      "description": "One or two full days of couples work — months compressed. For crisis, for calendars that make weekly sessions impossible, and for diaspora couples flying in.",
-      "eyebrow": "Months of work, compressed",
+      "description": "Focused therapeutic work over one or two full days with Dr Lauretta Ogbum, for individuals or couples working on a specific concern.",
+      "eyebrow": "Focused therapeutic work, with more time to explore.",
       "heroCopy": [
-        "One or two full days, in one room, with the thing you have been circling for years placed directly on the table.",
-        "For crisis, for people whose diaries do not permit weekly work, and for couples flying in to do this properly."
+        "Sometimes, regular weekly sessions are difficult to accommodate. At other times, a particular concern needs a more concentrated period of attention."
       ],
       "format": [
-        "One day (6 hours) or two days (12 hours)",
-        "In person in Port Harcourt, or a location you arrange",
-        "Includes two follow-up sessions within 90 days",
-        "Written plan signed by both of you before you leave",
-        "Limited to four intensives per quarter"
+        "1–2 full days",
+        "Limited availability"
       ],
       "fees": [
         {
-          "label": "One day",
-          "amount": "intensiveOneDay"
-        },
-        {
-          "label": "Two days",
-          "amount": "intensiveTwoDay",
-          "note": "Includes both follow-up sessions"
-        },
-        {
-          "label": "Deposit to hold a date",
-          "amount": "intensiveDeposit",
-          "note": "Deducted from the balance"
+          "label": "One or two full days",
+          "amount": "intensive",
+          "prefix": "From"
         }
       ],
-      "feeNote": "Travel outside Port Harcourt is quoted separately at cost. Dates are held on receipt of the deposit and are limited by design — this format only works if I am not running them back to back.",
-      "ctaLabel": "Enquire about an Intensive",
-      "ctaNote": "Tell me your window and I'll tell you what's available",
+      "ctaLabel": "Book an Introductory Call",
       "related": [
         "/couples-therapy",
-        "/diaspora",
-        "/annual-review"
+        "/individual-therapy",
+        "/diaspora"
       ],
       "sections": [
         {
-          "title": "Who this is for",
+          "title": "",
           "content": [
-            "Couples in genuine crisis who cannot wait twelve weeks. Executives whose calendars make weekly sessions impossible. Diaspora couples flying in with one window to do this properly."
-          ]
-        },
-        {
-          "title": "What actually happens",
-          "content": [
-            "Day one, morning — full joint assessment. Day one, afternoon — individual sessions, one with each of you. Day one, close — I show you the loop.",
-            "Day two — the work. Repair protocol, boundaries, the specific conversations you've been avoiding, and a written plan you both sign before you leave.",
-            "It is demanding. People are tired at the end of day one. That is normal and it is part of how it works."
-          ]
-        },
-        {
-          "title": "What this will not do",
-          "content": [
-            "It will not undo twenty years in two days. Anyone telling you otherwise is selling something.",
-            "What it will do is get you to the truth quickly, and give you a working protocol to take home."
+            "The Intensive offers suitable individuals or couples an opportunity to work on a specific concern over one or two full days, with time for focused exploration, reflection and planning.",
+            "The format and suitability of an intensive are discussed in advance. It is not a substitute for emergency or crisis services."
           ]
         }
       ]
@@ -321,32 +186,24 @@
     {
       "path": "/diaspora",
       "title": "Diaspora Sessions",
-      "description": "Therapy for Nigerian and African individuals and couples in the UK, US, Canada, Europe and the Gulf. No cultural translation required. Evening and weekend slots by timezone.",
-      "eyebrow": "The marriage and the culture, both understood",
+      "description": "Online therapeutic support with Dr Lauretta Ogbum for Nigerians living outside the country, with someone who understands the cultural context they may be navigating.",
+      "eyebrow": "Your experiences understood in context.",
       "heroCopy": [
-        "You've probably tried a therapist there. They were competent, they were kind, and at some point you found yourself explaining the culture instead of doing the work.",
-        "This is the same practice, run for people who do not need that part explained."
+        "Living abroad can bring opportunities, but it can also introduce pressures around marriage, family expectations, cultural identity and belonging."
       ],
       "format": [
-        "Online, worldwide",
-        "Evening and weekend slots held for GMT, EST and PST",
-        "Individual (50 min) and couples (75–90 min) formats",
-        "Fees shown and settled in £ or $",
-        "The Intensive available in person when you are home"
+        "Online",
+        "Timezone-aware scheduling",
+        "50–90 minutes"
       ],
       "fees": [
         {
-          "label": "Individual session",
-          "amount": "diasporaIndividual"
-        },
-        {
-          "label": "Couples session",
-          "amount": "diasporaCouples"
+          "label": "50–90 minutes",
+          "amount": "diasporaSession",
+          "prefix": "From"
         }
       ],
-      "feeNote": "Use the currency switch above to see these in pounds or dollars. Diaspora rates reflect the out-of-hours scheduling; standard rates apply for daytime West Africa slots.",
-      "ctaLabel": "Book a free conversation",
-      "ctaNote": "Tell me your timezone and I'll send times that work",
+      "ctaLabel": "Book an Introductory Call",
       "related": [
         "/individual-therapy",
         "/couples-therapy",
@@ -354,27 +211,10 @@
       ],
       "sections": [
         {
-          "title": "Who this is for",
+          "title": "",
           "content": [
-            "Nigerian and African couples and individuals in the UK, US, Canada, Europe and the Gulf.",
-            "Long-distance marriages. Couples navigating a move. Second-generation adults negotiating between two sets of expectations.",
-            "Anyone whose therapist keeps missing the part that matters most."
-          ]
-        },
-        {
-          "title": "What actually happens",
-          "content": [
-            "Every service on this site is available online, and the work itself is identical. What differs is what you don't have to explain.",
-            "Evening and weekend slots are held specifically for GMT, EST and PST, and fees are shown and settled in pounds or dollars.",
-            "When you are next home, the Intensive is available in person — a number of diaspora couples plan a visit around it."
-          ]
-        },
-        {
-          "title": "What this will not do",
-          "content": [
-            "It will not require cultural translation while you're already in pain.",
-            "It will not ask you to explain why your mother's opinion carries weight, or what it means when your husband's family arrives without notice.",
-            "It will not treat your culture as the diagnosis. It is context, and often it is a resource."
+            "Diaspora Sessions offer online therapeutic support for Nigerians living outside the country who want to explore personal or relationship concerns with someone who understands the cultural context they may be navigating.",
+            "You should not have to spend the entire conversation explaining the background before you can begin discussing what matters to you."
           ]
         }
       ]

@@ -3,17 +3,33 @@ import data from "../../content/assessments.json" with { type: "json" };
 export interface Dimension {
   id: string;
   title: string;
-  /** Shown alongside the dimension's score in the report. */
-  strong: string;
-  thin: string;
+  /** One line under the dimension's title, in the quiz and the report. */
+  description: string;
+  /** What to work on in this dimension. Empty when the description says it. */
+  guidance: string;
   questions: string[];
 }
 
+/** A feedback band for one dimension's raw score (three questions × 1–4). */
 export interface Band {
-  /** Inclusive lower bound as a percentage of the maximum score. */
   min: number;
+  max: number;
   label: string;
   summary: string;
+}
+
+export type SafetyAnswer = "yes" | "unsure" | "no" | "skip";
+
+export interface Safety {
+  eyebrow: string;
+  question: string;
+  help: string;
+  options: { label: string; value: SafetyAnswer }[];
+  /**
+   * When true, a "yes" or "not sure" never reaches the scores. When false the
+   * safety message still comes first, with a way on to the results.
+   */
+  bypassResults: boolean;
 }
 
 export interface Assessment {
@@ -25,23 +41,32 @@ export interface Assessment {
   /** How the *other* assessment's page describes this one. */
   siblingBlurb: string;
   eyebrow: string;
-  intro: string;
-  /** Likert labels, lowest agreement first. */
+  intro: string[];
+  /** The "Before you begin" list on the quiz's first screen. */
+  introPoints: string[];
+  scaleHelp: string;
+  /** Likert labels, lowest first. Scored 1 to 4 in this order. */
   scale: string[];
   dimensions: Dimension[];
-  safetyQuestion: string;
-  safetyHelp: string;
+  safety: Safety;
   bands: Band[];
+  bandsNote: string;
+  resultsIntro: string[];
+  nextStep: { title: string; body: string };
   ctaLabel: string;
   ctaHref: string;
+  printNote: string;
+  disclaimerTitle: string;
+  disclaimer: string[];
 }
-
-const SCALE = ["Rarely true", "Sometimes true", "Often true", "Consistently true"];
 
 export const selfAudit = data.selfAudit as Assessment;
 export const relationalRisk = data.relationalRisk as Assessment;
 
 export const assessments = [selfAudit, relationalRisk];
+
+/** Answers that show the safety message instead of going straight to results. */
+export const SAFETY_CONCERNS: SafetyAnswer[] = ["yes", "unsure"];
 
 /** Every visible string in the quiz itself, for both renderers. */
 export interface QuizCopy {
@@ -50,7 +75,6 @@ export interface QuizCopy {
   completeLabel: string;
   progressLabel: string;
   introTitle: string;
-  introPoints: string[];
   beginPrefix: string;
   beginSuffix: string;
   dimensionLabel: string;
@@ -58,23 +82,18 @@ export interface QuizCopy {
   backLabel: string;
   nextLabel: string;
   continueLabel: string;
-  safetyEyebrow: string;
-  safetyYesLabel: string;
-  safetyNoLabel: string;
   safetyBackLabel: string;
   safeExitTitle: string;
   safeExitParagraphs: string[];
-  safeExitCrisisCta: { label: string; href: string };
   safeExitContactCta: { label: string; href: string };
+  safeExitResultsLabel: string;
   restartLabel: string;
   resultEyebrow: string;
   perDimensionTitle: string;
-  lowestTitlePrefix: string;
-  lowestAdvice: string;
+  overallLabel: string;
+  strongestLabel: string;
+  attentionLabel: string;
   printLabel: string;
-  disclaimer: string;
-  disclaimerLinkLabel: string;
-  disclaimerSuffix: string;
   retakeLabel: string;
 }
 
@@ -92,6 +111,6 @@ export const assessmentPageCopy: {
   quiz: QuizCopy;
 } = data.pageCopy;
 
-export function bandFor(assessment: Assessment, percentage: number): Band {
-  return [...assessment.bands].reverse().find((band) => percentage >= band.min) ?? assessment.bands[0];
+export function bandFor(assessment: Assessment, score: number): Band {
+  return assessment.bands.find((band) => score >= band.min && score <= band.max) ?? assessment.bands[0];
 }

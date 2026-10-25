@@ -103,38 +103,18 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div>
-          <label htmlFor="topic" className="mb-2 block text-sm font-medium text-ink">
-            {copy.topicLabel}
-          </label>
-          <select id="topic" name="topic" defaultValue="" className={fieldClass}>
-            <option value="">{copy.topicPlaceholder}</option>
-            {copy.topics.map((topic) => (
-              <option key={topic} value={topic}>
-                {topic}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="preferredContact" className="mb-2 block text-sm font-medium text-ink">
-            {copy.replyLabel}
-          </label>
-          <select
-            id="preferredContact"
-            name="preferredContact"
-            defaultValue={copy.replyOptions[0]}
-            className={fieldClass}
-          >
-            {copy.replyOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
+      <div>
+        <label htmlFor="topic" className="mb-2 block text-sm font-medium text-ink">
+          {copy.topicLabel}
+        </label>
+        <select id="topic" name="topic" defaultValue="" className={fieldClass}>
+          <option value="">{copy.topicPlaceholder}</option>
+          {copy.topics.map((topic) => (
+            <option key={topic} value={topic}>
+              {topic}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div>

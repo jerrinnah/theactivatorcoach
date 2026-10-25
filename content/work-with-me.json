@@ -1,26 +1,34 @@
 {
   "seo": {
     "title": "Work With Me",
-    "description": "Six ways to work with Dr. Lauretta Ogbum — individual and couples therapy, premarital work, the Annual Review, Intensives and Diaspora sessions. Fees shown in ₦, £ or $."
+    "description": "Psychotherapy and counselling for individuals and couples with Dr Lauretta Ogbum — individual and couples therapy, premarital counselling, the Annual Review, the Intensive and Diaspora Sessions."
   },
   "hero": {
     "eyebrow": "Work with me",
-    "title": "Every piece of work here starts the same way.",
-    "intro": "A free fifteen-minute conversation. There is no charge, no obligation, and nothing goes on record. You describe what is happening; I tell you honestly which of these — if any — is the right one.",
-    "cta": { "label": "Book that conversation", "href": "/contact" }
+    "title": "You do not have to figure it all out alone.",
+    "paragraphs": [
+      "Whether you are navigating a difficult relationship, struggling with your emotions or trying to make sense of a major life change, you do not have to work through it alone.",
+      "I offer psychotherapy and counselling for individuals and couples, with a compassionate, practical and honest approach.",
+      "Not sure where to begin? A brief introductory call gives us an opportunity to discuss what brings you here and explore whether my services are right for you."
+    ],
+    "cta": {
+      "label": "Book an Introductory Call",
+      "href": "/contact"
+    }
   },
   "services": {
     "eyebrow": "The six services",
-    "title": "Choose where to start"
+    "title": "Choose where to start.",
+    "intro": "Every person and relationship is different. Explore the services below to find the support that best fits your circumstances."
   },
   "fees": {
     "eyebrow": "Fees",
-    "title": "Side by side",
+    "title": "Side by side.",
+    "intro": "I believe you should understand the cost and format of a service before committing to it.",
     "toggleLabel": "Show fees in",
-    "tableCaption": "Comparison of services, who each is for, session length and fee",
+    "tableCaption": "Comparison of services, their format and fee",
     "columns": {
       "service": "Service",
-      "who": "Who it’s for",
       "format": "Format",
       "fee": "Fee"
     },
@@ -28,63 +36,72 @@
       {
         "service": "Individual Therapy",
         "href": "/individual-therapy",
-        "who": "One person, patterns that repeat",
-        "length": "50 min · 8–16 sessions",
+        "length": "50 minutes per session",
         "price": "individualSession",
-        "priceLabel": "per session"
+        "pricePrefix": ""
       },
       {
         "service": "Couples Therapy",
         "href": "/couples-therapy",
-        "who": "Two people, still willing",
-        "length": "75–90 min · 8–12 sessions",
+        "length": "80 minutes per session",
         "price": "couplesSession",
-        "priceLabel": "per session"
+        "pricePrefix": ""
       },
       {
         "service": "Before You Marry",
         "href": "/before-you-marry",
-        "who": "Engaged, or seriously considering",
-        "length": "5 × 75 min",
+        "length": "Five-session programme",
         "price": "beforeYouMarry",
-        "priceLabel": "full programme"
+        "pricePrefix": ""
       },
       {
         "service": "The Annual Review",
         "href": "/annual-review",
-        "who": "Couples who are genuinely fine",
-        "length": "120 min · yearly",
+        "length": "120 minutes",
         "price": "annualReview",
-        "priceLabel": "per review"
+        "pricePrefix": ""
       },
       {
         "service": "The Intensive",
         "href": "/the-intensive",
-        "who": "Crisis, or no time for weekly",
-        "length": "1–2 full days",
-        "price": "intensiveOneDay",
-        "priceLabel": "from, one day"
+        "length": "One or two full days",
+        "price": "intensive",
+        "pricePrefix": "From"
       },
       {
         "service": "Diaspora Sessions",
         "href": "/diaspora",
-        "who": "Nigerians abroad",
-        "length": "50–90 min · out of hours",
-        "price": "diasporaIndividual",
-        "priceLabel": "from, individual"
+        "length": "50–90 minutes",
+        "price": "diasporaSession",
+        "pricePrefix": "From"
       }
     ],
-    "note": "Block and programme rates carry a saving on the per-session fee — see each service page for the full breakdown. A limited number of reduced-fee places are held at any time; if cost is the only thing in the way, say so in your first conversation."
+    "currencyNote": "Fees are displayed in the currency selected on the website. Please confirm the applicable currency and final fee before booking.",
+    "notes": [
+      "A limited number of reduced-fee places may be available. If cost is a significant barrier, you are welcome to mention this during your introductory call."
+    ]
   },
   "process": {
     "eyebrow": "What happens",
-    "title": "Four steps, and you can stop at any of them",
-    "intro": "Nothing here is a commitment you cannot withdraw from."
+    "title": "Four steps, with room to decide.",
+    "intro": "Beginning therapy does not mean committing to an indefinite process. You can ask questions, review your progress and decide whether to continue."
   },
   "closing": {
-    "title": "Not sure which one?",
-    "intro": "Most people aren’t. That is what the free conversation is for — and if you would rather look at it privately first, either assessment will tell you a great deal in ten minutes.",
-    "primaryCta": { "label": "Book a free conversation", "href": "/contact" },
-    "secondaryCta": { "label": "Take the Self-Audit", "href": "/self-audit" }
+    "eyebrow": "Not sure where to start?",
+    "title": "You do not need to have all the answers.",
+    "paragraphs": [
+      "Choosing a therapist is a personal decision. An introductory call gives us an opportunity to discuss what brings you here, answer your initial questions and determine whether my approach and services are a suitable fit.",
+      "If we decide to proceed, we can arrange the appropriate paid session.",
+      "If another form of support would better meet your needs, I will be honest with you."
+    ],
+    "primaryCta": {
+      "label": "Book a 15-Minute Introductory Call",
+      "href": "/contact"
+    },
+    "secondaryPrompt": "Prefer to reflect privately first?",
+    "secondaryCta": {
+      "label": "Take the Self-Audit",
+      "href": "/self-audit"
+    }
   }
 }

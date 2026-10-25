@@ -198,28 +198,12 @@
           Name: name,
           Email: email,
           Topic: enquiry.elements.topic.value || "Not specified",
-          "Preferred contact": enquiry.elements.preferredContact.value,
           Message: message,
         },
         "Website enquiry — " + (enquiry.elements.topic.value || "General") + " — " + name,
         enquiry,
-        "Thank you, " + name + ". Your message is on its way. I reply to everything within two working days — and if your situation is urgent, please don't wait for me.",
+        "Thank you, " + name + ". Your message is on its way. If you are in immediate danger, contact local emergency services rather than waiting for a reply.",
       );
     });
   }
-
-  /* Letter signup — may appear more than once per page */
-  document.querySelectorAll(".js-subscribe").forEach(function (form) {
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-      var email = form.elements.email.value.trim();
-      if (!EMAIL_RE.test(email)) return setStatus(form, "Please enter a valid email address.", false);
-      postOrMail(
-        { Email: email },
-        "Activator Letter — please add me",
-        form,
-        "You're on the list. The next letter goes out at the start of the month.",
-      );
-    });
-  });
 })();

@@ -4,7 +4,6 @@ import {
   footer as copy,
   footerSections,
   practitioner,
-  whatsappLink,
 } from "@/lib/siteData";
 import { LeafBranch, PsiBadge } from "@/components/ui/Ornaments";
 import Rich from "@/components/ui/Rich";
@@ -27,32 +26,17 @@ export default function Footer() {
             <PsiBadge className="h-10 w-10 text-sage-soft" />
             <span className="font-display text-2xl text-white">{practitioner.logoName}</span>
           </div>
+          <p className="text-sm leading-7 text-sage-soft/85">{copy.tagline}</p>
           <p className="text-sm leading-7 text-sage-soft/85">
             {practitioner.fullName} — <Rich text={copy.bio} />
           </p>
           <div className="space-y-1.5 text-sm text-sage-soft/75">
-            <p>{contactDetails.location}</p>
             <p>{contactDetails.reach}</p>
+            <p>{contactDetails.location}</p>
           </div>
           <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
             <a href={`mailto:${contactDetails.email}`} className="underline-offset-4 hover:text-white hover:underline">
               {contactDetails.email}
-            </a>
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline-offset-4 hover:text-white hover:underline"
-            >
-              WhatsApp
-            </a>
-            <a
-              href={contactDetails.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline-offset-4 hover:text-white hover:underline"
-            >
-              {contactDetails.instagram}
             </a>
           </div>
         </div>
@@ -78,14 +62,8 @@ export default function Footer() {
       </div>
 
       <div className="relative border-t border-white/10 px-6 py-8 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="mx-auto max-w-7xl">
           <p className="max-w-2xl text-sm leading-6 text-sage-soft/70">{copy.emergencyNote}</p>
-          <Link
-            href="/crisis"
-            className="shrink-0 rounded-full border border-white/25 px-5 py-2.5 text-sm text-white transition hover:bg-white/10"
-          >
-            {copy.crisisLinkLabel}
-          </Link>
         </div>
         <div className="mx-auto mt-8 flex max-w-7xl flex-col gap-3 text-xs text-sage-soft/50 sm:flex-row sm:items-center sm:justify-between">
           <p>

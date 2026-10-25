@@ -3,7 +3,7 @@
 @theme {
   /* Warm neutrals */
   --color-cream: #faf7f2;
-  --color-cream-deep: #f4f0e7;
+  --color-cream-deep: #fdf1df;
   --color-sand: #ece6da;
   --color-surface: #ffffff;
 
@@ -12,12 +12,15 @@
   --color-ink-soft: #474c41;
   --color-muted: #767c6e;
 
-  /* Sage */
-  --color-sage: #7d9471;
-  --color-sage-deep: #5c7152;
-  --color-sage-dark: #3f4f38;
-  --color-sage-soft: #dde6d5;
-  --color-sage-mist: #eef2ea;
+  /* Brand — token names kept from the original sage palette so the markup
+     and the CMS theme keys don't change. sage = brand orange (#ffa319);
+     the rest are shades of brand blue (#19d1ff), darkened where they carry
+     text so contrast stays above 4.5:1. */
+  --color-sage: #ffa319;
+  --color-sage-deep: #0b6d8f;
+  --color-sage-dark: #062f40;
+  --color-sage-soft: #c2f0ff;
+  --color-sage-mist: #eaf9ff;
 
   /* Lines */
   --color-line: #e4dfd3;

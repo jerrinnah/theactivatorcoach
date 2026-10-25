@@ -1,8 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
-import { bandFor, type Assessment , assessmentPageCopy } from "@/lib/assessments";
+import {
+  bandFor,
+  type Assessment,
+  type SafetyAnswer,
+  SAFETY_CONCERNS,
+  assessmentPageCopy,
+} from "@/lib/assessments";
 import { ButtonLink } from "@/components/ui/Button";
 
 type Stage = "intro" | "questions" | "safety" | "safe-exit" | "result";
@@ -10,14 +15,21 @@ type Stage = "intro" | "questions" | "safety" | "safe-exit" | "result";
 /** Index into `assessment.scale`, or undefined while unanswered. */
 type Answers = Record<string, number | undefined>;
 
-const MAX_PER_QUESTION = 3;
-
 function keyFor(dimensionId: string, index: number) {
   return `${dimensionId}:${index}`;
 }
 
 const copy = assessmentPageCopy.quiz;
 
+const outlineButton =
+  "inline-flex items-center justify-center rounded-full border border-sage-deep/35 px-8 py-4 text-[0.9375rem] text-sage-dark transition hover:bg-sage-mist";
+const textLink = "mt-6 text-sm text-muted underline-offset-4 hover:text-sage-deep hover:underline";
+
+/**
+ * Each answer scores 1–4 (Rarely true … Consistently true), so a dimension of
+ * three questions scores 3–12 and the whole instrument 15–60. The safety
+ * question is never part of the score.
+ */
 export default function AssessmentQuiz({ assessment }: { assessment: Assessment }) {
   const [stage, setStage] = useState<Stage>("intro");
   const [step, setStep] = useState(0);
@@ -30,23 +42,22 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
 
   const scores = useMemo(() => {
     const perDimension = assessment.dimensions.map((dim) => {
-      const raw = dim.questions.reduce(
-        (sum, _question, index) => sum + (answers[keyFor(dim.id, index)] ?? 0),
-        0,
-      );
-      const max = dim.questions.length * MAX_PER_QUESTION;
-      return { dimension: dim, raw, max, percentage: Math.round((raw / max) * 100) };
+      const score = dim.questions.reduce((sum, _question, index) => {
+        const value = answers[keyFor(dim.id, index)];
+        return sum + (value === undefined ? 0 : value + 1);
+      }, 0);
+      return { dimension: dim, score, max: dim.questions.length * assessment.scale.length };
     });
 
-    const raw = perDimension.reduce((sum, entry) => sum + entry.raw, 0);
-    const max = perDimension.reduce((sum, entry) => sum + entry.max, 0);
-
+    // Ties go to the dimension asked first, so the result is stable.
     return {
       perDimension,
-      percentage: Math.round((raw / max) * 100),
-      lowest: [...perDimension].sort((a, b) => a.percentage - b.percentage)[0],
+      total: perDimension.reduce((sum, entry) => sum + entry.score, 0),
+      max: perDimension.reduce((sum, entry) => sum + entry.max, 0),
+      strongest: perDimension.reduce((a, b) => (b.score > a.score ? b : a)),
+      attention: perDimension.reduce((a, b) => (b.score < a.score ? b : a)),
     };
-  }, [answers, assessment.dimensions]);
+  }, [answers, assessment.dimensions, assessment.scale.length]);
 
   const stepComplete =
     !dimension || dimension.questions.every((_q, index) => answers[keyFor(dimension.id, index)] !== undefined);
@@ -54,6 +65,11 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
   const focusPanel = () => {
     // Move focus to the new step so screen readers and keyboard users follow along.
     requestAnimationFrame(() => panelRef.current?.focus());
+  };
+
+  const go = (next: Stage) => {
+    setStage(next);
+    focusPanel();
   };
 
   const goNext = () => {
@@ -83,16 +99,16 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
     focusPanel();
   };
 
+  const answerSafety = (value: SafetyAnswer) => go(SAFETY_CONCERNS.includes(value) ? "safe-exit" : "result");
+
   const restart = () => {
     setAnswers({});
     setStep(0);
     setShowIncomplete(false);
-    setStage("intro");
-    focusPanel();
+    go("intro");
   };
 
-  const progress =
-    stage === "questions" ? step + 1 : stage === "safety" ? totalSteps : stage === "result" ? totalSteps : 0;
+  const progress = stage === "questions" ? step + 1 : totalSteps;
 
   return (
     <div
@@ -101,7 +117,7 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
       className="scroll-mt-28 rounded-4xl border border-line bg-white p-7 outline-none sm:p-10"
       id="assessment"
     >
-      {stage !== "intro" && stage !== "safe-exit" ? (
+      {stage === "questions" || stage === "safety" ? (
         <div className="mb-8">
           <div className="flex items-center justify-between text-xs text-muted">
             <span>
@@ -131,24 +147,24 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
       {stage === "intro" ? (
         <div>
           <p className="eyebrow">{assessment.eyebrow}</p>
-          <h2 className="mt-4 font-display text-[2rem] leading-tight text-ink">
-            {copy.introTitle}
-          </h2>
+          <h2 className="mt-4 font-display text-[2rem] leading-tight text-ink">{copy.introTitle}</h2>
           <ul className="mt-6 space-y-3 text-[0.9375rem] leading-7 text-ink-soft">
-            {copy.introPoints.map((point) => (
-              <li key={point}>{point}</li>
+            {assessment.introPoints.map((point) => (
+              <li key={point} className="flex gap-3.5">
+                <span aria-hidden="true" className="mt-3 h-1 w-1 shrink-0 rounded-full bg-sage" />
+                {point}
+              </li>
             ))}
           </ul>
+          {assessment.scaleHelp ? (
+            <p className="mt-6 text-[0.9375rem] leading-7 text-muted">{assessment.scaleHelp}</p>
+          ) : null}
           <button
             type="button"
-            onClick={() => {
-              setStage("questions");
-              focusPanel();
-            }}
+            onClick={() => go("questions")}
             className="mt-8 rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark"
           >
-            {copy.beginPrefix}{" "}
-            {assessment.dimensions.reduce((n, d) => n + d.questions.length, 0)}{" "}
+            {copy.beginPrefix} {assessment.dimensions.reduce((n, d) => n + d.questions.length, 0)}{" "}
             {copy.beginSuffix}
           </button>
         </div>
@@ -160,6 +176,9 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
             {copy.dimensionLabel} {step + 1} {copy.ofLabel} {assessment.dimensions.length}
           </p>
           <h2 className="mt-3 font-display text-[2rem] leading-tight text-ink">{dimension.title}</h2>
+          {dimension.description ? (
+            <p className="mt-3 text-[0.9375rem] leading-7 text-muted">{dimension.description}</p>
+          ) : null}
 
           <div className="mt-8 space-y-8">
             {dimension.questions.map((question, index) => {
@@ -187,9 +206,7 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
                             name={name}
                             value={scaleIndex}
                             checked={selected}
-                            onChange={() =>
-                              setAnswers((prev) => ({ ...prev, [name]: scaleIndex }))
-                            }
+                            onChange={() => setAnswers((prev) => ({ ...prev, [name]: scaleIndex }))}
                             className="sr-only"
                           />
                           {label}
@@ -197,9 +214,7 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
                       );
                     })}
                   </div>
-                  {unanswered ? (
-                    <p className="mt-2 text-sm text-red-700">{copy.unansweredError}</p>
-                  ) : null}
+                  {unanswered ? <p className="mt-2 text-sm text-red-700">{copy.unansweredError}</p> : null}
                 </fieldset>
               );
             })}
@@ -226,40 +241,26 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
 
       {stage === "safety" ? (
         <div>
-          <p className="eyebrow">{copy.safetyEyebrow}</p>
-          <h2 className="mt-3 font-display text-[2rem] leading-tight text-ink">
-            {assessment.safetyQuestion}
-          </h2>
-          <p className="mt-4 text-[0.9375rem] leading-7 text-muted">{assessment.safetyHelp}</p>
+          <p className="eyebrow">{assessment.safety.eyebrow}</p>
+          <h2 className="mt-3 font-display text-[2rem] leading-tight text-ink">{assessment.safety.question}</h2>
+          {assessment.safety.help ? (
+            <p className="mt-4 text-[0.9375rem] leading-7 text-muted">{assessment.safety.help}</p>
+          ) : null}
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <button
-              type="button"
-              onClick={() => {
-                setStage("safe-exit");
-                focusPanel();
-              }}
-              className="rounded-full border border-sage-deep/40 px-8 py-3.5 text-sm text-sage-dark transition hover:bg-sage-mist"
-            >
-              {copy.safetyYesLabel}
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setStage("result");
-                focusPanel();
-              }}
-              className="rounded-full bg-sage-deep px-8 py-3.5 text-sm font-medium text-white transition hover:bg-sage-dark"
-            >
-              {copy.safetyNoLabel}
-            </button>
+          <div className="mt-8 grid gap-2 sm:grid-cols-2">
+            {assessment.safety.options.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() => answerSafety(option.value)}
+                className="rounded-2xl border border-line bg-cream px-4 py-3 text-sm text-ink-soft transition hover:border-sage/50 hover:bg-sage-mist"
+              >
+                {option.label}
+              </button>
+            ))}
           </div>
 
-          <button
-            type="button"
-            onClick={goBack}
-            className="mt-6 text-sm text-muted underline-offset-4 hover:text-sage-deep hover:underline"
-          >
+          <button type="button" onClick={goBack} className={textLink}>
             {copy.safetyBackLabel}
           </button>
         </div>
@@ -267,27 +268,24 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
 
       {stage === "safe-exit" ? (
         <div>
-          <h2 className="font-display text-[2rem] leading-tight text-ink">
-            {copy.safeExitTitle}
-          </h2>
+          <h2 className="font-display text-[2rem] leading-tight text-ink">{copy.safeExitTitle}</h2>
           <div className="mt-6 space-y-4 text-[1.0625rem] leading-[1.8] text-ink-soft">
             {copy.safeExitParagraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href={copy.safeExitCrisisCta.href} size="lg">
-              {copy.safeExitCrisisCta.label}
-            </ButtonLink>
-            <ButtonLink href={copy.safeExitContactCta.href} variant="outline" size="lg">
+            <ButtonLink href={copy.safeExitContactCta.href} size="lg">
               {copy.safeExitContactCta.label}
             </ButtonLink>
+            {/* Never offered where the instrument says a concern bypasses the results. */}
+            {assessment.safety.bypassResults ? null : (
+              <button type="button" onClick={() => go("result")} className={outlineButton}>
+                {copy.safeExitResultsLabel}
+              </button>
+            )}
           </div>
-          <button
-            type="button"
-            onClick={restart}
-            className="mt-6 text-sm text-muted underline-offset-4 hover:text-sage-deep hover:underline"
-          >
+          <button type="button" onClick={restart} className={textLink}>
             {copy.restartLabel}
           </button>
         </div>
@@ -296,83 +294,93 @@ export default function AssessmentQuiz({ assessment }: { assessment: Assessment 
       {stage === "result" ? (
         <div>
           <p className="eyebrow">{copy.resultEyebrow}</p>
+          {assessment.resultsIntro.length ? (
+            <div className="mt-5 max-w-2xl space-y-3 text-[1.0625rem] leading-[1.8] text-ink-soft">
+              {assessment.resultsIntro.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          ) : null}
 
-          <div className="mt-5 flex flex-wrap items-end gap-x-6 gap-y-2">
-            <p className="font-display text-6xl leading-none text-sage-deep">{scores.percentage}%</p>
-            <p className="font-display text-3xl text-ink">
-              {bandFor(assessment, scores.percentage).label}
-            </p>
+          <h3 className="mt-9 font-display text-2xl text-ink">{copy.perDimensionTitle}</h3>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2">
+            {scores.perDimension.map((entry) => {
+              const band = bandFor(assessment, entry.score);
+              const detail = entry.dimension.guidance || entry.dimension.description;
+              return (
+                <div key={entry.dimension.id} className="rounded-3xl border border-line bg-white p-6">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h4 className="font-display text-2xl leading-snug text-ink">{entry.dimension.title}</h4>
+                    <p className="shrink-0 font-display text-3xl text-sage-deep">
+                      {entry.score}
+                      <span className="text-base text-muted">/{entry.max}</span>
+                    </p>
+                  </div>
+                  <div className="mt-3 h-2 overflow-hidden rounded-full bg-sage-mist">
+                    <div
+                      className="h-full rounded-full bg-sage-deep"
+                      style={{ width: `${Math.round((entry.score / entry.max) * 100)}%` }}
+                    />
+                  </div>
+                  <p className="mt-4 text-sm font-medium text-sage-deep">{band.label}</p>
+                  <p className="mt-1 text-sm leading-6 text-ink-soft">{band.summary}</p>
+                  {detail ? (
+                    <p className="mt-4 border-t border-line-soft pt-4 text-sm leading-6 text-muted">{detail}</p>
+                  ) : null}
+                </div>
+              );
+            })}
           </div>
+          <p className="mt-4 text-xs leading-5 text-muted">{assessment.bandsNote}</p>
 
-          <p className="mt-5 max-w-2xl text-[1.0625rem] leading-[1.8] text-ink-soft">
-            {bandFor(assessment, scores.percentage).summary}
-          </p>
-
-          <div className="mt-10 space-y-6">
-            <h3 className="font-display text-2xl text-ink">{copy.perDimensionTitle}</h3>
-            {scores.perDimension.map((entry) => (
-              <div key={entry.dimension.id}>
-                <div className="flex items-baseline justify-between gap-4">
-                  <p className="text-[0.9375rem] font-medium text-ink">{entry.dimension.title}</p>
-                  <p className="text-sm text-muted">
-                    {entry.raw}/{entry.max}
-                  </p>
-                </div>
-                <div className="mt-2 h-2 overflow-hidden rounded-full bg-sage-mist">
-                  <div
-                    className={`h-full rounded-full ${
-                      entry.percentage >= 75
-                        ? "bg-sage-deep"
-                        : entry.percentage >= 50
-                          ? "bg-sage"
-                          : "bg-amber-500/80"
-                    }`}
-                    style={{ width: `${Math.max(entry.percentage, 3)}%` }}
-                  />
-                </div>
-                <p className="mt-2 text-sm leading-6 text-muted">
-                  {entry.percentage >= 60 ? entry.dimension.strong : entry.dimension.thin}
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {[
+              { label: copy.strongestLabel, entry: scores.strongest },
+              { label: copy.attentionLabel, entry: scores.attention },
+            ].map(({ label, entry }) => (
+              <div key={label} className="rounded-3xl bg-sage-mist p-6">
+                <p className="text-xs uppercase tracking-[0.14em] text-muted">{label}</p>
+                <p className="mt-2 font-display text-2xl leading-snug text-ink">{entry.dimension.title}</p>
+                <p className="mt-1 text-sm text-muted">
+                  {entry.score}/{entry.max} · {bandFor(assessment, entry.score).label}
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="mt-10 rounded-3xl bg-sage-mist p-7">
-            <h3 className="font-display text-2xl text-ink">
-              {copy.lowestTitlePrefix} {scores.lowest.dimension.title}
-            </h3>
-            <p className="mt-3 text-[0.9375rem] leading-7 text-ink-soft">
-              {scores.lowest.dimension.thin}
-            </p>
-            <p className="mt-3 text-[0.9375rem] leading-7 text-ink-soft">{copy.lowestAdvice}</p>
-          </div>
-
-          <div className="mt-9 flex flex-wrap gap-3">
-            <ButtonLink href={assessment.ctaHref} size="lg">
-              {assessment.ctaLabel}
-            </ButtonLink>
-            <button
-              type="button"
-              onClick={() => window.print()}
-              className="rounded-full border border-sage-deep/35 px-8 py-4 text-[0.9375rem] text-sage-dark transition hover:bg-sage-mist"
-            >
-              {copy.printLabel}
-            </button>
-          </div>
-
-          <p className="mt-8 border-t border-line-soft pt-6 text-sm leading-6 text-muted">
-            {copy.disclaimer}{" "}
-            <Link href="/contact" className="text-sage-deep underline-offset-4 hover:underline">
-              {copy.disclaimerLinkLabel}
-            </Link>{" "}
-            {copy.disclaimerSuffix}
+          <p className="mt-6 text-[0.9375rem] text-ink-soft">
+            {copy.overallLabel}: <span className="font-display text-2xl text-sage-deep">{scores.total}</span>/
+            {scores.max}
           </p>
 
-          <button
-            type="button"
-            onClick={restart}
-            className="mt-6 text-sm text-muted underline-offset-4 hover:text-sage-deep hover:underline"
-          >
+          <div className="mt-9 rounded-3xl border border-line p-7">
+            <h3 className="font-display text-2xl text-ink">{assessment.nextStep.title}</h3>
+            <p className="mt-3 text-[0.9375rem] leading-7 text-ink-soft">{assessment.nextStep.body}</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <ButtonLink href={assessment.ctaHref} size="lg">
+                {assessment.ctaLabel}
+              </ButtonLink>
+              <button type="button" onClick={() => window.print()} className={outlineButton}>
+                {copy.printLabel}
+              </button>
+            </div>
+            {assessment.printNote ? (
+              <p className="mt-5 text-sm leading-6 text-muted">{assessment.printNote}</p>
+            ) : null}
+          </div>
+
+          <div className="mt-8 border-t border-line-soft pt-6 text-sm leading-6 text-muted">
+            {assessment.disclaimerTitle ? (
+              <p className="font-medium text-ink-soft">{assessment.disclaimerTitle}</p>
+            ) : null}
+            <div className="mt-2 space-y-2">
+              {assessment.disclaimer.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+
+          <button type="button" onClick={restart} className={textLink}>
             {copy.retakeLabel}
           </button>
         </div>

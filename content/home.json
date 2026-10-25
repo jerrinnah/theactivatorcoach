@@ -1,111 +1,99 @@
 {
   "hero": {
-    "eyebrow": "Assessment · Repair · Relational risk",
+    "eyebrow": "Psychotherapy · Counselling · Relationship Support",
     "titleLines": [
-      "Where is your",
-      "**relationship** exposed?"
+      "Your mind matters.",
+      "Your relationships matter.",
+      "**You matter.**"
     ],
-    "intro": "Psychotherapy and relational risk assessment for individuals and couples. Twenty-five years of practice, an assessor’s discipline, and no interest in deciding who is right.",
+    "intro": "A supportive space for understanding yourself, navigating life's challenges and building healthier relationships.",
     "primaryCta": {
-      "label": "Book a free conversation",
+      "label": "Book an Introductory Call",
       "href": "/contact"
     },
     "secondaryCta": {
       "label": "Take the Self-Audit",
       "href": "/self-audit"
     },
-    "reassurance": "Confidential · Online worldwide · In person in Port Harcourt",
+    "reassurance": "Online worldwide · In-person sessions by appointment",
     "portrait": {
       "image": null,
-      "alt": "Dr. Lauretta Ogbum, psychotherapist",
-      "label": "Dr. Lauretta Ogbum"
+      "alt": "Dr Lauretta Ogbum, psychotherapist",
+      "label": "Dr Lauretta Ogbum"
     },
     "badge": {
       "value": "25 yrs",
-      "caption": "Married, and in practice long enough to have made the ordinary mistakes first."
+      "caption": "Twenty-five years married. Still learning."
     }
   },
   "aboutPreview": {
-    "eyebrow": "About me",
-    "title": "I did not begin in psychology.",
+    "eyebrow": "About Dr Lauretta Ogbum",
+    "title": "Understanding yourself. Building healthier relationships.",
     "paragraphs": [
-      "I'm a psychotherapist, counsellor and coach. I work with people who are carrying something, anxiety, grief, burnout, a marriage that's gone quiet, a version of themselves they don't recognise anymore.\n\nMost of them are managing. That's usually the problem. They're functioning well enough that nobody's asked how they are in a long time.\n\nHow I got here\n\nI didn't start in psychology. Most of my working life has been in security and risk, and I'm still in it. It's not a past career I left behind for something more meaningful. I do both.\n\nPeople find that combination odd until they think about it. Security work puts you around people on their worst days: after the incident, during the emergency, in the hours when things have gone wrong and someone has to stay calm. I spent years doing that before I ever sat in a therapy room.\n\n",
-      "What I kept noticing was how many people were handling enormous things without any support at all. Not because help didn't exist, but because asking felt like admitting something. So I went and trained properly and built a practice alongside the work I was already doing.\n\nI've been doing both ever since. The security work keeps me around real pressure. The practice is where I do something about it.\n"
+      "I am a psychotherapist, counsellor and coach. I work with people who are carrying more than they let on: anxiety, grief, emotional exhaustion, relationship difficulties or a sense of having lost touch with who they are.",
+      "Many of the people I work with are managing. They go to work, care for their families and meet their responsibilities. From the outside, everything may look fine. But beneath the surface, they may be struggling with emotions they do not understand, experiences they have not processed or problems they have been carrying alone."
     ],
-    "quote": "“Catastrophes are almost never sudden. They are the visible moment of a failure that has been quietly accumulating somewhere nobody was looking.”",
+    "quote": "You do not have to wait until everything falls apart before seeking support.",
     "cta": {
-      "label": "Read my full story",
+      "label": "About my approach",
       "href": "/about"
     },
-    "credentialLine": "PhD, Psychology · Founder, Activator Coaching Academy",
+    "credentialLine": "PhD in Psychology · Founder and Lead Therapist, Activator Coaching Academy",
     "portrait": {
       "image": null,
-      "alt": "Dr. Lauretta Ogbum in her consulting room",
-      "label": "In the consulting room"
+      "alt": "Dr Lauretta Ogbum",
+      "label": "Dr Lauretta Ogbum"
     }
   },
   "services": {
-    "eyebrow": "How I can help",
-    "title": "Six ways to work together",
-    "intro": "Every one of them starts the same way — a free fifteen-minute conversation, with no charge, no obligation, and nothing on record.",
+    "eyebrow": "The six services",
+    "title": "Choose where to start.",
+    "intro": "Every person and relationship is different. Explore the services below to find the support that best fits your circumstances.",
     "cta": {
-      "label": "Compare all services and fees",
+      "label": "Compare services and fees",
       "href": "/work-with-me"
     }
   },
   "assessments": {
-    "eyebrow": "Start here",
-    "title": "Two instruments, both free",
-    "intro": "Neither is a diagnosis and neither will tell you what to do. They show you, in writing, where you are solid and where you are thin — which is the only place real work can start.",
+    "eyebrow": "Prefer to reflect privately first?",
+    "title": "Two free reflective tools",
+    "intro": "There are no perfect answers. The purpose is awareness, not judgement. Both are reflective tools, not a clinical diagnosis or a validated psychological test.",
     "cards": [
       {
-        "eyebrow": "Free · 10 minutes · 15 questions",
-        "title": "The Self-Audit",
-        "body": "Before you assess anyone else, assess yourself. Five dimensions — self-knowledge, regulation, inherited patterns, capacity, and repair.",
+        "eyebrow": "Free · 15 questions · About 5–10 minutes",
+        "title": "The Relationship Self-Audit",
+        "body": "Reflect on five areas that can influence relationship health: self-knowledge, emotional regulation, inherited patterns, capacity and readiness, and conflict and repair.",
         "href": "/self-audit",
-        "cta": "Begin the Self-Audit"
+        "cta": "Take the Self-Audit"
       },
       {
-        "eyebrow": "Free · 12 minutes · 15 questions",
+        "eyebrow": "Free · 15 questions · About 5–10 minutes",
         "title": "The Relational Risk Assessment",
-        "body": "Where is your relationship exposed, and what happens when that point fails? The five exposure points that account for most of what arrives in my room.",
+        "body": "A reflective check-in on the health of your relationship, across five areas that influence its health and stability.",
         "href": "/relational-risk-assessment",
-        "cta": "Run the assessment"
+        "cta": "Take the assessment"
       }
     ]
   },
   "beliefs": {
     "eyebrow": "What I believe",
-    "title": "Four things I will say out loud"
+    "title": "Four things I will say out loud."
   },
   "process": {
     "eyebrow": "What happens",
-    "title": "Four steps, and you can stop at any of them",
-    "intro": "Nothing here is a commitment you cannot withdraw from. The first step costs nothing and goes nowhere on record."
-  },
-  "insights": {
-    "eyebrow": "Insights",
-    "title": "Writing from the practice",
-    "cta": {
-      "label": "All articles",
-      "href": "/insights"
-    }
-  },
-  "letter": {
-    "eyebrow": "The Activator Letter",
-    "title": "One letter a month. No noise.",
-    "intro": "One idea from the practice, written properly, sent once a month. No sequences, no upsells, and you can leave in one click."
+    "title": "Four steps, with room to decide.",
+    "intro": "Beginning therapy does not mean committing to an indefinite process. You can ask questions, review your progress and decide whether to continue."
   },
   "closing": {
+    "eyebrow": "Let us begin",
     "titleLines": [
-      "You do not have to",
-      "work this out alone."
+      "Let us begin with",
+      "a **conversation**."
     ],
-    "intro": "Fifteen minutes, no charge, no obligation. You describe what is happening; I tell you honestly whether I am the right person for it — and if I am not, who is.",
+    "intro": "You do not need to have everything figured out before seeking support. Whether you are working through a difficult experience, trying to understand yourself or hoping to build a healthier relationship, we can begin where you are.",
     "primaryCta": {
-      "label": "Book a free conversation",
+      "label": "Book an Introductory Call",
       "href": "/contact"
-    },
-    "whatsappCtaLabel": "Message on WhatsApp"
+    }
   }
 }

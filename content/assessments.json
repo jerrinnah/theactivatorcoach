@@ -1,23 +1,23 @@
 {
   "pageCopy": {
-    "privacyNote": "Nothing is stored or submitted",
+    "privacyNote": "A private, browser-based exercise",
     "startLabel": "Start the assessment",
-    "aboutTitle": "What this is, and what it isn’t",
+    "aboutTitle": "What this assessment is — and is not",
     "isTitle": "What it is",
     "isItems": [
-      "A structured way to look at five things at once",
-      "Private — it runs entirely in your browser",
-      "A starting point for an honest conversation",
-      "Free, with nothing to sign up for"
+      "A structured way to reflect on five important areas of relationship health.",
+      "A private, browser-based exercise.",
+      "A starting point for honest conversation and intentional change.",
+      "Free to complete, with no sign-up required."
     ],
-    "isntTitle": "What it isn’t",
+    "isntTitle": "What it is not",
     "isntItems": [
-      "A clinical diagnosis or a validated psychometric",
-      "A verdict on you or on anyone else",
-      "Advice on whether to stay or leave",
-      "A substitute for speaking to someone"
+      "A clinical diagnosis or validated psychometric assessment.",
+      "A definitive judgement on you, your partner, or your relationship.",
+      "Advice on whether you should stay in or leave a relationship.",
+      "A substitute for professional support or an appropriate safety assessment."
     ],
-    "siblingEyebrow": "The other instrument",
+    "siblingEyebrow": "The other reflective tool",
     "siblingCtaLabel": "Take it →",
     "quiz": {
       "stepLabel": "Step",
@@ -25,11 +25,6 @@
       "completeLabel": "% complete",
       "progressLabel": "Assessment progress",
       "introTitle": "Before you begin",
-      "introPoints": [
-        "Answer honestly rather than aspirationally. An accurate low score is worth more than a flattering high one.",
-        "Nothing you enter leaves your browser. There is no account, no submission, and no record kept — refreshing the page clears it.",
-        "This is not a diagnosis and it will not tell you what to do. It shows you where you are solid and where you are thin."
-      ],
       "beginPrefix": "Begin —",
       "beginSuffix": "questions",
       "dimensionLabel": "Dimension",
@@ -37,220 +32,296 @@
       "backLabel": "Back",
       "nextLabel": "Next dimension",
       "continueLabel": "Continue",
-      "safetyEyebrow": "One more question",
-      "safetyYesLabel": "Yes, or I’m not sure",
-      "safetyNoLabel": "No — show my results",
       "safetyBackLabel": "← Back to the last dimension",
-      "safeExitTitle": "Thank you for answering that honestly.",
+      "safeExitTitle": "Your safety matters.",
       "safeExitParagraphs": [
-        "I am not going to show you a score, because a score is not what this needs and it would be the wrong response to what you have just told me.",
-        "Where there is harm in a relationship, couples work is not the right first step — it can make things more dangerous, not less. What matters first is your safety, and there are people whose specific job that is.",
-        "If you would like to talk to me directly, you are welcome to. Nothing you say obliges you to do anything, and I will not push you towards any service."
+        "You do not need to complete this assessment or decide the future of your relationship right now. Consider seeking confidential individual support from a suitably qualified professional who understands relationship abuse.",
+        "If you are in immediate danger, contact local emergency services or move to a safer place if you can do so safely.",
+        "Couples therapy may not be appropriate where coercion, intimidation or abuse is present."
       ],
-      "safeExitCrisisCta": {
-        "label": "Crisis and safety resources",
-        "href": "/crisis"
-      },
       "safeExitContactCta": {
-        "label": "Speak to me directly",
+        "label": "Book an individual conversation",
         "href": "/contact"
       },
+      "safeExitResultsLabel": "Continue to my results",
       "restartLabel": "Start the assessment again",
-      "resultEyebrow": "Your result",
-      "perDimensionTitle": "Dimension by dimension",
-      "lowestTitlePrefix": "Your thinnest point:",
-      "lowestAdvice": "If you do one thing with this result, make it this dimension. It is where the next difficulty is most likely to originate, and it is the cheapest thing on the list to work on now rather than later.",
-      "printLabel": "Print or save as PDF",
-      "disclaimer": "This is a reflective instrument, not a clinical diagnosis, and it has not been psychometrically validated. It is designed to start an honest conversation — with yourself, with a partner, or with me.",
-      "disclaimerLinkLabel": "Book a free conversation",
-      "disclaimerSuffix": "if you would like to go through it properly.",
+      "resultEyebrow": "Your results",
+      "perDimensionTitle": "Your dimension scores",
+      "overallLabel": "Overall reflection score",
+      "strongestLabel": "Your strongest reported dimension",
+      "attentionLabel": "The dimension that may benefit most from attention",
+      "printLabel": "Save or Print My Results",
       "retakeLabel": "Take it again"
     }
   },
   "selfAudit": {
     "slug": "self-audit",
-    "name": "The Self-Audit",
-    "headline": "Before you assess anyone else, assess yourself.",
-    "metaDescription": "A free ten-minute self-assessment across five dimensions — self-knowledge, emotional regulation, inherited patterns, capacity and repair. Private, nothing stored.",
-    "siblingBlurb": "Most people evaluating a relationship are running the assessment on the wrong person. Ten minutes of honest questions about you.",
-    "eyebrow": "Free · 15 questions · about 10 minutes",
-    "intro": "Most people evaluating a relationship are running the assessment on the wrong person. This is ten minutes of honest questions about you — your patterns, your capacity, your history, and what you actually bring into a room with another human being.",
+    "name": "The Relationship Self-Audit",
+    "headline": "Answer honestly, based on how you usually think, feel and behave in relationships.",
+    "metaDescription": "A free self-audit across five areas that can influence relationship health: self-knowledge, emotional regulation, inherited patterns, capacity and readiness, and conflict and repair.",
+    "siblingBlurb": "Reflect on five areas that can influence relationship health: self-knowledge, emotional regulation, inherited patterns, capacity and readiness, and conflict and repair.",
+    "eyebrow": "Free · 15 Questions · About 5–10 Minutes",
+    "intro": [
+      "This self-audit helps you reflect on five areas that can influence relationship health: self-knowledge, emotional regulation, inherited patterns, capacity and readiness, and conflict and repair."
+    ],
+    "introPoints": [
+      "There are no perfect answers. The purpose is not to judge you, label you or decide whether you are ready for a relationship. It is to help you identify what is working well and where greater awareness or support may be useful.",
+      "Answer honestly, based on how you usually think, feel and behave in relationships—not how you wish you would behave.",
+      "This self-audit is a reflective tool, not a clinical diagnosis or a validated psychological test."
+    ],
+    "scaleHelp": "",
     "scale": [
       "Rarely true",
       "Sometimes true",
       "Often true",
       "Consistently true"
     ],
-    "safetyQuestion": "Has anything in your current or recent relationship made you feel unsafe — physically, sexually, or financially?",
-    "safetyHelp": "This question is asked in every assessment I run. It changes what happens next, and it is never used to sell you couples therapy.",
     "dimensions": [
       {
         "id": "self-knowledge",
-        "title": "Self-knowledge",
-        "strong": "You can see your own machinery working, which is most of the battle.",
-        "thin": "Your reactions are currently happening to you rather than being chosen. That is learnable.",
+        "title": "Self-Knowledge",
+        "description": "Understanding your emotions, triggers and responses.",
+        "guidance": "Explore emotional triggers, recurring reactions and the experiences that may shape your expectations.",
         "questions": [
-          "I can name my emotional triggers before they fire, not after.",
-          "I know which of my reactions belong to my present and which belong to my childhood home.",
-          "When something upsets me, I can usually say what it is within a day."
+          "I can recognise my emotional triggers before they strongly influence how I respond to my partner.",
+          "I can distinguish between what is happening in my relationship now and what past experiences may be bringing up for me.",
+          "When something upsets me, I can usually identify and communicate what I am feeling within a reasonable time."
         ]
       },
       {
         "id": "regulation",
-        "title": "Emotional regulation",
-        "strong": "You can stay in a difficult room without escalating or disappearing.",
-        "thin": "Conflict is currently costing you more than it needs to. This is the most trainable of the five.",
+        "title": "Emotional Regulation",
+        "description": "Managing difficult emotions without harming the relationship.",
+        "guidance": "Practise naming emotions, pausing when overwhelmed and returning to difficult conversations constructively.",
         "questions": [
-          "When I'm hurt, I can stay in the conversation rather than shutting down or escalating.",
-          "I can hear criticism of myself without needing to immediately defend or counter-attack.",
-          "I take responsibility for my own mood rather than making it someone else's job to fix."
+          "When I feel hurt or upset, I can express my feelings without attacking my partner or withdrawing completely.",
+          "I can listen to feedback from my partner without immediately becoming defensive or counterattacking.",
+          "I take responsibility for managing my emotions rather than expecting my partner to fix them for me."
         ]
       },
       {
         "id": "inherited",
-        "title": "Inherited patterns",
-        "strong": "You have looked at what you were taught about love and made decisions about it.",
-        "thin": "You are likely running software written in a house you no longer live in.",
+        "title": "Inherited Patterns",
+        "description": "Recognising how earlier experiences shape present relationships.",
+        "guidance": "Identify which relationship lessons you want to retain, reconsider or leave behind.",
         "questions": [
-          "I have examined what I learned about love from the home I grew up in.",
-          "There is at least one thing my parents did in their relationship that I have consciously decided not to repeat.",
-          "I have dealt with my significant past relationships rather than simply moved on from them."
+          "I understand how the relationships I witnessed growing up influence my expectations of a partner today.",
+          "I have consciously identified at least one unhealthy relationship pattern I do not want to repeat.",
+          "I have reflected on what previous relationships have taught me, including any patterns I may have contributed to."
         ]
       },
       {
         "id": "capacity",
-        "title": "Capacity & readiness",
-        "strong": "You have room for another person, and you are not asking them to solve you.",
-        "thin": "A relationship entered from here tends to be asked to carry more than a relationship can.",
+        "title": "Capacity and Readiness",
+        "description": "Making room for a relationship while maintaining your own wellbeing.",
+        "guidance": "Reflect on your emotional availability, boundaries, responsibilities and expectations of a relationship.",
         "questions": [
-          "My life currently has room in it for another person's needs.",
-          "I am not looking for a relationship to solve loneliness, finances, family pressure, or my sense of self-worth.",
-          "I have people in my life who tell me the truth, and I listen to them."
+          "I can make room for a partner's needs while maintaining my own wellbeing, responsibilities and boundaries.",
+          "I can recognise when I am expecting a relationship to solve problems that require attention in other areas of my life.",
+          "I have people I trust who can offer honest feedback, and I am willing to consider their perspectives."
         ]
       },
       {
         "id": "repair",
-        "title": "Conflict & repair",
-        "strong": "You have a way back. Couples with a way back survive things that look fatal.",
-        "thin": "Rupture is normal; unrepaired rupture is what ends relationships. This is where to start.",
+        "title": "Conflict and Repair",
+        "description": "Addressing disagreements, taking responsibility and rebuilding trust.",
+        "guidance": "Develop the ability to address difficult issues, acknowledge harm, rebuild trust and demonstrate change through behaviour.",
         "questions": [
-          "I know how to apologise properly — without conditions, excuses, or “but”.",
-          "I can raise a difficult subject without waiting for it to become a crisis.",
-          "When I've been wrong, I change the behaviour, not just the apology."
+          "When I hurt someone, I can acknowledge the impact of my actions without immediately becoming defensive.",
+          "I can raise difficult issues before resentment builds or the situation becomes a crisis.",
+          "When I recognise that I have contributed to a problem, I make a genuine effort to change my behaviour, not just apologise."
         ]
       }
     ],
+    "safety": {
+      "eyebrow": "One more question",
+      "question": "Has anything in your current or recent relationship made you feel unsafe—physically, sexually, emotionally or financially?",
+      "help": "",
+      "options": [
+        { "label": "Yes", "value": "yes" },
+        { "label": "I am not sure", "value": "unsure" },
+        { "label": "No", "value": "no" },
+        { "label": "I prefer not to answer", "value": "skip" }
+      ],
+      "bypassResults": false
+    },
     "bands": [
       {
-        "min": 0,
-        "label": "Considerable exposure",
-        "summary": "There is real work available to you here, and that is a finding rather than a verdict. People in this range typically get the most visible movement from individual therapy, because almost everything identified is inside your own authority to change."
+        "min": 3,
+        "max": 5,
+        "label": "An Area to Explore",
+        "summary": "Your responses suggest that this area may deserve more attention and reflection."
       },
       {
-        "min": 50,
-        "label": "Mixed picture",
-        "summary": "You are solid in some dimensions and thin in others — which is the ordinary result, and more useful than a uniformly good score. Look at your lowest dimension below: that is where your next relationship difficulty is most likely to originate."
+        "min": 6,
+        "max": 8,
+        "label": "Developing Awareness",
+        "summary": "You may recognise some helpful patterns while finding others difficult to sustain."
       },
       {
-        "min": 75,
-        "label": "Well audited",
-        "summary": "You have done more self-examination than most people who take this. The work available to you now is maintenance and precision rather than repair — and your lowest dimension is still worth reading carefully."
+        "min": 9,
+        "max": 10,
+        "label": "A Growing Strength",
+        "summary": "You report several helpful habits, although circumstances can still challenge them."
+      },
+      {
+        "min": 11,
+        "max": 12,
+        "label": "A Reported Strength",
+        "summary": "You identify these habits as consistent parts of how you approach relationships."
       }
     ],
-    "ctaLabel": "Talk this through with me",
-    "ctaHref": "/individual-therapy"
+    "bandsNote": "These are descriptive feedback bands for reflection, not validated clinical cut-offs or comparisons with other people.",
+    "resultsIntro": [],
+    "nextStep": {
+      "title": "Start Where It Matters Most",
+      "body": "Start with the dimension that would make the greatest difference to your relationships if you strengthened it. You do not need to work on everything at once."
+    },
+    "ctaLabel": "Talk This Through With Me",
+    "ctaHref": "/contact",
+    "printNote": "You can reflect on your results privately without booking a session. If you would like professional support to explore them further, I would be happy to help you identify a suitable next step.",
+    "disclaimerTitle": "Important note",
+    "disclaimer": [
+      "This self-audit is an educational and reflective tool. It does not provide a clinical diagnosis, determine relationship compatibility or establish whether someone is ready for marriage. Its scoring system is not a validated psychometric measure.",
+      "A person's score should not be used to determine whether they should stay in or leave a relationship, particularly where abuse or safety concerns are present.",
+      "The results are intended to encourage self-awareness and support constructive conversations about relationships."
+    ]
   },
   "relationalRisk": {
     "slug": "relational-risk-assessment",
     "name": "The Relational Risk Assessment",
-    "headline": "Where is your relationship exposed?",
-    "metaDescription": "A free twelve-minute assessment of the five exposure points in a relationship — unaudited individuals, repair protocol, third parties, silent withdrawal and scheduled review.",
-    "siblingBlurb": "Where is your relationship exposed, and what happens when that point fails? The five exposure points that account for most of what arrives in my room.",
-    "eyebrow": "Free · 15 questions · about 12 minutes",
-    "intro": "In risk assessment we never ask “is the system fine?” We ask: where is it exposed, and what happens when that point fails? Almost no couple has ever run that assessment on their own marriage.",
+    "headline": "A reflective check-in on the health of your relationship",
+    "metaDescription": "A free reflective check-in on five areas that influence the health and stability of a relationship. Private, browser-based, no sign-up required.",
+    "siblingBlurb": "A reflective check-in on the health of your relationship, across five areas that influence its health and stability.",
+    "eyebrow": "Free · 15 questions · About 5–10 minutes",
+    "intro": [
+      "Every relationship has areas of strength and areas that need attention. Sometimes the difficulties are obvious. At other times, they develop gradually through unresolved disagreements, unclear boundaries, emotional distance, or patterns neither partner has fully examined.",
+      "The Relational Risk Assessment is designed to help you reflect on five areas that influence the health and stability of a relationship."
+    ],
+    "introPoints": [
+      "This assessment is free and takes approximately 5–10 minutes.",
+      "Answer honestly, based on what usually happens in your relationship rather than what you hope happens.",
+      "There are no perfect answers. The purpose is awareness, not judgement.",
+      "This is a reflective tool, not a clinical diagnosis or a validated psychometric assessment. It is intended to support an honest conversation with yourself, your partner, or a relationship professional."
+    ],
+    "scaleHelp": "Choose the answer that best describes your relationship.",
     "scale": [
       "Rarely true",
       "Sometimes true",
       "Often true",
       "Consistently true"
     ],
-    "safetyQuestion": "Has anything in your current relationship made you feel unsafe — physically, sexually, or financially?",
-    "safetyHelp": "A yes here bypasses the normal report entirely. It never routes to a couples-therapy offer.",
     "dimensions": [
       {
-        "id": "unaudited",
-        "title": "Unaudited individuals",
-        "strong": "Both of you can see your own contribution. This is the foundation everything else sits on.",
-        "thin": "Two people who have not examined their own histories will reliably re-enact them on each other.",
+        "id": "patterns",
+        "title": "Personal Patterns and Accountability",
+        "description": "Our individual histories, expectations, and habits influence how we relate to one another. Understanding our own contribution can help us respond more intentionally.",
+        "guidance": "",
         "questions": [
-          "Both of us have examined our own histories, not just each other's behaviour.",
-          "When something goes wrong between us, each of us can identify our own contribution.",
-          "Neither of us expects the relationship to heal something the relationship doesn't cause."
+          "Both of us have taken time to examine how our upbringing and past experiences influence our relationship.",
+          "When something goes wrong between us, each of us can recognise our own contribution rather than placing all the blame on the other person.",
+          "Neither of us expects our partner to heal personal wounds or solve problems that require individual responsibility."
         ]
       },
       {
-        "id": "repair-protocol",
-        "title": "Repair protocol",
-        "strong": "You have a practised way back. This is the single strongest predictor I know of.",
-        "thin": "You are ruptured without a route home, and silence compounds faster than most people believe.",
+        "id": "conflict",
+        "title": "Conflict and Repair",
+        "description": "Disagreements are a normal part of relationships. What matters is whether partners can address them respectfully and find their way back to one another.",
+        "guidance": "",
         "questions": [
-          "After a serious argument, we have a reliable way back to each other.",
-          "Repair usually takes hours or a day — not weeks of silence.",
-          "One of us can apologise first without it being treated as a defeat."
+          "After a serious disagreement, we have a reliable way of reconnecting and addressing what happened.",
+          "We return to unresolved disagreements within a reasonable time rather than allowing silence or resentment to continue for days or weeks.",
+          "Either of us can apologise, acknowledge hurt, or make a genuine effort to repair the relationship without feeling that doing so means losing power."
         ]
       },
       {
-        "id": "third-parties",
-        "title": "Third parties",
-        "strong": "The boundary is clear, agreed, and defended by the right person.",
-        "thin": "Somebody outside the marriage currently holds authority inside it — often without anyone deciding they should.",
+        "id": "boundaries",
+        "title": "Boundaries and Outside Influences",
+        "description": "Healthy relationships require clear boundaries with family members, friends, former partners, and other people whose opinions or involvement may affect the relationship.",
+        "guidance": "",
         "questions": [
-          "Our boundary with extended family is clear, agreed, and holds under pressure.",
-          "Neither of us discusses our marriage with an outside person before discussing it with each other.",
-          "No previous relationship still has influence over how we operate."
+          "We have clear and mutually understood boundaries regarding the involvement of extended family and other people in our relationship.",
+          "We discuss significant relationship concerns with each other before involving someone outside the relationship, except when seeking appropriate support or help for safety reasons.",
+          "Past relationships, unresolved attachments, or outside opinions do not routinely interfere with the trust and decisions we are building together."
         ]
       },
       {
-        "id": "withdrawal",
-        "title": "Silent withdrawal",
-        "strong": "Things still get raised. A relationship where things get raised is a living one.",
-        "thin": "This is the exposure point that presents as peace, and it is the one I see too late most often.",
+        "id": "communication",
+        "title": "Communication and Emotional Connection",
+        "description": "Emotional distance can develop even when partners live together, fulfil their responsibilities, and appear to be getting along. Honest communication helps prevent unspoken concerns from becoming lasting disconnection.",
+        "guidance": "",
         "questions": [
-          "I still raise things that bother me rather than deciding they're not worth it.",
-          "We have not quietly stopped discussing any major subject.",
-          "Our calm periods are genuine peace, not distance."
+          "I can raise concerns that bother me instead of routinely keeping quiet to avoid an uncomfortable conversation.",
+          "We can discuss important or sensitive subjects without one or both of us consistently shutting down, withdrawing, or refusing to engage.",
+          "Our quiet periods generally reflect genuine peace and comfort rather than unresolved tension, emotional distance, or fear of raising difficult issues."
         ]
       },
       {
         "id": "review",
-        "title": "Scheduled review",
-        "strong": "You inspect deliberately, so drift gets caught while it is still small enough to name.",
-        "thin": "Nothing is monitoring this relationship. Problems here are found late, by accident.",
+        "title": "Intentional Relationship Review",
+        "description": "Healthy relationships benefit from deliberate attention. Regular conversations help partners notice changes and address concerns before they become harder to resolve.",
+        "guidance": "",
         "questions": [
-          "We deliberately talk about the state of our relationship, not just logistics and children.",
-          "We have discussed money, intimacy and the future within the last six months.",
-          "If something were drifting, we would notice early rather than late."
+          "We deliberately discuss the state of our relationship, rather than talking only about responsibilities, finances, household matters, or children.",
+          "Within the past six months, we have had meaningful conversations about important areas such as money, intimacy, expectations, and our future together.",
+          "When something begins to change between us, we make an effort to recognise it early and discuss it before the distance grows."
         ]
       }
     ],
+    "safety": {
+      "eyebrow": "One important question about your safety",
+      "question": "Has anything in your current relationship made you feel unsafe — physically, sexually, emotionally, or financially?",
+      "help": "",
+      "options": [
+        { "label": "Yes", "value": "yes" },
+        { "label": "I am not sure", "value": "unsure" },
+        { "label": "No", "value": "no" },
+        { "label": "I prefer not to answer", "value": "skip" }
+      ],
+      "bypassResults": true
+    },
     "bands": [
       {
-        "min": 0,
-        "label": "Multiple exposure points",
-        "summary": "Several of the five points are thin at the same time, which is how relationships fail — not through one catastrophic issue but through a set of small unmonitored ones. This is a workable position, and it is considerably more workable now than in a year."
+        "min": 3,
+        "max": 5,
+        "label": "An area needing attention",
+        "summary": "The habits or practices covered by this dimension may be inconsistent or underdeveloped. Consider what is making this area difficult and what needs to change."
       },
       {
-        "min": 50,
-        "label": "Contained exposure",
-        "summary": "Some points hold well and at least one is carrying more load than it should. Read your lowest dimension below: in my experience that is where a crisis, if one comes, will originate."
+        "min": 6,
+        "max": 8,
+        "label": "An area developing in strength",
+        "summary": "Some helpful habits are present, but they may not be reliable under stress. Greater consistency and intentional effort may help."
       },
       {
-        "min": 75,
-        "label": "Well maintained",
-        "summary": "This relationship has structure in it. The useful work here is the Annual Review rather than repair — maintenance is what keeps a strong result strong."
+        "min": 9,
+        "max": 10,
+        "label": "A growing strength",
+        "summary": "This area appears to have a reasonably strong foundation, although there may still be situations that require attention."
+      },
+      {
+        "min": 11,
+        "max": 12,
+        "label": "A reported strength",
+        "summary": "Your responses suggest that the habits covered by this dimension are well established. Continue to nurture them, particularly during periods of stress or change."
       }
     ],
-    "ctaLabel": "Book a couples conversation",
-    "ctaHref": "/couples-therapy"
+    "bandsNote": "These bands are reflective guides, not clinical cut-offs or validated measures of relationship risk.",
+    "resultsIntro": [
+      "Your responses offer a snapshot of how you experience your relationship today. They are not a prediction of whether your relationship will succeed or fail.",
+      "Look beyond the overall score. The individual dimensions may reveal more about where your relationship feels secure, where helpful habits are developing, and where a more intentional conversation could make a difference.",
+      "A lower score is an invitation to explore, not a verdict on your relationship."
+    ],
+    "nextStep": {
+      "title": "Your next step",
+      "body": "Understanding your relationship is a starting point. What matters next is deciding what deserves attention and how to address it constructively. If your results raise questions or highlight recurring difficulties, you may choose to book a relationship conversation with Dr Lauretta Ogbum to explore your concerns and identify an appropriate way forward."
+    },
+    "ctaLabel": "Book a Relationship Conversation",
+    "ctaHref": "/contact",
+    "printNote": "",
+    "disclaimerTitle": "",
+    "disclaimer": [
+      "This assessment is a reflective instrument, not a clinical diagnosis, and has not been psychometrically validated. It is designed to support awareness and conversation, not to determine the future of a relationship."
+    ]
   }
 }
