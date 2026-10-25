@@ -77,12 +77,15 @@ ${trustBar()}
 </div></section>
 
 <section class="bg-cream"><div class="mx-auto max-w-4xl px-6 py-20 lg:px-8">
-  <div class="rounded-4xl border border-line bg-white p-9 sm:p-12">
-    <p class="eyebrow">${esc(book.eyebrow)}</p>
-    <h2 class="mt-4 font-display text-[2.25rem] leading-tight text-ink sm:text-[2.75rem]">${esc(book.title)}</h2>
-    <p class="mt-3 text-sm uppercase tracking-[0.16em] text-muted">${esc(book.byline)}</p>
-    <p class="mt-5 text-lg text-sage-deep">${esc(book.intro)}</p>
-    <div class="mt-8">${button(esc(book.cta.label), book.cta.href)}</div>
+  <div class="flex flex-col gap-8 rounded-4xl border border-line bg-white p-9 sm:flex-row sm:items-center sm:p-12">
+    ${booksPage.hero.cover.image ? `<img src="${esc(booksPage.hero.cover.image)}" alt="${esc(booksPage.hero.cover.alt)}" width="440" height="651" class="w-40 shrink-0 rounded-2xl shadow-lg shadow-sage-deep/10" loading="lazy"/>` : ""}
+    <div>
+      <p class="eyebrow">${esc(book.eyebrow)}</p>
+      <h2 class="mt-4 font-display text-[2.25rem] leading-tight text-ink sm:text-[2.75rem]">${esc(book.title)}</h2>
+      <p class="mt-3 text-sm uppercase tracking-[0.16em] text-muted">${esc(book.byline)}</p>
+      <p class="mt-5 text-lg text-sage-deep">${esc(book.intro)}</p>
+      <div class="mt-8">${button(esc(book.cta.label), book.cta.href)}</div>
+    </div>
   </div>
 </div></section>
 
@@ -263,7 +266,7 @@ ${quietExit()}
       </div>
       <div class="mx-auto w-full max-w-xs lg:max-w-sm">
         ${cover.image
-          ? `<img src="${esc(cover.image)}" alt="${esc(cover.alt)}" width="512" height="768" class="w-full rounded-2xl shadow-2xl shadow-sage-deep/25"/>`
+          ? `<img src="${esc(cover.image)}" alt="${esc(cover.alt)}" width="440" height="651" class="w-full rounded-2xl shadow-2xl shadow-sage-deep/25"/>`
           : portrait({ src: null, alt: cover.alt, label: cover.label, extra: "shadow-xl shadow-sage-deep/10" })}
       </div>
     </div>

@@ -51,8 +51,8 @@ export default function BooksPage() {
                 <Image
                   src={hero.cover.image}
                   alt={hero.cover.alt}
-                  width={512}
-                  height={768}
+                  width={440}
+                  height={651}
                   priority
                   sizes="(min-width: 1024px) 24rem, 20rem"
                   className="w-full rounded-2xl shadow-2xl shadow-sage-deep/25"

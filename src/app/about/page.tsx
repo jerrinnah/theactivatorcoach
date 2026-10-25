@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import TrustBar from "@/components/TrustBar";
 import PortraitFrame from "@/components/ui/PortraitFrame";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -6,7 +7,7 @@ import Rich from "@/components/ui/Rich";
 import { ButtonLink } from "@/components/ui/Button";
 import { Blob, LeafBranch, PsiMark } from "@/components/ui/Ornaments";
 import { beliefs } from "@/lib/siteData";
-import { aboutPage as content } from "@/lib/pageContent";
+import { aboutPage as content, booksPage } from "@/lib/pageContent";
 
 export const metadata: Metadata = {
   title: content.seo.title,
@@ -113,15 +114,27 @@ export default function AboutPage() {
 
       <section className="bg-cream">
         <div className="mx-auto max-w-4xl px-6 py-20 lg:px-8">
-          <div className="rounded-4xl border border-line bg-white p-9 sm:p-12">
-            <p className="eyebrow">{book.eyebrow}</p>
-            <h2 className="mt-4 font-display text-[2.25rem] leading-tight text-ink sm:text-[2.75rem]">
-              {book.title}
-            </h2>
-            <p className="mt-3 text-sm uppercase tracking-[0.16em] text-muted">{book.byline}</p>
-            <p className="mt-5 text-lg text-sage-deep">{book.intro}</p>
-            <div className="mt-8">
-              <ButtonLink href={book.cta.href}>{book.cta.label}</ButtonLink>
+          <div className="flex flex-col gap-8 rounded-4xl border border-line bg-white p-9 sm:flex-row sm:items-center sm:p-12">
+            {booksPage.hero.cover.image ? (
+              <Image
+                src={booksPage.hero.cover.image}
+                alt={booksPage.hero.cover.alt}
+                width={440}
+                height={651}
+                sizes="10rem"
+                className="w-40 shrink-0 rounded-2xl shadow-lg shadow-sage-deep/10"
+              />
+            ) : null}
+            <div>
+              <p className="eyebrow">{book.eyebrow}</p>
+              <h2 className="mt-4 font-display text-[2.25rem] leading-tight text-ink sm:text-[2.75rem]">
+                {book.title}
+              </h2>
+              <p className="mt-3 text-sm uppercase tracking-[0.16em] text-muted">{book.byline}</p>
+              <p className="mt-5 text-lg text-sage-deep">{book.intro}</p>
+              <div className="mt-8">
+                <ButtonLink href={book.cta.href}>{book.cta.label}</ButtonLink>
+              </div>
             </div>
           </div>
         </div>
