@@ -20,7 +20,7 @@
   },
   "priceBook": {
     "individualSession": {
-      "NGN": 150000,
+      "NGN": 155000,
       "GBP": 90,
       "USD": 115
     },
@@ -30,22 +30,22 @@
       "USD": 165
     },
     "beforeYouMarry": {
-      "NGN": 900000,
+      "NGN": 920000,
       "GBP": 540,
       "USD": 690
     },
     "annualReview": {
-      "NGN": 450000,
+      "NGN": 460000,
       "GBP": 270,
       "USD": 345
     },
     "intensive": {
-      "NGN": 1500000,
+      "NGN": 1535000,
       "GBP": 900,
       "USD": 1150
     },
     "diasporaSession": {
-      "NGN": 180000,
+      "NGN": 185000,
       "GBP": 110,
       "USD": 140
     }
