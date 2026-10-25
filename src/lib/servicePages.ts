@@ -8,6 +8,7 @@ import type { PriceKey } from "./pricing";
  */
 
 export interface ServiceSection {
+  /** Empty renders the section without a heading. */
   title: string;
   content: string[];
   /** Render the content as a checklist rather than paragraphs. */
@@ -18,6 +19,8 @@ export interface Fee {
   label: string;
   /** Names a fee in content/pricing.json rather than holding an amount. */
   amount: PriceKey;
+  /** Shown before the amount, e.g. "From". */
+  prefix?: string;
   note?: string;
 }
 

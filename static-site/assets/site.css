@@ -40,6 +40,11 @@ body {
   color: var(--color-sage-deep);
 }
 
+/* Brand stripe along the top of the footer. Not in the compiled bundle. */
+.border-t-4 {
+  border-top-width: 4px;
+}
+
 /* The assessment panel is focused programmatically between steps. */
 #assessment:focus {
   outline: none;

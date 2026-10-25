@@ -44,7 +44,7 @@ export default function PrivacyPage() {
             <div className="mt-5 flex flex-wrap gap-4 text-sm">
               <a
                 href={`mailto:${contactDetails.email}`}
-                className="rounded-full bg-sage-deep px-6 py-3 font-medium text-white transition hover:bg-sage-dark"
+                className="rounded-full bg-sage px-6 py-3 font-medium text-sage-dark transition hover:bg-sage-dark hover:text-white"
               >
                 {contactDetails.email}
               </a>

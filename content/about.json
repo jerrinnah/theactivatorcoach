@@ -1,79 +1,106 @@
 {
   "seo": {
     "title": "About",
-    "description": "Dr. Lauretta Ogbum came into psychotherapy from risk assessment in the energy sector. Twenty-five years married, PhD in Psychology, and an assessor's discipline applied to relationships."
+    "description": "Dr Lauretta Ogbum is a psychotherapist, counsellor and coach, founder and lead therapist of Activator Coaching Academy, and author of Love Intentionally."
   },
   "hero": {
-    "eyebrow": "From risk assessment to the human heart",
-    "title": "I did not begin in psychology.",
+    "eyebrow": "About Dr Lauretta Ogbum",
+    "title": "Understanding yourself. Building healthier relationships.",
     "paragraphs": [
-      "I'm a psychotherapist, counsellor and coach. I work with people who are carrying something, anxiety, grief, burnout, a marriage that's gone quiet, a version of themselves they don't recognise anymore.\n\nMost of them are managing. That's usually the problem. They're functioning well enough that nobody's asked how they are in a long time.\n\nI didn't start in psychology. Most of my working life has been in security and risk, and I'm still in it. It's not a past career I left behind for something more meaningful. I do both.\n\n\n\n",
-      "",
-      "\n'm fairly direct. Not harsh, but I'm not going to spend six sessions circling something we both know is the issue. If you want someone who will only agree with you, I'm probably not it.\n\nI don't take sides in couples work. I'll say that early and I'll mean it, because most people arrive half-expecting me to declare a winner. Nobody wins in my room. That's rather the point.\n\nI'm not easily shocked. Twenty-odd years around security work and a decade in practice takes care of that. You can say the thing you've been rehearsing.\n\nAnd I won't pretend it's quick. Some things resolve in six sessions. Some take a year. I'll tell you honestly which one I think you're looking at, and I'd rather lose the booking than promise you a timeline I can't deliver.\n",
-      "What I work with\nAnxiety and stress. Depression and low mood. Grief, bereavement, miscarriage, divorce, the losses people don't think count. Trauma. Burnout. Self-worth. Life transitions, including the ones that look good on paper and still feel like grief.\n\nAnd relationships: couples, engaged couples, people who aren't sure whether to stay, people who aren't sure whether to start. It's the area I'm best known for and it's where I've done most of my writing, but it isn't the only room I work in."
+      "I am a psychotherapist, counsellor and coach. I work with people who are carrying more than they let on: anxiety, grief, emotional exhaustion, relationship difficulties or a sense of having lost touch with who they are.",
+      "Many of the people I work with are managing. They go to work, care for their families and meet their responsibilities. From the outside, everything may look fine. But beneath the surface, they may be struggling with emotions they do not understand, experiences they have not processed or problems they have been carrying alone.",
+      "You do not have to wait until everything falls apart before seeking support."
     ],
     "portrait": {
       "image": null,
-      "alt": "Dr. Lauretta Ogbum, psychotherapist",
-      "label": "Dr. Lauretta Ogbum"
+      "alt": "Dr Lauretta Ogbum, psychotherapist",
+      "label": "Dr Lauretta Ogbum"
     }
+  },
+  "approach": {
+    "eyebrow": "My approach",
+    "title": "Therapy should be a space where you feel safe enough to be honest and supported enough to make meaningful changes.",
+    "paragraphs": [
+      "My approach is compassionate, practical and direct. I listen carefully, ask thoughtful questions and help you recognise the patterns influencing your emotions, decisions and relationships. I will not simply tell you what you want to hear. Sometimes, growth requires us to confront uncomfortable truths and consider a different way forward. I do this with care, never judgement.",
+      "In couples therapy, I do not take sides. My role is to help both partners understand each other, communicate more effectively and make informed decisions about their relationship.",
+      "I also believe in being honest about the therapeutic process. Some concerns can be addressed in a relatively short period; others require more time. I will not promise quick fixes, but I will work with you towards meaningful, realistic goals."
+    ]
+  },
+  "helpWith": {
+    "eyebrow": "What I help with",
+    "title": "My practice supports individuals and couples navigating:",
+    "items": [
+      {
+        "title": "Emotional wellbeing",
+        "body": "Anxiety, stress, low mood, grief, trauma and burnout."
+      },
+      {
+        "title": "Relationships and marriage",
+        "body": "Communication difficulties, recurring conflict, emotional distance, premarital counselling and relationship decisions."
+      },
+      {
+        "title": "Self-worth and personal growth",
+        "body": "Confidence, identity, self-awareness and recurring personal patterns."
+      },
+      {
+        "title": "Life transitions",
+        "body": "Separation, divorce, miscarriage, bereavement and other significant life changes."
+      }
+    ],
+    "note": "Relationships and marriage are central to my work, but I also support individuals seeking to understand themselves better and navigate difficult experiences with greater clarity."
   },
   "beliefs": {
     "eyebrow": "What I believe",
-    "title": "Four things I will say out loud",
-    "intro": "These are not marketing lines. They are the assumptions everything in my practice is built on, and it is fair for you to know them before you book anything."
-  },
-  "notForYou": {
-    "eyebrow": "Being straight with you",
-    "title": "When I am not the right person",
-    "intro": "I would rather tell you this now than take a booking and disappoint you at session three. If any of the following is what you are looking for, I am not it — and in the free conversation I will say so and point you somewhere better.",
-    "items": [
-      "You want someone to confirm that your partner is the problem.",
-      "You want a verdict on whether to stay or go, delivered by me.",
-      "You want it fixed in three sessions because twenty years is inconvenient.",
-      "You want a diagnosis of somebody who is not in the room."
-    ]
+    "title": "Four things I will say out loud.",
+    "intro": "These are the principles that guide my work. They shape how I approach therapy, relationships and the conversations we have together. I believe you deserve to know them before we begin."
   },
   "credentials": {
-    "eyebrow": "Credentials",
-    "title": "Training, practice and public work",
+    "eyebrow": "My professional background",
+    "title": "Training, practice and professional contributions",
     "items": [
       {
-        "label": "PhD, Psychology",
-        "detail": "Doctoral training in psychology and psychotherapeutic practice."
+        "label": "Academic Qualifications",
+        "detail": "PhD in Psychology, alongside postgraduate qualifications in psychology, peace studies and conflict resolution."
       },
       {
-        "label": "Executive Council, Life Coaches Association of Nigeria",
-        "detail": "Serving on the executive council of the national professional body."
+        "label": "Professional Memberships",
+        "detail": "Member of the British Psychological Society (BPS), the Counselling Association of Nigeria (CASSON), and the Life Coaches Association of Nigeria (LCAN)."
       },
       {
-        "label": "Founder & Lead Therapist, Activator Coaching Academy",
-        "detail": "Training coaches, pastoral workers and practitioners in relational assessment and repair."
+        "label": "Founder and Lead Therapist, Activator Coaching Academy",
+        "detail": "Supporting individuals and couples through psychotherapy, counselling and relationship-focused work."
       },
       {
-        "label": "Bestselling co-author — The ABC of Marriage",
-        "detail": "An alphabetical guide to activating bliss in your marriage, written with Johnson Ogbum."
-      },
-      {
-        "label": "Pan-African Impact & Leadership Laureate nominee",
-        "detail": "Recognised for work on relational health across the continent and diaspora."
-      },
-      {
-        "label": "Featured in Her Network",
-        "detail": "Writing and commentary on relationships, risk, and the private cost of public careers."
+        "label": "Author and Relationship Educator",
+        "detail": "Author of *Love Intentionally: Practical Wisdom on Communication, Trust, and Intimacy in Modern Relationships* and co-author of *The ABC of Marriage*."
       }
-    ]
+    ],
+    "note": "Through my therapeutic practice, writing and professional engagements, I am committed to helping people better understand themselves, navigate relationship challenges and build healthier connections."
+  },
+  "book": {
+    "eyebrow": "The book",
+    "title": "Love Intentionally",
+    "byline": "By Lauretta Ovine Ogbum, PhD",
+    "intro": "Practical wisdom on communication, trust and intimacy in modern relationships.",
+    "cta": {
+      "label": "Discover the Book",
+      "href": "/books"
+    }
   },
   "closing": {
-    "title": "Twenty-five years married.",
-    "intro": "Which does not make me an authority on your marriage. It does mean I have made most of the ordinary mistakes personally, before I ever saw them professionally.",
+    "title": "Twenty-five years married. Still learning.",
+    "paragraphs": [
+      "My husband and I have been married for over 25 years. That experience does not make me an authority on anyone else's marriage, but it has taught me that lasting relationships require more than love. They require communication, understanding, patience and a willingness to keep growing together.",
+      "I bring that personal perspective, alongside my professional training and experience, to my work with individuals and couples."
+    ],
+    "tagline": "Every relationship has a story. Let us work towards making yours healthier.",
     "primaryCta": {
-      "label": "Book a free conversation",
+      "label": "Book an Introductory Call",
       "href": "/contact"
     },
     "secondaryCta": {
-      "label": "Nine things I’d tell my younger self",
-      "href": "/insights/twenty-five-years-married"
+      "label": "Take the Self-Audit",
+      "href": "/self-audit"
     }
   }
 }

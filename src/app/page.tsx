@@ -1,14 +1,11 @@
-import Link from "next/link";
 import TrustBar from "@/components/TrustBar";
-import LetterSignup from "@/components/LetterSignup";
+import ServiceCard from "@/components/ServiceCard";
 import PortraitFrame from "@/components/ui/PortraitFrame";
-import ServiceIcon from "@/components/ui/ServiceIcon";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { RichLines } from "@/components/ui/Rich";
-import { ButtonLink, WhatsAppIcon } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/Button";
 import { Blob, LeafBranch, PsiMark } from "@/components/ui/Ornaments";
-import { beliefs, contactDetails, processSteps, serviceCards, whatsappLink } from "@/lib/siteData";
-import { featuredArticles, formatArticleDate } from "@/lib/insights";
+import { beliefs, contactDetails, processSteps, serviceCards } from "@/lib/siteData";
 import { homePage as content } from "@/lib/pageContent";
 
 export default function Home() {
@@ -21,8 +18,6 @@ export default function Home() {
       <Assessments />
       <Beliefs />
       <Process />
-      <Insights />
-      <Letter />
       <ClosingCta />
     </>
   );
@@ -148,26 +143,7 @@ function Services() {
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {serviceCards.map((card) => (
-            <Link
-              key={card.href}
-              href={card.href}
-              className="group flex flex-col rounded-4xl border border-line bg-white p-8 transition duration-200 hover:-translate-y-1 hover:border-sage/50 hover:shadow-xl hover:shadow-sage-deep/8"
-            >
-              <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-sage-mist text-sage-deep transition group-hover:bg-sage-soft">
-                <ServiceIcon name={card.icon} className="h-7 w-7" />
-              </span>
-              <h3 className="mt-6 font-display text-[1.75rem] leading-tight text-ink">
-                {card.title}
-              </h3>
-              <p className="mt-2 text-sm text-sage-deep">{card.tagline}</p>
-              <p className="mt-4 flex-1 text-[0.9375rem] leading-7 text-muted">{card.description}</p>
-              <div className="mt-7 flex items-center justify-between border-t border-line-soft pt-5">
-                <span className="text-xs text-muted">{card.meta}</span>
-                <span className="text-sm text-sage-deep transition group-hover:translate-x-0.5">
-                  →
-                </span>
-              </div>
-            </Link>
+            <ServiceCard key={card.href} card={card} />
           ))}
         </div>
 
@@ -268,61 +244,6 @@ function Process() {
   );
 }
 
-function Insights() {
-  return (
-    <section className="border-t border-line bg-cream-deep">
-      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading eyebrow={content.insights.eyebrow} title={content.insights.title} />
-          <ButtonLink href={content.insights.cta.href} variant="outline">
-            {content.insights.cta.label}
-          </ButtonLink>
-        </div>
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {featuredArticles.slice(0, 3).map((article) => (
-            <Link
-              key={article.slug}
-              href={`/insights/${article.slug}`}
-              className="group flex flex-col rounded-4xl border border-line bg-white p-8 transition hover:-translate-y-1 hover:border-sage/50 hover:shadow-xl hover:shadow-sage-deep/8"
-            >
-              <span className="inline-flex w-fit rounded-full bg-sage-mist px-3 py-1 text-[0.6875rem] uppercase tracking-[0.14em] text-sage-deep">
-                {article.category}
-              </span>
-              <h3 className="mt-5 font-display text-[1.7rem] leading-snug text-ink">
-                {article.title}
-              </h3>
-              <p className="mt-3 flex-1 text-[0.9375rem] leading-7 text-muted">{article.excerpt}</p>
-              <p className="mt-6 border-t border-line-soft pt-5 text-xs text-muted">
-                {formatArticleDate(article.date)} · {article.readingMinutes} min read
-              </p>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Letter() {
-  return (
-    <section className="bg-cream">
-      <div className="mx-auto max-w-4xl px-6 py-20 lg:px-8">
-        <div className="rounded-4xl border border-line bg-white p-9 sm:p-12">
-          <SectionHeading
-            eyebrow={content.letter.eyebrow}
-            title={content.letter.title}
-            intro={content.letter.intro}
-          />
-          <div className="mt-8">
-            <LetterSignup />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function ClosingCta() {
   const { closing } = content;
   return (
@@ -340,7 +261,8 @@ function ClosingCta() {
           />
         </svg>
 
-        <h2 className="mt-7 font-display text-[2.5rem] leading-[1.08] text-ink sm:text-[3.25rem]">
+        <p className="eyebrow mt-7">{closing.eyebrow}</p>
+        <h2 className="mt-4 font-display text-[2.5rem] leading-[1.08] text-ink sm:text-[3.25rem]">
           <RichLines lines={closing.titleLines} />
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-[1.0625rem] leading-[1.8] text-ink-soft">
@@ -351,24 +273,11 @@ function ClosingCta() {
           <ButtonLink href={closing.primaryCta.href} size="lg">
             {closing.primaryCta.label}
           </ButtonLink>
-          <ButtonLink href={whatsappLink} variant="outline" size="lg">
-            <WhatsAppIcon />
-            {closing.whatsappCtaLabel}
-          </ButtonLink>
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-muted">
           <a href={`mailto:${contactDetails.email}`} className="underline-offset-4 hover:text-sage-deep hover:underline">
             {contactDetails.email}
-          </a>
-          <span aria-hidden="true" className="hidden h-4 w-px bg-line sm:block" />
-          <a
-            href={contactDetails.instagramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline-offset-4 hover:text-sage-deep hover:underline"
-          >
-            {contactDetails.instagram}
           </a>
         </div>
       </div>

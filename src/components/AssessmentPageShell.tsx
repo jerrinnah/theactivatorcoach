@@ -23,7 +23,11 @@ export default function AssessmentPageShell({ assessment, sibling }: AssessmentP
           <h1 className="mt-5 font-display text-[2.75rem] leading-[1.05] text-ink sm:text-[3.75rem]">
             {assessment.headline}
           </h1>
-          <p className="mt-7 max-w-2xl text-lg leading-[1.8] text-ink-soft">{assessment.intro}</p>
+          <div className="mt-7 max-w-2xl space-y-4 text-lg leading-[1.8] text-ink-soft">
+            {assessment.intro.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted">
             <span>{assessment.eyebrow}</span>
             <span aria-hidden="true" className="hidden h-4 w-px bg-line sm:block" />
@@ -31,7 +35,7 @@ export default function AssessmentPageShell({ assessment, sibling }: AssessmentP
           </div>
           <a
             href="#assessment"
-            className="mt-9 inline-flex rounded-full bg-sage-deep px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-sage-dark"
+            className="mt-9 inline-flex rounded-full bg-sage px-8 py-4 text-[0.9375rem] font-medium text-sage-dark transition hover:bg-sage-dark hover:text-white"
           >
             {copy.startLabel}
           </a>

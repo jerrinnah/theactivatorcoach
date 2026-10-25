@@ -22,7 +22,7 @@ export const CONTENT_FILES = [
     path: "content/site.json",
     title: "Site-wide & practitioner",
     blurb:
-      "Name, credentials, contact details, WhatsApp number, search-engine listing, the header and footer, navigation, the trust bar, service cards, beliefs, the four process steps and the 404 page.",
+      "Name, credentials, contact details, search-engine listing, the header and footer, navigation, the trust bar, service cards, beliefs, the four process steps and the 404 page.",
   },
   {
     slug: "home",
@@ -30,7 +30,7 @@ export const CONTENT_FILES = [
     path: "content/home.json",
     title: "Home page",
     blurb:
-      "Every section of the front page — the headline, the portrait, the short version of your story, and the wording above the services, assessments, beliefs, process, articles and closing call to action.",
+      "Every section of the front page — the headline, the portrait, the short version of your story, and the wording above the services, assessments, beliefs, process and closing call to action.",
     notes: [
       "Service cards, beliefs and the four process steps themselves live in Site-wide & practitioner — this file only sets the wording above them.",
     ],
@@ -41,7 +41,7 @@ export const CONTENT_FILES = [
     path: "content/about.json",
     title: "About page",
     blurb:
-      "The full story, the portrait, “When I am not the right person”, the credentials list and the closing panel.",
+      "The full story, the portrait, my approach, what I help with, professional background, the book panel and the closing panel.",
     notes: [
       "The four beliefs themselves live in Site-wide & practitioner; this file sets the heading and intro above them.",
     ],
@@ -52,25 +52,10 @@ export const CONTENT_FILES = [
     path: "content/work-with-me.json",
     title: "Work With Me page",
     blurb:
-      "The hero, the fee comparison table — who each service is for, session length and which fee to show — and the closing call to action.",
+      "The hero, the fee comparison table — format and which fee to show — and the closing call to action.",
     notes: [
       "A row's Price field names a fee in Fees rather than holding an amount, so the currency switcher keeps working. Use the same spelling as the fee's name there.",
     ],
-  },
-  {
-    slug: "academy",
-    group: "pages",
-    path: "content/academy.json",
-    title: "Academy page",
-    blurb:
-      "Who the training is for, the six modules, how to join a cohort, and the closing call to action.",
-  },
-  {
-    slug: "speaking",
-    group: "pages",
-    path: "content/speaking.json",
-    title: "Speaking page",
-    blurb: "The four talks, the formats list, what to include in an enquiry, and the closing panel.",
   },
   {
     slug: "books",
@@ -78,14 +63,7 @@ export const CONTENT_FILES = [
     path: "content/books.json",
     title: "Books page",
     blurb:
-      "The ABC of Marriage — cover image, description, the four ways it gets read, and the newsletter panel.",
-  },
-  {
-    slug: "letter",
-    group: "pages",
-    path: "content/letter.json",
-    title: "Activator Letter page",
-    blurb: "The sign-up page for the letter — the hero and the four promises.",
+      "Love Intentionally — cover image, description and call to action — and The ABC of Marriage panel.",
   },
   {
     slug: "contact",
@@ -93,20 +71,9 @@ export const CONTENT_FILES = [
     path: "content/contact.json",
     title: "Contact page",
     blurb:
-      "The hero, every label and placeholder in the enquiry form, the list of topics people can pick, the WhatsApp and email panels, and the urgent-situation notice.",
+      "The hero, every label and placeholder in the enquiry form, the list of topics people can pick, the email and practicalities panels, and the safety notice.",
     notes: [
-      "Email addresses, the WhatsApp number, location and response time come from Site-wide & practitioner. This file only sets the labels beside them.",
-    ],
-  },
-  {
-    slug: "crisis",
-    group: "pages",
-    path: "content/crisis.json",
-    title: "Crisis & safety page",
-    blurb:
-      "Emergency numbers, the helpline list, what to do if someone is hurting you or you are thinking about suicide, and the covering-your-tracks advice.",
-    notes: [
-      "Confirm any number or link directly with the organisation before publishing. A wrong crisis number is worse than none, and helpline numbers change.",
+      "The email address and location come from Site-wide & practitioner. This file only sets the labels beside them.",
     ],
   },
   {
@@ -134,20 +101,12 @@ export const CONTENT_FILES = [
       "The six service pages — hero copy, format, fees shown, sections, FAQs and related links.",
   },
   {
-    slug: "insights",
-    group: "pages",
-    path: "content/insights.json",
-    title: "Insights & articles",
-    blurb:
-      "Article categories, every published article including the full body, and the wording of the Insights index and article pages.",
-  },
-  {
     slug: "assessments",
     group: "pages",
     path: "content/assessments.json",
     title: "Assessments",
     blurb:
-      "The Self-Audit and Relational Risk Assessment — questions, scale, scoring bands, result copy, and the wording of both assessment pages.",
+      "The Relationship Self-Audit and Relational Risk Assessment — questions, scale, safety question, scoring bands (per dimension, 3–12), result copy, and the wording of both assessment pages.",
   },
 ] as const;
 

@@ -10,9 +10,7 @@ import site from "../../content/site.json" with { type: "json" };
  */
 
 export const practitioner = site.practitioner;
-export const contactDetails = site.contactDetails;
-
-export const whatsappLink = `https://wa.me/${contactDetails.whatsappNumber}`;
+export const contactDetails: { email: string; location: string; reach: string } = site.contactDetails;
 
 export type NavLink = { label: string; href: string };
 
@@ -32,6 +30,8 @@ export type ServiceCard = {
   description: string;
   href: string;
   meta: string;
+  /** The card's call to action, e.g. "Explore Couples Therapy". */
+  ctaLabel: string;
   icon: "person" | "couple" | "rings" | "calendar" | "clock" | "globe";
 };
 
@@ -60,11 +60,11 @@ export const header: {
 export const footer: {
   /** Rendered after the practitioner's full name and an em dash. */
   bio: string;
+  tagline: string;
   workHeading: string;
   learnHeading: string;
   moreHeading: string;
   emergencyNote: string;
-  crisisLinkLabel: string;
   privacyLinkLabel: string;
   credit: string;
 } = site.footer;

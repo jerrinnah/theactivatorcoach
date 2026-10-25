@@ -53,7 +53,7 @@ export default function GlobalHeader() {
             <CurrencyToggle />
             <Link
               href="/contact"
-              className="rounded-full bg-sage-deep px-5 py-2.5 text-sm font-medium text-white shadow-sm shadow-sage-deep/20 transition hover:bg-sage-dark"
+              className="rounded-full bg-sage px-5 py-2.5 text-sm font-medium text-sage-dark shadow-sm shadow-sage-deep/20 transition hover:bg-sage-dark hover:text-white"
             >
               {copy.ctaLabel}
             </Link>
@@ -111,7 +111,7 @@ export default function GlobalHeader() {
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-cream/95 px-4 py-3 backdrop-blur-xl md:hidden">
         <Link
           href="/contact"
-          className="mx-auto flex max-w-md items-center justify-center rounded-full bg-sage-deep px-5 py-3.5 text-sm font-medium text-white shadow-lg shadow-sage-deep/20 transition hover:bg-sage-dark"
+          className="mx-auto flex max-w-md items-center justify-center rounded-full bg-sage px-5 py-3.5 text-sm font-medium text-sage-dark shadow-lg shadow-sage-deep/20 transition hover:bg-sage-dark hover:text-white"
         >
           {copy.mobileCtaLabel}
         </Link>

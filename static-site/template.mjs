@@ -10,13 +10,13 @@ import theme from "../content/theme.json" with { type: "json" };
 
 const SRC = new URL("../src/lib/", import.meta.url).pathname;
 const {
-  practitioner, siteNav, footerSections, contactDetails, whatsappLink, trustItems,
+  practitioner, siteNav, footerSections, contactDetails, trustItems,
   seo, header: headerCopy, footer: footerCopy, notFound,
 } = await import(SRC + "siteData.ts");
 const { parseInline } = await import(SRC + "richText.ts");
 
 export {
-  practitioner, siteNav, footerSections, contactDetails, whatsappLink, trustItems,
+  practitioner, siteNav, footerSections, contactDetails, trustItems,
   seo, headerCopy, footerCopy, notFound,
 };
 
@@ -110,9 +110,6 @@ const SERVICE_ICONS = {
 export const serviceIcon = (name, cls = "h-6 w-6") =>
   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" class="${cls}" aria-hidden="true">${SERVICE_ICONS[name]}</svg>`;
 
-export const whatsappIcon = (cls = "h-4 w-4") =>
-  `<svg viewBox="0 0 24 24" fill="currentColor" class="${cls}" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.87.86-.87 2.09 0 1.23.9 2.42 1.02 2.59.12.16 1.76 2.69 4.27 3.77.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.14-1.19-.06-.11-.22-.17-.47-.29Z"/></svg>`;
-
 export const checkIcon = (cls = "h-4 w-4") =>
   `<svg viewBox="0 0 20 20" fill="none" class="${cls}" aria-hidden="true"><path d="m4 10.5 4 4 8-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
@@ -123,7 +120,7 @@ export const checkIcon = (cls = "h-4 w-4") =>
 const BTN_BASE =
   "inline-flex items-center justify-center gap-2.5 rounded-full font-medium transition duration-200";
 const BTN_VARIANT = {
-  primary: "bg-sage-deep text-white shadow-sm shadow-sage-deep/20 hover:bg-sage-dark",
+  primary: "bg-sage text-sage-dark shadow-sm shadow-sage-deep/20 hover:bg-sage-dark hover:text-white",
   outline: "border border-sage-deep/35 text-sage-dark hover:border-sage-deep hover:bg-sage-mist",
   light: "bg-white text-sage-dark shadow-sm hover:bg-sage-mist",
   onDark: "border border-white/30 text-white hover:bg-white/10",
@@ -208,16 +205,16 @@ export const trustBar = () => `
   </div>
 </section>`;
 
-export const letterSignup = () => `
-<form class="js-subscribe" novalidate>
-  <div class="flex flex-col gap-3 sm:flex-row">
-    <input name="email" type="email" required autocomplete="email" placeholder="you@example.com" aria-label="Email address"
-      class="w-full rounded-full border border-line bg-cream px-6 py-3.5 text-[0.9375rem] text-ink placeholder:text-muted/70 focus:border-sage focus:outline-none"/>
-    <button type="submit" class="shrink-0 rounded-full bg-sage-deep px-7 py-3.5 text-sm font-medium text-white transition hover:bg-sage-dark">Send me the letter</button>
-  </div>
-  <p class="js-status mt-4 text-sm leading-6" role="status"></p>
-  <p class="mt-4 text-xs leading-5 text-muted">One email a month. No sequences, no upsells, unsubscribe in one click.</p>
-</form>`;
+/** A service card, as on the home and Work With Me pages. */
+export const serviceCardHtml = (card, heading = "h3") => `
+<a href="${card.href}" class="group flex flex-col rounded-4xl border border-line bg-white p-8 transition duration-200 hover:-translate-y-1 hover:border-sage/50 hover:shadow-xl hover:shadow-sage-deep/8">
+  <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-sage-mist text-sage-deep transition group-hover:bg-sage-soft">${serviceIcon(card.icon, "h-7 w-7")}</span>
+  <${heading} class="mt-6 font-display text-[1.75rem] leading-tight text-ink">${esc(card.title)}</${heading}>
+  <p class="mt-2 text-sm text-sage-deep">${esc(card.tagline)}</p>
+  <p class="mt-4 flex-1 text-[0.9375rem] leading-7 text-muted">${esc(card.description)}</p>
+  <p class="mt-6 text-xs text-muted">${esc(card.meta)}</p>
+  <div class="mt-4 border-t border-line-soft pt-5 text-sm font-medium text-sage-deep">${esc(card.ctaLabel)} →</div>
+</a>`;
 
 /* ------------------------------------------------------------------ *
  * Page shell
@@ -249,7 +246,7 @@ function header(current) {
     </nav>
     <div class="hidden items-center gap-3 lg:flex">
       ${currencyToggle()}
-      <a href="/contact" class="rounded-full bg-sage-deep px-5 py-2.5 text-sm font-medium text-white shadow-sm shadow-sage-deep/20 transition hover:bg-sage-dark">${esc(headerCopy.ctaLabel)}</a>
+      <a href="/contact" class="rounded-full bg-sage px-5 py-2.5 text-sm font-medium text-sage-dark shadow-sm shadow-sage-deep/20 transition hover:bg-sage-dark hover:text-white">${esc(headerCopy.ctaLabel)}</a>
     </div>
     <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav"
       class="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm text-ink transition hover:border-sage-deep/50 hover:bg-sage-mist lg:hidden">
@@ -275,7 +272,7 @@ function header(current) {
   </div>
 </header>
 <div class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-cream/95 px-4 py-3 backdrop-blur-xl md:hidden">
-  <a href="/contact" class="mx-auto flex max-w-md items-center justify-center rounded-full bg-sage-deep px-5 py-3.5 text-sm font-medium text-white shadow-lg shadow-sage-deep/20 transition hover:bg-sage-dark">${esc(headerCopy.mobileCtaLabel)}</a>
+  <a href="/contact" class="mx-auto flex max-w-md items-center justify-center rounded-full bg-sage px-5 py-3.5 text-sm font-medium text-sage-dark shadow-lg shadow-sage-deep/20 transition hover:bg-sage-dark hover:text-white">${esc(headerCopy.mobileCtaLabel)}</a>
 </div>`;
 }
 
@@ -286,18 +283,17 @@ function footer() {
     [footerCopy.moreHeading, footerSections.more],
   ];
   return `
-<footer class="relative overflow-hidden border-t border-sage-dark/20 bg-sage-dark text-sage-soft">
+<footer class="relative overflow-hidden border-t-4 border-sage bg-sage-dark text-sage-soft">
   ${leafBranch("pointer-events-none absolute -left-16 top-10 h-72 w-44 text-white/[0.07]")}
   <div class="pointer-events-none absolute -right-10 top-1/4 hidden lg:block" aria-hidden="true">${psiBadge("h-64 w-64 text-white/[0.05]")}</div>
   <div class="relative mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.1fr_1.6fr] lg:px-8 lg:py-20">
     <div class="space-y-5">
       <div class="flex items-center gap-3">${logoMark("h-10 w-10 text-sage-soft")}${theme.logo?.image ? "" : `<span class="font-display text-2xl text-white">${esc(practitioner.logoName)}</span>`}</div>
+      <p class="text-sm leading-7 text-sage-soft/85">${esc(footerCopy.tagline)}</p>
       <p class="text-sm leading-7 text-sage-soft/85">${esc(practitioner.fullName)} — ${rich(footerCopy.bio)}</p>
-      <div class="space-y-1.5 text-sm text-sage-soft/75"><p>${esc(contactDetails.location)}</p><p>${esc(contactDetails.reach)}</p></div>
+      <div class="space-y-1.5 text-sm text-sage-soft/75"><p>${esc(contactDetails.reach)}</p><p>${esc(contactDetails.location)}</p></div>
       <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm">
         <a href="mailto:${contactDetails.email}" class="underline-offset-4 hover:text-white hover:underline">${contactDetails.email}</a>
-        <a href="${whatsappLink}" target="_blank" rel="noopener noreferrer" class="underline-offset-4 hover:text-white hover:underline">WhatsApp</a>
-        <a href="${contactDetails.instagramUrl}" target="_blank" rel="noopener noreferrer" class="underline-offset-4 hover:text-white hover:underline">${contactDetails.instagram}</a>
       </div>
     </div>
     <div class="grid gap-10 sm:grid-cols-3">
@@ -312,11 +308,10 @@ function footer() {
     </div>
   </div>
   <div class="relative border-t border-white/10 px-6 py-8 lg:px-8">
-    <div class="mx-auto flex max-w-7xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <div class="mx-auto max-w-7xl">
       <p class="max-w-2xl text-sm leading-6 text-sage-soft/70">${esc(footerCopy.emergencyNote)}</p>
-      <a href="/crisis" class="shrink-0 rounded-full border border-white/25 px-5 py-2.5 text-sm text-white transition hover:bg-white/10">${esc(footerCopy.crisisLinkLabel)}</a>
     </div>
-    <div class="mx-auto mt-8 flex max-w-7xl flex-col gap-3 text-xs text-sage-soft/50 sm:flex-row sm:items-center sm:justify-between">
+    <div class="mx-auto mt-8 flex max-w-7xl flex-col gap-3 text-xs text-sage-soft/70 sm:flex-row sm:items-center sm:justify-between">
       <p>© ${new Date().getFullYear()} ${esc(practitioner.shortName)}. All rights reserved.</p>
       <div class="flex gap-5"><a href="/privacy" class="transition hover:text-white">${esc(footerCopy.privacyLinkLabel)}</a><span>${esc(footerCopy.credit)}</span></div>
     </div>

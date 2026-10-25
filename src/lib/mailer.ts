@@ -7,7 +7,7 @@
  *   MAIL_TO          — practice inbox that receives enquiries
  *
  * Until they are set, `deliver` reports `configured: false` and the calling
- * server action falls back to telling the visitor to email or WhatsApp directly.
+ * server action falls back to telling the visitor to email directly.
  * Nothing is silently dropped.
  */
 

@@ -67,6 +67,7 @@ export default function ServicePageShell({ page }: { page: ServicePage }) {
                     <div className="flex items-baseline justify-between gap-4">
                       <dt className="text-[0.9375rem] text-ink-soft">{fee.label}</dt>
                       <dd className="font-display text-2xl text-sage-dark">
+                        {fee.prefix ? <span className="text-sm text-muted">{fee.prefix} </span> : null}
                         <Price amount={fee.amount} />
                       </dd>
                     </div>
@@ -84,10 +85,12 @@ export default function ServicePageShell({ page }: { page: ServicePage }) {
       <section className="bg-cream">
         <div className="mx-auto max-w-4xl space-y-14 px-6 py-16 lg:px-8 lg:py-20">
           {sections.map((section) => (
-            <article key={section.title}>
-              <h2 className="font-display text-[2rem] leading-tight text-ink">{section.title}</h2>
+            <article key={section.title || section.content[0]}>
+              {section.title ? (
+                <h2 className="mb-5 font-display text-[2rem] leading-tight text-ink">{section.title}</h2>
+              ) : null}
               {section.list ? (
-                <ul className="mt-5 space-y-3.5">
+                <ul className="space-y-3.5">
                   {section.content.map((item) => (
                     <li key={item} className="flex gap-3.5 text-[1.0625rem] leading-[1.75] text-ink-soft">
                       <svg
@@ -109,7 +112,7 @@ export default function ServicePageShell({ page }: { page: ServicePage }) {
                   ))}
                 </ul>
               ) : (
-                <div className="mt-5 space-y-4 text-[1.0625rem] leading-[1.8] text-ink-soft">
+                <div className="space-y-4 text-[1.0625rem] leading-[1.8] text-ink-soft">
                   {section.content.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
