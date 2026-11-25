@@ -3,6 +3,8 @@ import Link from "next/link";
 import CurrencyToggle from "@/components/CurrencyToggle";
 import Price from "@/components/Price";
 import ServiceCard from "@/components/ServiceCard";
+import PackagesSection from "@/components/PackagesSection";
+import { packagesContent } from "@/lib/packages";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
 import { Blob, LeafBranch } from "@/components/ui/Ornaments";
@@ -33,15 +35,20 @@ export default function WorkWithMePage() {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-          <div className="mt-9">
+          <div className="mt-9 flex flex-wrap gap-3">
             <ButtonLink href={content.hero.cta.href} size="lg">
               {content.hero.cta.label}
+            </ButtonLink>
+            <ButtonLink href="#book" variant="outline" size="lg">
+              {packagesContent.navLabel}
             </ButtonLink>
           </div>
         </div>
       </section>
 
-      <section className="bg-cream">
+      <PackagesSection heading="h2" />
+
+      <section className="border-t border-line bg-cream">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <SectionHeading
             eyebrow={content.services.eyebrow}

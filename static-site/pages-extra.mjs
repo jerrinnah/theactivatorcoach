@@ -5,6 +5,7 @@ import {
   esc, rich, blob, leafBranch, psiMark, portrait, button, sectionHeading, serviceCardHtml,
   quietExit, currencyToggle, price, trustBar, contactDetails, practitioner,
 } from "./template.mjs";
+import { packagesSection, packagesCopy } from "./packages.mjs";
 
 const SRC = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "src", "lib") + path.sep;
 const { serviceCards, beliefs, processSteps } = await import(SRC + "siteData.ts");
@@ -118,11 +119,13 @@ ${trustBar()}
     <p class="eyebrow">${esc(workWithMePage.hero.eyebrow)}</p>
     <h1 class="mt-5 font-display text-[2.75rem] leading-[1.05] text-ink sm:text-[3.75rem]">${esc(workWithMePage.hero.title)}</h1>
     <div class="mt-7 max-w-2xl space-y-4 text-lg leading-[1.8] text-ink-soft">${paragraphs(workWithMePage.hero.paragraphs)}</div>
-    <div class="mt-9">${button(esc(workWithMePage.hero.cta.label), workWithMePage.hero.cta.href, { size: "lg" })}</div>
+    <div class="mt-9 flex flex-wrap gap-3">${button(esc(workWithMePage.hero.cta.label), workWithMePage.hero.cta.href, { size: "lg" })}${button(esc(packagesCopy.navLabel), "#book", { variant: "outline", size: "lg" })}</div>
   </div>
 </section>
 
-<section class="bg-cream"><div class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+${packagesSection({ heading: "h2" })}
+
+<section class="border-t border-line bg-cream"><div class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
   ${sectionHeading({ eyebrow: esc(workWithMePage.services.eyebrow), title: esc(workWithMePage.services.title), intro: esc(workWithMePage.services.intro) })}
   <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">${serviceCards.map((card) => serviceCardHtml(card, "h2")).join("")}</div>
 </div></section>

@@ -19,6 +19,7 @@ import {
   trustBar, contactDetails, practitioner, seo, notFound, ORIGIN,
 } from "./template.mjs";
 import { servicePages, servicePageCopy } from "./services.mjs";
+import { packagesSection, servicePackagePanel, packageForService, bookingLink } from "./packages.mjs";
 import theme from "../content/theme.json" with { type: "json" };
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -104,6 +105,7 @@ ${trustBar()}
     <div class="mt-12 text-center">${button(esc(services.cta.label), services.cta.href, { variant: "outline" })}</div>
   </div>
 </section>
+${packagesSection({ extra: "border-b border-line bg-cream" })}
 
 <section class="bg-cream"><div class="mx-auto max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
   ${sectionHeading({ eyebrow: esc(assessmentSection.eyebrow), title: esc(assessmentSection.title), intro: esc(assessmentSection.intro) })}
@@ -175,6 +177,7 @@ ${quietExit()}
     <div class="mt-7 max-w-2xl space-y-4 text-lg leading-[1.75] text-ink-soft">${page.heroCopy.map((l) => `<p>${esc(l)}</p>`).join("")}</div>
     <div class="mt-9 flex flex-wrap items-center gap-4">
       ${button(esc(page.ctaLabel), servicePageCopy.closingCta.href, { size: "lg" })}
+      ${packageForService(page.path) ? button(esc(bookingLink(packageForService(page.path)).label), bookingLink(packageForService(page.path)).href, { variant: "outline", size: "lg" }) : ""}
       ${page.ctaNote ? `<p class="text-sm text-muted">${esc(page.ctaNote)}</p>` : ""}
     </div>
   </div>
@@ -197,6 +200,7 @@ ${quietExit()}
         </div>`).join("")}
       </dl>
       ${page.feeNote ? `<p class="mt-5 text-sm leading-6 text-muted">${esc(page.feeNote)}</p>` : ""}
+      ${packageForService(page.path) ? servicePackagePanel(packageForService(page.path)) : ""}
     </div>
   </div>
 </div></section>

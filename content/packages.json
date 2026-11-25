@@ -1,0 +1,60 @@
+{
+  "eyebrow": "Book and pay online",
+  "title": "Ready to begin? Choose a package.",
+  "intro": "Pick the package that fits, pay securely online and you're booked. You'll get a confirmation straight away, and we'll arrange your session times with you.",
+  "navLabel": "Book & Pay",
+  "currencySymbol": "₦",
+  "paymentNote": "Payment is handled securely by Selar. You can pay by card or bank transfer. Not sure which package is right for you? Book an introductory call first.",
+  "introCta": {
+    "label": "Book an Introductory Call",
+    "href": "/contact"
+  },
+  "bookLabel": "Book & Pay",
+  "pendingLabel": "Enquire to book",
+  "pendingHref": "/contact",
+  "learnMoreLabel": "About this service",
+  "servicePanelEyebrow": "Book and pay online",
+  "packages": [
+    {
+      "id": "therapy",
+      "name": "Therapy (Life Coaching) Package",
+      "audience": "Individuals",
+      "summary": "Live your best life. Professional help with anxiety, depression, trauma and the things you've been carrying alone.",
+      "includes": [
+        "3 sessions",
+        "One-to-one"
+      ],
+      "price": 300000,
+      "checkoutUrl": null,
+      "servicePath": "/individual-therapy"
+    },
+    {
+      "id": "premarital",
+      "name": "Premarital Counselling Package",
+      "audience": "Engaged and intending couples",
+      "summary": "Build a strong foundation before you say \"I do\", with a structured programme and the SYMBIS assessment.",
+      "includes": [
+        "5 sessions + 1 free session",
+        "SYMBIS assessment",
+        "For engaged or intending couples"
+      ],
+      "price": 550000,
+      "checkoutUrl": null,
+      "servicePath": "/before-you-marry"
+    },
+    {
+      "id": "marriage",
+      "name": "Marriage Counselling Package",
+      "audience": "Married couples",
+      "summary": "Newly married or many years in, work through the challenges threatening your union and divorce-proof your marriage.",
+      "includes": [
+        "3 sessions",
+        "Virtual",
+        "For married couples"
+      ],
+      "price": 350000,
+      "checkoutUrl": null,
+      "servicePath": "/couples-therapy"
+    }
+  ]
+}

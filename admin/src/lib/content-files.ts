@@ -93,6 +93,18 @@ export const CONTENT_FILES = [
       "Every price in Naira, Pounds and Dollars. Each service page and the currency toggle read these.",
   },
   {
+    slug: "packages",
+    group: "settings",
+    path: "content/packages.json",
+    title: "Book & Pay packages",
+    blurb:
+      "The packages guests can book and pay for online through Selar — name, what's included, the Naira price and the Selar checkout link. Shown on the home page, Work With Me and the matching service pages.",
+    notes: [
+      "Paste each package's Selar product link into its Checkout URL. Until a link is set, its button reads \"Enquire to book\" and goes to the contact page.",
+      "Prices here are display only. Selar charges whatever is set on Selar, so change both together.",
+    ],
+  },
+  {
     slug: "services",
     group: "pages",
     path: "content/services.json",
