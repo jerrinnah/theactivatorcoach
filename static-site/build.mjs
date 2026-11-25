@@ -377,8 +377,8 @@ await writeFile(
   "utf8",
 );
 
-// Book covers
-for (const cover of ["abc-of-marriage.jpg", "love-intentionally.jpg"]) {
+// Book covers and portraits
+for (const cover of ["abc-of-marriage.jpg", "love-intentionally.jpg", "lauretta-ogbum.jpg"]) {
   if (existsSync(path.join(ROOT, "public", cover))) {
     await copyFile(path.join(ROOT, "public", cover), path.join(DIST, cover));
   }
