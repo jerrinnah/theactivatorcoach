@@ -25,7 +25,7 @@
         "One-to-one"
       ],
       "price": 300000,
-      "checkoutUrl": null,
+      "checkoutUrl": "https://selar.com/lifecoaching",
       "servicePath": "/individual-therapy"
     },
     {
@@ -39,7 +39,7 @@
         "For engaged or intending couples"
       ],
       "price": 550000,
-      "checkoutUrl": null,
+      "checkoutUrl": "https://selar.com/engaged",
       "servicePath": "/before-you-marry"
     },
     {
@@ -53,7 +53,7 @@
         "For married couples"
       ],
       "price": 350000,
-      "checkoutUrl": null,
+      "checkoutUrl": "https://selar.com/marriagecounseling",
       "servicePath": "/couples-therapy"
     }
   ]
