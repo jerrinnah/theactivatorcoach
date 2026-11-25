@@ -1,5 +1,6 @@
 import TrustBar from "@/components/TrustBar";
 import ServiceCard from "@/components/ServiceCard";
+import PackagesSection from "@/components/PackagesSection";
 import PortraitFrame from "@/components/ui/PortraitFrame";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { RichLines } from "@/components/ui/Rich";
@@ -15,6 +16,7 @@ export default function Home() {
       <TrustBar />
       <AboutPreview />
       <Services />
+      <PackagesSection className="border-b border-line bg-cream" />
       <Assessments />
       <Beliefs />
       <Process />

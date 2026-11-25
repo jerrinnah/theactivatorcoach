@@ -5,6 +5,8 @@ import CurrencyToggle from "@/components/CurrencyToggle";
 import { ButtonLink } from "@/components/ui/Button";
 import { Blob, LeafBranch } from "@/components/ui/Ornaments";
 import { serviceCards } from "@/lib/siteData";
+import { ServicePackagePanel } from "@/components/PackagesSection";
+import { bookingLink, packageForService } from "@/lib/packages";
 import { servicePageCopy as copy, type ServicePage } from "@/lib/servicePages";
 
 export default function ServicePageShell({ page }: { page: ServicePage }) {
@@ -12,6 +14,7 @@ export default function ServicePageShell({ page }: { page: ServicePage }) {
     eyebrow, title, heroCopy, format, fees, feeNote, sections,
     ctaLabel, ctaNote, related,
   } = page;
+  const pkg = packageForService(page.path);
   const relatedServices = serviceCards.filter((card) => related.includes(card.href));
 
   return (
@@ -36,6 +39,11 @@ export default function ServicePageShell({ page }: { page: ServicePage }) {
             <ButtonLink href={copy.closingCta.href} size="lg">
               {ctaLabel}
             </ButtonLink>
+            {pkg ? (
+              <ButtonLink href={bookingLink(pkg).href} variant="outline" size="lg">
+                {bookingLink(pkg).label}
+              </ButtonLink>
+            ) : null}
             {ctaNote ? <p className="text-sm text-muted">{ctaNote}</p> : null}
           </div>
         </div>
@@ -76,6 +84,7 @@ export default function ServicePageShell({ page }: { page: ServicePage }) {
                 ))}
               </dl>
               {feeNote ? <p className="mt-5 text-sm leading-6 text-muted">{feeNote}</p> : null}
+              {pkg ? <ServicePackagePanel pkg={pkg} /> : null}
             </div>
           </div>
         </div>
