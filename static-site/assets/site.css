@@ -70,3 +70,19 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Book-cover frame (2:3) — not in the precompiled Tailwind output. */
+.aspect-\[2\/3\] {
+  aspect-ratio: 2 / 3;
+}
+
+/* Home hero badge sits below the book cover. */
+.top-full {
+  top: 100%;
+}
+.-mt-10 {
+  margin-top: -2.5rem;
+}
+.mb-16 {
+  margin-bottom: 4rem;
+}

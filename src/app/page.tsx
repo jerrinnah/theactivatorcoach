@@ -67,17 +67,17 @@ function Hero() {
           </div>
         </div>
 
-        <div className="relative">
+        <div className="relative mx-auto mb-16 w-full max-w-xs lg:max-w-sm">
           <LeafBranch className="pointer-events-none absolute -left-10 top-8 z-10 hidden h-64 w-32 text-sage/40 lg:block" />
           <PortraitFrame
             src={hero.portrait.image}
             alt={hero.portrait.alt}
-            aspect="aspect-[4/5]"
+            aspect="aspect-[2/3]"
             priority
             label={hero.portrait.label}
             className="shadow-xl shadow-sage-deep/10"
           />
-          <div className="absolute -bottom-6 -left-4 max-w-[15rem] rounded-3xl border border-line bg-white/95 p-5 shadow-lg shadow-sage-deep/10 backdrop-blur sm:-left-8">
+          <div className="absolute -right-6 top-full -mt-10 max-w-[15rem] rounded-3xl border border-line bg-white/95 p-5 shadow-lg shadow-sage-deep/10 backdrop-blur">
             <p className="font-display text-3xl text-sage-deep">{hero.badge.value}</p>
             <p className="mt-1 text-xs leading-5 text-muted">{hero.badge.caption}</p>
           </div>
